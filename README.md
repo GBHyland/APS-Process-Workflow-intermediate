@@ -45,7 +45,7 @@ execution.setVariable('newCustomerId', execution.getProcessinstanceId());
         -	Select the Required check box. 
         -	Click on the Close button.
   -	Perform the previous step again to create a Text object with the following information: 
-        -	Label: ```Last Name:```
+        -	Label: Last Name:
         - ID: newCustomerLastName 
         - Required: checked
   -	Create another Text object with the following information:
@@ -469,16 +469,16 @@ ${newCustomerCity}, ${newCustomerState}. ${newCustomerZipCode}
 ```
 14.	Add a new Header to the form below the first header. Label it: Email Configuration:
 15.	Add a Text object to the Email header with the following configuration:
-    -	Label: 	Email Subject:
+    -	Label: 	```Email Subject:```
     -	ID: emailsubject
     -	Required: checked
 16.	Add a Text object to the Email header with the following configuration:
-    -	Label: 	To:
+    -	Label: 	```To:```
     -	Override ID: checked
     -	ID: newCustomerEmail
     -	Required: checked
 17.	Add a Text object to the Email header with the following configuration:
-    -	Label: 	From:
+    -	Label: 	```From:```
     -	Override ID: checked
     -	ID: fromEmailAddress
     -	Required: checked
