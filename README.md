@@ -340,71 +340,71 @@ Please follow up with customer regarding out-of-state insurance waiver.
     -	Select BPMN from the dropdown.
 3.	Select the Stencil Editor button to go into edit mode.
 4.	Add a new group by selecting the + Add new group button. 
-    -	Name the group My Custom Components
+    -	Name the group ```My Custom Components```
 5.	Add a new item by selecting the + Add new item button. Enter the following information:
-    -	Task Type: Service Task
-    -	Name: Send Email with Attachments
-    -	Description: Send an email with attachments (or enter your own)
+    -	Task Type: ```Service Task```
+    -	Name: ```Send Email with Attachments```
+    -	Description: ```Send an email with attachments``` (or enter your own)
     -	Group: use the dropdown selector to select the group you created above (My Custom Components)
     -	Icon: Use the change icon prompt to browse your local machine. Find the folder you were provided and select the mail_icon.png found in the Icons folder.
-    -	Delegate Expression: ${emailServiceWithAttachments}
+    -	Delegate Expression: ```${emailServiceWithAttachments}```
     -	Asynchronous: checked
     -	Select the Edit hyperlink next to Properties. 
         -	In the popup window select the + Add a new property link. Fill in the following information.
-            1.	Name: Email Template Name
-            2.	ID: email_template_name
+            1.	Name: ```Email Template Name```
+            2.	ID: ```email_template_name```
             3.	Type: String
             4.	Select the Include property as field extension checkbox.
-            5.	Name of field extension: emailTemplate
+            5.	Name of field extension: ```emailTemplate```
             6.	Select Save Property button.
         -	Add another property by selecting the + Add a new property link.
-            1.	Name: Send To
-            2.	ID: send_to
+            1.	Name: ```Send To```
+            2.	ID: ```send_to```
             3.	Type: String
             4.	Select the Include property as field extension checkbox.
-            5.	Name of field extension: toList
+            5.	Name of field extension: ```toList```
             6.	Select Save Property button.
         -	Add another property by selecting the + Add a new property link.
-            1.	Name: Email Subject
-            2.	ID: email_subject
+            1.	Name: ```Email Subject```
+            2.	ID: ```email_subject```
             3.	Type: String
             4.	Select the Include property as field extension checkbox.
-            5.	Name of field extension: subject
+            5.	Name of field extension: ```subject```
             6.	Select Save Property button.
         -	Add another property by selecting the + Add a new property link.
-            1.	Name: Attachments
-            2.	ID: attachments
+            1.	Name: ```Attachments```
+            2.	ID: ```attachments```
             3.	Type: String
             4.	Select the Include property as field extension checkbox.
-            5.	Name of field extension: contentField
+            5.	Name of field extension: ```contentField```
             6.	Select Save Property button.
         -	Add another property by selecting the + Add a new property link.
-            1.	Name: Include Attachments
-            2.	ID: inc_attachments
+            1.	Name: ```Include Attachments```
+            2.	ID: ```inc_attachments```
             3.	Type: Boolean
             4.	Select the Include property as field extension checkbox.
-            5.	Name of field extension: includeAttachments
+            5.	Name of field extension: ```includeAttachments```
             6.	Select Save Property button.
         -	Add another property by selecting the + Add a new property link.
-            1.	Name: Send CC
-            2.	ID: send_cc
+            1.	Name: ```Send CC```
+            2.	ID: ```send_cc```
             3.	Type: String
             4.	Select the Include property as field extension checkbox.
-            5.	Name of field extension: ccList
+            5.	Name of field extension: ```ccList```
             6.	Select Save Property button.
         -	Add another property by selecting the + Add a new property link.
-            1.	Name: From	
-            2.	ID: from
+            1.	Name: ```From```
+            2.	ID: ```from```
             3.	Type: String
             4.	Select the Include property as field extension checkbox.
-            5.	Name of field extension: from
+            5.	Name of field extension: ```from```
             6.	Select Save Property button.
         -	Add another property by selecting the + Add a new property link.
-            1.	Name: Include Attachments	
-            2.	ID: include_attachments
+            1.	Name: ```Include Attachments```
+            2.	ID: ```include_attachments```
             3.	Type: Boolean
             4.	Select the Include property as field extension checkbox.
-            5.	Name of field extension: includeAttachments
+            5.	Name of field extension: ```includeAttachments```
             6.	Select Save Property button.
         -	Close the Edit stencil properties popup window.
 6.	Save the Stencil using the save icon in the top, left of the page.
@@ -416,8 +416,8 @@ Please follow up with customer regarding out-of-state insurance waiver.
 4.	Select Custom Email Templates.
 5.	Select the +Create new email template button.
 6.	Configure the email template with the following information:
-    -	Name: 9si-ooo-email
-    -	Subject: Welcome to 9 Second insurance
+    -	Name: ```9si-ooo-email```
+    -	Subject: ```Welcome to 9 Second insurance```
     -	Email content:
 ```
 Hello, ${newCustomerFirstName}!
@@ -433,16 +433,16 @@ Best Regards,
 -	Save the email template.
 7.	Navigate to the App Designer.
 8.	Create a new process with the following configuration:
-    -	Name: Send Custom Email
-    -	Description: Email sub-process.
+    -	Name: ```Send Custom Email```
+    -	Description: ```Email sub-process.```
     -	Stencil: Select the Custom Email stencil
 9.	In the bottom configuration panel, select the Variables attribute. Enter the following variables:
     -	ccEmailAddress: string
     -	fromEmailAddress: string
     -	newCustomerEmail: string
 10.	Create a Script task. Configure with the following information:
-    -	Name: Set Default Vars
-    -	Script format: groovy
+    -	Name: ```Set Default Vars```
+    -	Script format: ```groovy```
     -	Script:
 ```
 execution.setVariable("fromEmailAddress", "claims-team@example.com");
@@ -450,10 +450,10 @@ execution.setVariable("ccEmailAddress", "blumbergh@example.com");
 ```
 11.	Create a User task connected to the script task. Name it: Configure Email.
 12.	Select the Referenced Form attribute from the configuration panel to open the referenced for popup. Select  New Form and create a new form with the following config:
-    -	Name:  Email Config Form
-    -	Description: Used to configure custom email
+    -	Name:  ```Email Config Form```
+    -	Description: ```Used to configure custom email```
 13.	Add a Header to the form. 
-    -	Label it: Customer Information:
+    -	Label it: ```Customer Information:```
     -	Set the Display Text to:
 ```
 Customer Information:
@@ -465,51 +465,51 @@ ${newCustomerCity}, ${newCustomerState}. ${newCustomerZipCode}
 14.	Add a new Header to the form below the first header. Label it: Email Configuration:
 15.	Add a Text object to the Email header with the following configuration:
     -	Label: 	```Email Subject:```
-    -	ID: emailsubject
+    -	ID: ```emailsubject```
     -	Required: checked
 16.	Add a Text object to the Email header with the following configuration:
     -	Label: 	```To:```
     -	Override ID: checked
-    -	ID: newCustomerEmail
+    -	ID: ```newCustomerEmail```
     -	Required: checked
 17.	Add a Text object to the Email header with the following configuration:
     -	Label: 	```From:```
     -	Override ID: checked
-    -	ID: fromEmailAddress
+    -	ID: ```fromEmailAddress```
     -	Required: checked
 18.	Add a Text object to the Email header with the following configuration:
-    -	Label: 	CC:
+    -	Label: 	```CC:```
     -	Override ID: checked
-    -	ID: ccEmailAddress
+    -	ID: ```ccEmailAddress```
     -	Required: checked
 19.	Add a Check Box object to the Email header with the following configuration:
-    -	Label: 	Include Attachments:
+    -	Label: 	```Include Attachments:```
     -	Override ID: unchecked
-    -	ID: includeattachments
+    -	ID: ```includeattachments```
     -	Required: checked
 20.	Add a Drop-Down object to the Email header with the following configuration:
-    -	Label: 	Select Email Template
+    -	Label: 	```Select Email Template```
     -	Override ID: unchecked
-    -	ID: selectemailtemplate
+    -	ID: ```selectemailtemplate```
     -	Required: checked
     -	Select the options tab and add the following option(s):
-        -	Label: Out-of-State Email
-        -	ID: 9si-oos-email
+        -	Label: ```Out-of-State Email```
+        -	ID: ```9si-oos-email```
 21.	Add a Attach File object to the Email header with the following configuration:
-    -	Label: 	Attachment
+    -	Label: 	```Attachment```
     -	Override ID: checked
-    -	ID: content
+    -	ID: ```content```
     -	Required: checked
 22.	Save and close the form editor.
 23.	Add the custom Send Email w Attachments task that was created during the Stencil la- Give it the following configuration:
-    -	Name: Send Email
-    -	Email Template Name: ${selectemailtemplate}
-    -	Sent To: ${newCustomerEmail}
-    -	Email Subject: ${emailsubject}
-    -	Attachments: content
+    -	Name: ```Send Email```
+    -	Email Template Name: ```${selectemailtemplate}```
+    -	Sent To: ```${newCustomerEmail}```
+    -	Email Subject: ```${emailsubject}```
+    -	Attachments: ```content```
     -	Include Attachments: checked
-    -	Send CC: ${ccEmailAddress}
-    -	From: ${fromEmailAddress}
+    -	Send CC: ```${ccEmailAddress}```
+    -	From: ```${fromEmailAddress}```
 24.	Add an End Event connected to the Send Mail task.
 25.	Save and close the process editor.
 
