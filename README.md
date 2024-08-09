@@ -1,13 +1,15 @@
-# APS-Process-Workflow-Intermediate
+# APS-Process-Workflows-Intermediate
 
-## Lab 1. Create an Intake Task
+## New Employee Onboarding Process
+
+### Lab 1. Create an Intake Task
 1.	From the Alfresco home page, launch the Activiti App (Process Services) by clicking on the Activiti App hyperlink. 
-    - Sign in with your provided username and passwor- You will be directed to the Activiti App home page
+    - Sign in with your provided username and password. You will be directed to the Activiti App home page.
 2.	Select the App Designer tile to navigate to the Business Process Models page
-3.	To create a new process, press the Create Process button in the top right of the page
+3.	To create a new process, press the Create Process button in the top right of the page.
 4.	In the Create a new business process model popup, enter the following information:
     -	Model name: [Your user #] New Customer Onboarding (ex: U1 New Customer Onboarding)
-    -	Description: Add a new customer.
+    -	Description: ```Add a new customer.```
     -	Editor Type: Leave as BPMN editor
     -	Stencil: Default BPMN
     -	Press the Create new model button.
@@ -86,7 +88,7 @@ execution.setVariable('newCustomerId', execution.getProcessinstanceId());
 15.	Save the process model by clicking on the Save icon in the top left of the pag-   
 16.	In the Save model popup window, press the Save and close editor button.
 
-## Lab 2: Create a Process Application
+### Lab 2: Create a Process Application
 1.	From the Activiti home page, select the App Designer tile to navigate to the Business Process Models page
 2.	Select the Apps hyperlink in the top blue banner.
 3.	Select the Create App button. 
@@ -104,7 +106,7 @@ execution.setVariable('newCustomerId', execution.getProcessinstanceId());
     -	If not, deploy your new application by selecting the blank tile, depicted with a plus sign “+” (“Add a new app” appears when you hover your mouse over it. Select this tile, then select your application in the Add app to landing page popup window. Press the Deploy button on that window. Your application is now deployee
 
 
-## Lab 3: Generating and Saving a Document
+### Lab 3: Generating and Saving a Document
 1.	Access the App Designer tile from the homepage of the Activiti App (Process Services).
 2.	Enter your New Customer Onboarding process in edit mode by selecting the edit icon when hovering your mouse over its til-    
 3.	Remove the End event and the line connecting to it by selecting each one and clicking the trash can icon that appears. 
@@ -135,7 +137,7 @@ execution.setVariable('newCustomerId', execution.getProcessinstanceId());
 12.	Navigate to your application and republish.
 13.	Test your updated process.
 
-## Lab 4: Create a Data Model
+### Lab 4: Create a Data Model
 1. Access the data Model page within the App Designer.
 2. Select the Create Data Model button.
 3. Enter 9siCustomerData in the Data Model Name field and click the Create button.
@@ -161,7 +163,7 @@ execution.setVariable('newCustomerId', execution.getProcessinstanceId());
 5. Select the Alfresco Tab Select alfresco1 in the Repository Source dropdown.
 6. Save and Close the Model.
 
-## Lab 5: Create a Store Entity Task / Save Values to Database
+### Lab 5: Create a Store Entity Task / Save Values to Database
 1. Access the App Designer tile from the homepage of the Activiti App (Process Services).
 2. Enter your New Claims process in edit mode by selecting the edit icon when hovering your mouse over its tile.    
 3. Delete the sequence flow line going from the Add Customer Data task to the Create Cust Doc task.
@@ -184,7 +186,7 @@ execution.setVariable('newCustomerId', execution.getProcessinstanceId());
         -	Press Save on the mapping window.
 6. Save and close your process.
 
-## Lab 6: Create a Database Lookup Process
+### Lab 6: Create a Database Lookup Process
 1.	Create a new Process called Lookup DB Values.
 2.	In the bottom configuration panel, launch the Variables attribute window and add the following variable:
     -	Variable name: ```recordList```
@@ -273,7 +275,7 @@ sql.eachRow('SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE 
 10.	Add the processes to your app that you created in this and the previous lab
 11.	Use the digital workspace to test both processes. The New Customer Onboarding process should now save the customer data into the database. Use the Display DB Values process to view added entries.
 
-## Lab 7: Create a Service Task with Java Delegate
+### Lab 7: Create a Service Task with Java Delegate
 1.	Enter your New Customer Onboarding process in edit mode.
 2.	Select the Variables attribute in the configuration panel to add a new variable.
 3.	Add a variable titled ```stateVerify``` as a ```string```
@@ -286,7 +288,7 @@ sql.eachRow('SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE 
 10.	You may now test your process in the Digital Workspace. 
     -	*Note: To ensure the KYC Java Delegate task is working you can view the saved document and check the “out of state” box to ensure the true or false variable is being set by the Delegate.
 
-## lab 8: Add a Parallel Gateway and Splitting Paths
+### lab 8: Add a Parallel Gateway and Splitting Paths
 1.	Open your New Claims process in edit mode.
 2.	Delete the end event.
 3.	From the left panel, under Gateways, add a Parallel Gateway to your process. Connect it from the KYC Delegate task.
@@ -333,7 +335,7 @@ Please follow up with customer regarding out-of-state insurance waiver.
 13.	Save your process, redeploy your application, and test the process.
 
 
-## Lab 9: Create a Stencil for Custom process Tasks
+### Lab 9: Create a Stencil for Custom process Tasks
 1.	From the AppDesigner page, select Stencils from the top, blue banner.
 2.	Select the Create Stencil button.
     -	Name the stencil [user #] - Custom Email.
@@ -409,7 +411,7 @@ Please follow up with customer regarding out-of-state insurance waiver.
         -	Close the Edit stencil properties popup window.
 6.	Save the Stencil using the save icon in the top, left of the page.
 
-## Lab 10: Build a Custome Email Sub-process
+### Lab 10: Build a Custome Email Sub-process
 1.	Navigate to the Identity Management section.
 2.	Select Tenants from the top blue banner.
 3.	Select Email Templates from the left menu.
@@ -514,7 +516,7 @@ ${newCustomerCity}, ${newCustomerState}. ${newCustomerZipCode}
 25.	Save and close the process editor.
 
 
-## Lab 11: Add a Sub-process (Custom Email process)
+### Lab 11: Add a Sub-process (Custom Email process)
 1.	Open the Claims Process in edit mode.
 2.	Add a Collapsed Subprocess to the process after the Manager Follow-up task.
     -	Connect the collapsed subprocess from the manager foll-up and to the Create NH Doc task.
@@ -522,4 +524,7 @@ ${newCustomerCity}, ${newCustomerState}. ${newCustomerZipCode}
     -	Name: ```Send OOS Email```
     -	Referenced Subprocess: choose the ```Send Custom Email process``` created in previous lab.
 4. Save and test the process.
+
+
+
 
