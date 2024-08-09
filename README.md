@@ -2,7 +2,7 @@
 
 ##Lab 1. Create an Intake Task
 1.	From the Alfresco home page, launch the Activiti App (Process Services) by clicking on the Activiti App hyperlink. 
-  -Sign in with your provided username and passwor- You will be directed to the Activiti App home pag-
+*Sign in with your provided username and passwor- You will be directed to the Activiti App home pag-
 2.	Select the App Designer tile to navigate to the Business Process Models pag-
 3.	To create a new process, press the Create Process button in the top right of the pag-
 4.	In the Create a new business process model popup, enter the following information:
