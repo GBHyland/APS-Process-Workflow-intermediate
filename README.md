@@ -44,11 +44,11 @@ execution.setVariable('newCustomerId', execution.getProcessinstanceId());
         -	Enter newCustomerFirstName into the ID fiele
         -	Select the Required check box. 
         -	Click on the Close button.
-  g.	Perform the previous step again to create a Text object with the following information: 
+  -	Perform the previous step again to create a Text object with the following information: 
         -	Label: Last Name:
         - ID: newCustomerLastName 
         - Required: checked
-  h.	Create another Text object with the following information:
+  -	Create another Text object with the following information:
         -	Label: Address:
         - ID: newCustomerAddress 
         - Required: checked
@@ -137,7 +137,7 @@ customer_${newCustomerId}
 -	Press the Save button on the Change Value popup window.
 10.	Finally, add an end event to your process. Select the Publish to Alfresco task, then select the end event icon from the small popup menu.
 11.	Save your process and close the editor.
-12.	Navigate to your application and republish. 
+12.	Navigate to your application and republis- 
 13.	Test your updated process in the Digital Workspace
 
 ## Lab 4: Create a Data Model
@@ -151,7 +151,7 @@ customer_${newCustomerId}
             -	Entity Description: Details of all customers
             -	Table Name: CUSTOMERS
     -	Click the Import Attributes button. Notice that the table attributes should import from the connected database. Ensure that the values mapped correctly:
-    - **Note:** the id variable should have the Primary key check box checked. All others do not.
+    - **Note:** the id variable should have the Primary key check box checke- All others do not.
 
 | Attribute name | Column name  | Attribute type |
 | ----------     | ---------    | -------------- |
@@ -176,7 +176,7 @@ customer_${newCustomerId}
     -	Select Attribute Mapping to open the mapping popup window. Perform the following actions:
         -	Mapped Data model: 9siCustomerDatabase
         -	Mapped entity: newCustomers
-        -Variable for new/updated entity: Existing variable
+        -   Variable for new/updated entity: Existing variable
         -	New Variable: newCustomerdata
         -	Configure the following attributes in the mapping table by selecting each Attribute Name and choosing the variable / form field it is associated with:
             1.	Id: newCustomerId (Variable)
@@ -192,13 +192,13 @@ customer_${newCustomerId}
 ## Lab 6: Create a Database Lookup Process
 1.	Create a new Process called Lookup DB Values.
 2.	In the bottom configuration panel, launch the Variables attribute window and add the following variable:
-a.	Variable name: recordList
-b.	Variable type: string
-c.	Save the variable.
+    -	Variable name: recordList
+    -	Variable type: string
+    -	Save the variable.
 3.	Create a Script Task and use the configuration panel to assign the following values:
-a.	Name: Get DB Values
-b.	Script Format: groovy
-c.	Script: (paste the following code into the scripting window)
+    -	Name: Get DB Values
+    -	Script Format: groovy
+    -	Script: (paste the following code into the scripting window)
 ```
 import groovy.sql.Sql;
 import groovy.json.*
@@ -214,10 +214,10 @@ class Record {
     String zip
 }
 
-def url = 'jdbc:oracle:thin:@//aps-custom-oracle-db.cp58lgpzkwpy.us-east-1.rds.amazonaws.com/ORCL'
+def url = 'jdbc:oracle:thin:@//aps-custom-oracle-d-cp58lgpzkwpy.us-east-1.rds.amazonaws.com/ORCL'
 def user = 'admin'
 def password = 'administrator'
-def driver = 'oracle.jdbc.driver.OracleDriver'
+def driver = 'oracle.jdb-driver.OracleDriver'
 def sql = Sql.newInstance(url, user, password, driver)
 
 rowNum = 0;
@@ -237,44 +237,44 @@ sql.eachRow('SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE 
 5.	Select the referenced form attribute and open the form prompt.
 6.	Select New form.
 7.	In the Form Editor page follow these steps to create the form:
-a.	Drag a Dynamic Table onto the form stage. Select the pencil icon to go into edit mode.
-b.	Enter into Label field: CUSTOMERS
-c.	Select the Override Id checkbox.
-d.	Enter into the ID field: recordList
-e.	Select the Table Columns tab. 
-f.	Press the “+” icon button to create new property mappings with the following values:
-i.	Column 1:
-1.	Property ID: recId
-2.	Property Name: ID
-3.	Property Type: string
-ii.	Column 2:
-1.	Property ID: firstname
-2.	Property Name: First name
-3.	Property Type: string
-iii.	Column 3:
-1.	Property ID: lastname
-2.	Property Name: Last Name
-3.	Property Type: string
-iv.	Column 4:
-1.	Property ID: address
-2.	Property Name: Address
-3.	Property Type: string
-v.	Column 5:
-1.	Property ID: state
-2.	Property Name: State
-3.	Property Type: string
-vi.	Column 6:
-1.	Property ID: city
-2.	Property Name: City
-3.	Property Type: string
-vii.	Column 7:
-1.	Property ID: zip
-2.	Property Name: Zip
-3.	Property Type: string
-g.	Close the edit prompt.
-h.	Save and close the form.
+    -	Drag a Dynamic Table onto the form stage. Select the pencil icon to go into edit mode.
+    -	Enter into Label field: CUSTOMERS
+    -	Select the Override Id checkbox.
+    -	Enter into the ID field: recordList
+    -	Select the Table Columns ta- 
+    -	Press the "+" icon button to create new property mappings with the following values:
+        -	Column 1:
+            1.	Property ID: recId
+            2.	Property Name: ID
+            3.	Property Type: string
+        -	Column 2:
+            1.	Property ID: firstname
+            2.	Property Name: First name
+            3.	Property Type: string
+        -	Column 3:
+            1.	Property ID: lastname
+            2.	Property Name: Last Name
+            3.	Property Type: string
+        -	Column 4:
+            1.	Property ID: address
+            2.	Property Name: Address
+            3.	Property Type: string
+        -	Column 5:
+            1.	Property ID: state
+            2.	Property Name: State
+            3.	Property Type: string
+        -	Column 6:
+            1.	Property ID: city
+            2.	Property Name: City
+            3.	Property Type: string
+        -	Column 7:
+            1.	Property ID: zip
+            2.	Property Name: Zip
+            3.	Property Type: string
+    -	Close the edit prompt.
+    -	Save and close the form.
 8.	Add an End Event to the end of the process.
 9.	Save and close the process.
-10.	Add the processes to your app that you created in this and the previous lab.
+10.	Add the processes to your app that you created in this and the previous la-
 11.	Use the digital workspace to test both processes. The New Customer Onboarding process should now save the customer data into the database. Use the Display DB Values process to view added entries.
 
