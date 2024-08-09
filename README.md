@@ -141,16 +141,16 @@ customer_${newCustomerId}
 13.	Test your updated process in the Digital Workspace
 
 ## Lab 4: Create a Data Model
-1.    Access the data Model page within the App Designer.
-2.    Select the Create Data Model button.
-3.    Enter 9siCustomerData in the Data Model Name field and click the Create button.
-4.    In the Database Tab:
-a.	Select aps-oracle-db from the Data Source dropdown.
-b.	Click the Add Entity button. Enter the following information for the Entity:
+1. Access the data Model page within the App Designer.
+2. Select the Create Data Model button.
+3. Enter 9siCustomerData in the Data Model Name field and click the Create button.
+4. In the Database Tab:
+    -    Select aps-oracle-db from the Data Source dropdown
+    -    Click the Add Entity button. Enter the following information for the Entity:
 i.	Entity Name: newCustomers
 ii.	Entity Description: Details of all customers
 iii.	Table Name: CUSTOMERS
-c.	Click the Import Attributes button. Notice that the table attributes should import from the connected database. Ensure that the values mapped correctly:
+-	Click the Import Attributes button. Notice that the table attributes should import from the connected database. Ensure that the values mapped correctly:
 *Note: the id variable should have the Primary key check box checked. All others do not.
 Attribute name	Column name	Attribute type
 id	ID	Number
@@ -161,6 +161,6 @@ city	CITY	String
 state	STATE	String
 zipCode	ZIPCODE	String
 
-5	Select the Alfresco Tab. Select alfresco1 in the Repository Source dropdown.
+5	Select the Alfresco Ta- Select alfresco1 in the Repository Source dropdown.
 6	Save and Close the Model.
 
