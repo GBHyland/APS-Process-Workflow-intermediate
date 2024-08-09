@@ -312,11 +312,11 @@ sql.eachRow('SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE 
 ```
 Out of State Customer Information:
                 
-                ${newCustomerLastName}, ${newCustomerFirstName} - ${newCustomerId}
-                ${newCustomerPhoneNumber}
-                ${newCustomerEmail}
-                
-                Please follow up with customer regarding out-of-state insurance waiver.
+${newCustomerLastName}, ${newCustomerFirstName} - ${newCustomerId}
+${newCustomerPhoneNumber}
+${newCustomerEmail}
+
+Please follow up with customer regarding out-of-state insurance waiver.
 ```
 ---
 - Add a Header to the page below the first header and go into edit mode. Configure with the following information:
