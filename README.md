@@ -1,6 +1,6 @@
 # APS-Process-Workflow-Intermediate
 
-<h2>Lab 1. Create an Intake Task</h2>
+##Lab 1. Create an Intake Task
 1.	From the Alfresco home page, launch the Activiti App (Process Services) by clicking on the Activiti App hyperlink. 
   a.	 Sign in with your provided username and password. You will be directed to the Activiti App home page.
 2.	Select the App Designer tile to navigate to the Business Process Models page.
@@ -86,4 +86,4 @@ execution.setVariable('newCustomerId', execution.getProcessinstanceId());
 15.	Save the process model by clicking on the Save icon in the top left of the page.   
 16.	In the Save model popup window, press the Save and close editor button.
 
-
+##Lab 2: Create a Process Application
