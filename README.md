@@ -421,9 +421,9 @@ Please follow up with customer regarding out-of-state insurance waiver.
 4.	Select Custom Email Templates.
 5.	Select the +Create new email template button.
 6.	Configure the email template with the following information:
-a.	Name: 9si-ooo-email
-b.	Subject: Welcome to 9 Second insurance
-c.	Email content:
+    -	Name: 9si-ooo-email
+    -	Subject: Welcome to 9 Second insurance
+    -	Email content:
 ```
 Hello, ${newCustomerFirstName}!
 
@@ -435,32 +435,31 @@ Best Regards,
 
 9 Second Insurance, Onboarding Team.
 ```
-d.	Save the email template.
+-	Save the email template.
 7.	Navigate to the App Designer.
 8.	Create a new process with the following configuration:
-a.	Name: Send Custom Email
-b.	Description: Email sub-process.
-c.	Stencil: Select the Custom Email stencil
+    -	Name: Send Custom Email
+    -	Description: Email sub-process.
+    -	Stencil: Select the Custom Email stencil
 9.	In the bottom configuration panel, select the Variables attribute. Enter the following variables:
-a.	ccEmailAddress: string
-b.	fromEmailAddress: string
-c.	newCustomerEmail: string
+    -	ccEmailAddress: string
+    -	fromEmailAddress: string
+    -	newCustomerEmail: string
 10.	Create a Script task. Configure with the following information:
-a.	Name: Set Default Vars
-b.	Script format: groovy
-c.	Script:
+    -	Name: Set Default Vars
+    -	Script format: groovy
+    -	Script:
 ```
 execution.setVariable("fromEmailAddress", "claims-team@example.com");
 execution.setVariable("ccEmailAddress", "blumbergh@example.com");
 ```
-
 11.	Create a User task connected to the script task. Name it: Configure Email.
 12.	Select the Referenced Form attribute from the configuration panel to open the referenced for popup. Select  New Form and create a new form with the following config:
-a.	Name:  Email Config Form
-b.	Description: Used to configure custom email
+    -	Name:  Email Config Form
+    -	Description: Used to configure custom email
 13.	Add a Header to the form. 
-a.	Label it: Customer Information:
-b.	Set the Display Text to:
+    -	Label it: Customer Information:
+    -	Set the Display Text to:
 ```
 Customer Information:
 
@@ -468,55 +467,54 @@ ${newCustomerLastName}, ${newCustomerFirstName} - ${newCustomerId}
 ${newCustomerAddress}
 ${newCustomerCity}, ${newCustomerState}. ${newCustomerZipCode}
 ```
-
 14.	Add a new Header to the form below the first header. Label it: Email Configuration:
 15.	Add a Text object to the Email header with the following configuration:
-a.	Label: 	Email Subject:
-b.	ID: emailsubject
-c.	Required: checked
+    -	Label: 	Email Subject:
+    -	ID: emailsubject
+    -	Required: checked
 16.	Add a Text object to the Email header with the following configuration:
-a.	Label: 	To:
-b.	Override ID: checked
-c.	ID: newCustomerEmail
-d.	Required: checked
+    -	Label: 	To:
+    -	Override ID: checked
+    -	ID: newCustomerEmail
+    -	Required: checked
 17.	Add a Text object to the Email header with the following configuration:
-a.	Label: 	From:
-b.	Override ID: checked
-c.	ID: fromEmailAddress
-d.	Required: checked
+    -	Label: 	From:
+    -	Override ID: checked
+    -	ID: fromEmailAddress
+    -	Required: checked
 18.	Add a Text object to the Email header with the following configuration:
-a.	Label: 	CC:
-b.	Override ID: checked
-c.	ID: ccEmailAddress
-d.	Required: checked
+    -	Label: 	CC:
+    -	Override ID: checked
+    -	ID: ccEmailAddress
+    -	Required: checked
 19.	Add a Check Box object to the Email header with the following configuration:
-a.	Label: 	Include Attachments:
-b.	Override ID: unchecked
-c.	ID: includeattachments
-d.	Required: checked
+    -	Label: 	Include Attachments:
+    -	Override ID: unchecked
+    -	ID: includeattachments
+    -	Required: checked
 20.	Add a Drop-Down object to the Email header with the following configuration:
-a.	Label: 	Select Email Template
-b.	Override ID: unchecked
-c.	ID: selectemailtemplate
-d.	Required: checked
-e.	Select the options tab and add the following option(s):
-i.	Label: Out-of-State Email
-ii.	ID: 9si-oos-email
+    -	Label: 	Select Email Template
+    -	Override ID: unchecked
+    -	ID: selectemailtemplate
+    -	Required: checked
+    -	Select the options tab and add the following option(s):
+        -	Label: Out-of-State Email
+        -	ID: 9si-oos-email
 21.	Add a Attach File object to the Email header with the following configuration:
-a.	Label: 	Attachment
-b.	Override ID: checked
-c.	ID: content
-d.	Required: checked
+    -	Label: 	Attachment
+    -	Override ID: checked
+    -	ID: content
+    -	Required: checked
 22.	Save and close the form editor.
-23.	Add the custom Send Email w Attachments task that was created during the Stencil lab. Give it the following configuration:
-a.	Name: Send Email
-b.	Email Template Name: ${selectemailtemplate}
-c.	Sent To: ${newCustomerEmail}
-d.	Email Subject: ${emailsubject}
-e.	Attachments: content
-f.	Include Attachments: checked
-g.	Send CC: ${ccEmailAddress}
-h.	From: ${fromEmailAddress}
+23.	Add the custom Send Email w Attachments task that was created during the Stencil la- Give it the following configuration:
+    -	Name: Send Email
+    -	Email Template Name: ${selectemailtemplate}
+    -	Sent To: ${newCustomerEmail}
+    -	Email Subject: ${emailsubject}
+    -	Attachments: content
+    -	Include Attachments: checked
+    -	Send CC: ${ccEmailAddress}
+    -	From: ${fromEmailAddress}
 24.	Add an End Event connected to the Send Mail task.
 25.	Save and close the process editor.
 
