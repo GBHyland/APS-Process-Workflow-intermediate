@@ -319,7 +319,7 @@ Out of State Customer Information:
                 Please follow up with customer regarding out-of-state insurance waiver.
 ```
 ---
-*   - Add a Header to the page below the first header and go into edit mode. Configure with the following information:
+- Add a Header to the page below the first header and go into edit mode. Configure with the following information:
         -	Label: Manager’s Notes:
     -	Add a Multi-line text object to the new header. Configure with the following information:
         -	Label: Please indicate summary of conversation with customer or enter “No Contact”.
@@ -328,15 +328,13 @@ Out of State Customer Information:
         -  	Required: checked
     - 	Save and close the form editor.
 10.	Select the Manager Follow-Up task and select the Assignment attribute in the configuration panel. This will open an assignment popup window. Set the following configuration in the popup window:
-a.	Type: Identity Store
-b.	Assignment: Assigned to group manager
-c.	Source: Search
-d.	Search for and select the Claims-Team group. The Group attribute should now show the Claims-Team value.
-e.	Press the Save button.
+    -	Type: Identity Store
+    -	Assignment: Assigned to group manager
+    -	Source: Search
+    -	Search for and select the Claims-Team group. The Group attribute should now show the Claims-Team value.
+    -	Press the Save button.
 11.	Connect a sequence flow line from the Parallel gateway task to the Create NH Doc task. Remove any associated sequence flow lines that connect the Create NH Doc task to any previous tasks.
 12.	Create a sequence flow line from the Manager Follow-Up task to the Create NH Doc task.
-13.	Your process should flow like this:
- 
-14.	Save your process, redeploy your application, and test the process.
+13.	Save your process, redeploy your application, and test the process.
 
 
