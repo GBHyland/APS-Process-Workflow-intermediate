@@ -1,6 +1,6 @@
 # APS-Process-Workflow-Intermediate
 
-##Lab 1. Create an Intake Task
+## Lab 1. Create an Intake Task
 1.	From the Alfresco home page, launch the Activiti App (Process Services) by clicking on the Activiti App hyperlink. 
     - Sign in with your provided username and passwor- You will be directed to the Activiti App home page
 2.	Select the App Designer tile to navigate to the Business Process Models page
@@ -32,54 +32,54 @@ execution.setVariable('newCustomerId', execution.getProcessinstanceId());
     -	Description: Gathers information about the new customer.
     -	Stencil: Default form
     -	Select the Create form button. 
-13.	 Follow these steps to create the form you’ll need to intake a new hire employee
-    -	From the left object menu, drag a Header onto the canvas. To edit, click on the pencil icon that appears when you hover your mouse over the header object. In the Label field, name it Customer ID and click the Close button.
+13.	Follow these steps to create the form you’ll need to intake a new hire employee
+    - From the left object menu, drag a Header onto the canvas. To edit, click on the pencil icon that appears when you hover your mouse over the header object. In the Label field, name it Customer ID and click the Close button.
     -	Drag a Display Value object and dop it into the Header object.
     -	Click on the pencil icon on the Display Value object to open the edit prompt.
     -	Select the blue Variable button. In the Dropdown below the button, select the newCustomerId variabl- The Label should change to match the variable nam- Close the prompt.
     -	Drag a Header onto the canvas. To edit, click on the pencil icon that appears when you hover your mouse over the header object. In the Label field, name it Customer Information and click the Close button.
     -	Drag a Text object onto the canvas and drop it into the header object. Click the pencil to edit the text object and configure the following information: 
-      -	Label: First Name: 
-      -	Select the Override ID check box.
-      -	Enter newCustomerFirstName into the ID fiele
-      -	Select the Required check box. 
-      -	Click on the Close button.
+    -	Label: First Name: 
+        -	Select the Override ID check box.
+        -	Enter newCustomerFirstName into the ID fiele
+        -	Select the Required check box. 
+        -	Click on the Close button.
   g.	Perform the previous step again to create a Text object with the following information: 
-      -	Label: Last Name:
-      - ID: newCustomerLastName 
-      - Required: checked
+        -	Label: Last Name:
+        - ID: newCustomerLastName 
+        - Required: checked
   h.	Create another Text object with the following information:
-      -	Label: Address:
-      - ID: newCustomerAddress 
-      - Required: checked
-  -	Create another Text object with the following information:
-      -	Label: City:
-      -	ID: newCustomerCity
-      -	Required: checked
+        -	Label: Address:
+        - ID: newCustomerAddress 
+        - Required: checked
+    -	Create another Text object with the following information:
+        -	Label: City:
+        -	ID: newCustomerCity
+        -	Required: checked
   j.	Create a Dropdown object with the following information:
-      -	Label: State:
-      -	ID: newCustomerState
-      -	Required: checked
-      -	Select the Options ta- Configure the following information in the options tab:
-        1.	Select the Rest Service button.
-        2.	Rest URL: https://run.mocky.io/v3/0329674b-51fe-450f-90cf-be8f53cb68a6
-        3.	Path to array in JSON response: states
-        4.	ID property: abbreviation
-        5.	Label property: name
-        6.	Press the Test button. A popup window should appear showing a JSON string of states. Close the window.
-        7.	Close the dropdown prompt.
+        -	Label: State:
+        -	ID: newCustomerState
+        -	Required: checked
+        -	Select the Options ta- Configure the following information in the options tab:
+            1.	Select the Rest Service button.
+            2.	Rest URL: https://run.mocky.io/v3/0329674b-51fe-450f-90cf-be8f53cb68a6
+            3.	Path to array in JSON response: states
+            4.	ID property: abbreviation
+            5.	Label property: name
+            6.	Press the Test button. A popup window should appear showing a JSON string of states. Close the window.
+            7.	Close the dropdown prompt.
   k.	Create another Text object with the following information:
-    -	Label: Zip Code:
-    -	ID: newCustomerZipCode
-    -	Required: checked
+        -	Label: Zip Code:
+        -	ID: newCustomerZipCode
+        -	Required: checked
   l.	Create another Text object with the following information:
-    -	Label: Email Address:
-    -	ID: newCustomerEmail
-    -	Required: checked
+        -	Label: Email Address:
+        -	ID: newCustomerEmail
+        -	Required: checked
   m.	Create another Text object with the following information:
-    -	Label: Phone Number:
-    -	ID: newCustomerPhoneNumber
-    -	Required: checked
+        -	Label: Phone Number:
+        -	ID: newCustomerPhoneNumber
+        -	Required: checked
   n.	To save the form and return to your process model, click on the save button in the top left of the pag-   
   o.	On the Save form popup window, click the Save and close editor button to return to your process model.
 14.	Create a connected end event by selecting the Gather Customer Data user task and clicking on the end event icon in the small popup menu.   
@@ -123,6 +123,7 @@ execution.setVariable('newCustomerId', execution.getProcessinstanceId());
 ```
 customer_${newCustomerId}
 ```
+        
         -	Press the save button to close the popup window.
 5.	Add a Publish to Alfresco task to the process:
     -	From the left task menu, select Alfresco drop down to reveal Alfresco related tasks. Click and drag the Publish to Alfresco task dropping it onto the stag- Drag it into place on the right side of the Create Claim Doc task.
