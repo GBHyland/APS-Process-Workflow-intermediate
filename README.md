@@ -676,7 +676,7 @@ Found ${recordCount} records with the Last Name of "${lu_lastname}".
     -	From the left panel drag a Display text object onto the stage, adding it below the dynamic table. Select the pencil icon to go into edit mode:
         i.	In the Text to display field, add the following text:
 ```
-Verify that this is the correct customer and procee-
+Verify that this is the correct customer and proceed.
 Press Back if customer does not appear.
 ```
 -	Close the edit text field prompt.
