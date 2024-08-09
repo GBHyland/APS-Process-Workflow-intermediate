@@ -163,6 +163,30 @@ customer_${newCustomerId}
 | state          | STATE        | String         |
 | zipCode        | ZIPCODE      | String         |
 
-5	Select the Alfresco Ta- Select alfresco1 in the Repository Source dropdown.
-6	Save and Close the Model.
+5. Select the Alfresco Ta- Select alfresco1 in the Repository Source dropdown.
+6. Save and Close the Model.
+
+## Lab 5: Create a Store Entity Task / Save Values to Database
+1	Access the App Designer tile from the homepage of the Activiti App (Process Services).
+2	Enter your New Claims process in edit mode by selecting the edit icon when hovering your mouse over its tile.    
+3	Delete the sequence flow line going from the Add Customer Data task to the Create Cust Doc task.
+4	Add a Store Entity Task to the process and connect it in place of the deleted flow line. Connect flow lines to and from the Add Customer Data and Create Cust Doc tasks. Your Store Entity task should be connected like this:
+1.	 
+5	Select the new Store Entity Task and set the following configuration in the bottom panel:
+a.	Name: Save Cust data to DB
+b.	Select Attribute Mapping to open the mapping popup window. Perform the following actions:
+i.	Mapped Data model: 9siCustomerDatabase
+ii.	Mapped entity: newCustomers
+iii.	Variable for new/updated entity: Existing variable
+iv.	New Variable: newCustomerdata
+v.	Configure the following attributes in the mapping table by selecting each Attribute Name and choosing the variable / form field it is associated with:
+1.	Id: newCustomerId (Variable)
+2.	Firstname: First Name (Form field)
+3.	Lastname: Last Name (Form field)
+4.	Address: Address (Form field)
+5.	City: City (Form field)
+6.	State: State (Form field)
+7.	zipCode: Zip Code (Form field)
+vi.	Press Save on the mapping window.
+6	Save and close your process.
 
