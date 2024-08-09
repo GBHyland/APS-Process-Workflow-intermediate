@@ -19,6 +19,6 @@ c.	Save the variable.
 a.	Name: Set Customer ID
 b.	Script format: groovy
 c.	Script: enter this code in the popup script window:
-<code>
+```
 execution.setVariable('newCustomerId', execution.getProcessinstanceId());
-</code>
+```
