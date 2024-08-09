@@ -338,3 +338,79 @@ Please follow up with customer regarding out-of-state insurance waiver.
 13.	Save your process, redeploy your application, and test the process.
 
 
+## Lab 9: Create a Stencil for Custom process Tasks
+1.	From the AppDesigner page, select Stencils from the top, blue banner.
+2.	Select the Create Stencil button.
+a.	Name the stencil [user #] - Custom Email.
+b.	Select BPMN from the dropdown.
+3.	Select the Stencil Editor button to go into edit mode.
+4.	Add a new group by selecting the + Add new group button. 
+a.	Name the group My Custom Components
+5.	Add a new item by selecting the + Add new item button. Enter the following information:
+a.	Task Type: Service Task
+b.	Name: Send Email with Attachments
+c.	Description: Send an email with attachments (or enter your own)
+d.	Group: use the dropdown selector to select the group you created above (My Custom Components)
+e.	Icon: Use the change icon prompt to browse your local machine. Find the folder you were provided and select the mail_icon.png found in the Icons folder.
+f.	Delegate Expression: ${emailServiceWithAttachments}
+g.	Asynchronous: checked
+h.	Select the Edit hyperlink next to Properties. 
+i.	In the popup window select the + Add a new property link. Fill in the following information.
+1.	Name: Email Template Name
+2.	ID: email_template_name
+3.	Type: String
+4.	Select the Include property as field extension checkbox.
+5.	Name of field extension: emailTemplate
+6.	Select Save Property button.
+ii.	Add another property by selecting the + Add a new property link.
+1.	Name: Send To
+2.	ID: send_to
+3.	Type: String
+4.	Select the Include property as field extension checkbox.
+5.	Name of field extension: toList
+6.	Select Save Property button.
+iii.	Add another property by selecting the + Add a new property link.
+1.	Name: Email Subject
+2.	ID: email_subject
+3.	Type: String
+4.	Select the Include property as field extension checkbox.
+5.	Name of field extension: subject
+6.	Select Save Property button.
+iv.	Add another property by selecting the + Add a new property link.
+1.	Name: Attachments
+2.	ID: attachments
+3.	Type: String
+4.	Select the Include property as field extension checkbox.
+5.	Name of field extension: contentField
+6.	Select Save Property button.
+v.	Add another property by selecting the + Add a new property link.
+1.	Name: Include Attachments
+2.	ID: inc_attachments
+3.	Type: Boolean
+4.	Select the Include property as field extension checkbox.
+5.	Name of field extension: includeAttachments
+6.	Select Save Property button.
+vi.	Add another property by selecting the + Add a new property link.
+1.	Name: Send CC
+2.	ID: send_cc
+3.	Type: String
+4.	Select the Include property as field extension checkbox.
+5.	Name of field extension: ccList
+6.	Select Save Property button.
+vii.	Add another property by selecting the + Add a new property link.
+1.	Name: From	
+2.	ID: from
+3.	Type: String
+4.	Select the Include property as field extension checkbox.
+5.	Name of field extension: from
+6.	Select Save Property button.
+viii.	Add another property by selecting the + Add a new property link.
+1.	Name: Include Attachments	
+2.	ID: include_attachments
+3.	Type: Boolean
+4.	Select the Include property as field extension checkbox.
+5.	Name of field extension: includeAttachments
+6.	Select Save Property button.
+ix.	Close the Edit stencil properties popup window.
+6.	Save the Stencil using the save icon in the top, left of the page.
+![image](https://github.com/user-attachments/assets/68c3327e-bda6-4bc3-8a6e-3595e2ff071f)
