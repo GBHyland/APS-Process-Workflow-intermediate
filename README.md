@@ -122,7 +122,6 @@ execution.setVariable('newCustomerId', execution.getProcessinstanceId());
         -	Enter the following file name:
 ```
 customer_${newCustomerId}
-
 ```
         -	Press the save button to close the popup window.
 5.	Add a Publish to Alfresco task to the process:
