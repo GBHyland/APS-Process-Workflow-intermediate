@@ -189,3 +189,92 @@ customer_${newCustomerId}
         -	Press Save on the mapping window.
 6. Save and close your process.
 
+## Lab 6: Create a Database Lookup Process
+1.	Create a new Process called Lookup DB Values.
+2.	In the bottom configuration panel, launch the Variables attribute window and add the following variable:
+a.	Variable name: recordList
+b.	Variable type: string
+c.	Save the variable.
+3.	Create a Script Task and use the configuration panel to assign the following values:
+a.	Name: Get DB Values
+b.	Script Format: groovy
+c.	Script: (paste the following code into the scripting window)
+```
+import groovy.sql.Sql;
+import groovy.json.*
+import groovy.json.JsonBuilder
+
+class Record {
+    String recId
+    String firstname
+    String lastname
+    String address
+    String city
+    String state
+    String zip
+}
+
+def url = 'jdbc:oracle:thin:@//aps-custom-oracle-db.cp58lgpzkwpy.us-east-1.rds.amazonaws.com/ORCL'
+def user = 'admin'
+def password = 'administrator'
+def driver = 'oracle.jdbc.driver.OracleDriver'
+def sql = Sql.newInstance(url, user, password, driver)
+
+rowNum = 0;
+def recordList = [];
+
+sql.eachRow('SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE FROM CUSTOMERS') { row ->
+   
+  def r = new Record( recId: row.id, firstname:row.firstname, lastname:row.lastname, address:row.addressLine1, city:row.city, state:row.state, zip:row.zipcode)
+    recordList.add(r);
+  
+}
+
+  println new JsonBuilder( recordList ).toPrettyString()
+  execution.setVariable("recordList", new JsonBuilder( recordList ).toPrettyString())
+```
+4.	Add a User Task to the process and connect it from the Script Task. Name it: Display DB Values.
+5.	Select the referenced form attribute and open the form prompt.
+6.	Select New form.
+7.	In the Form Editor page follow these steps to create the form:
+a.	Drag a Dynamic Table onto the form stage. Select the pencil icon to go into edit mode.
+b.	Enter into Label field: CUSTOMERS
+c.	Select the Override Id checkbox.
+d.	Enter into the ID field: recordList
+e.	Select the Table Columns tab. 
+f.	Press the “+” icon button to create new property mappings with the following values:
+i.	Column 1:
+1.	Property ID: recId
+2.	Property Name: ID
+3.	Property Type: string
+ii.	Column 2:
+1.	Property ID: firstname
+2.	Property Name: First name
+3.	Property Type: string
+iii.	Column 3:
+1.	Property ID: lastname
+2.	Property Name: Last Name
+3.	Property Type: string
+iv.	Column 4:
+1.	Property ID: address
+2.	Property Name: Address
+3.	Property Type: string
+v.	Column 5:
+1.	Property ID: state
+2.	Property Name: State
+3.	Property Type: string
+vi.	Column 6:
+1.	Property ID: city
+2.	Property Name: City
+3.	Property Type: string
+vii.	Column 7:
+1.	Property ID: zip
+2.	Property Name: Zip
+3.	Property Type: string
+g.	Close the edit prompt.
+h.	Save and close the form.
+8.	Add an End Event to the end of the process.
+9.	Save and close the process.
+10.	Add the processes to your app that you created in this and the previous lab.
+11.	Use the digital workspace to test both processes. The New Customer Onboarding process should now save the customer data into the database. Use the Display DB Values process to view added entries.
+
