@@ -152,15 +152,16 @@ customer_${newCustomerId}
             -	Table Name: CUSTOMERS
     -	Click the Import Attributes button. Notice that the table attributes should import from the connected database. Ensure that the values mapped correctly:
     - **Note:** the id variable should have the Primary key check box checked. All others do not.
-| Attribute name | Column name | Attribute type |
-| ----------     | ---------   | -------------- |
-| id | ID | Number |
-| firstname | FIRSTNAME | String |
-| lastname | LASTNAME | String |
-| address | ADDRESSLINE1 | String |
-| city | CITY	| String |
-| state | STATE	| String |
-| zipCode | ZIPCODE	| String |
+
+| Attribute name | Column name  | Attribute type |
+| ----------     | ---------    | -------------- |
+| id             | ID           | Number         |
+| firstname      | FIRSTNAME    | String         |
+| lastname       | LASTNAME     | String         |
+| address        | ADDRESSLINE1 | String         |
+| city           | CITY	        | String         |
+| state          | STATE        | String         |
+| zipCode        | ZIPCODE      | String         |
 
 5	Select the Alfresco Ta- Select alfresco1 in the Repository Source dropdown.
 6	Save and Close the Model.
