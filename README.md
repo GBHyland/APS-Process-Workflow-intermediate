@@ -527,4 +527,8 @@ ${newCustomerCity}, ${newCustomerState}. ${newCustomerZipCode}
 
 
 
+## Create a New Insurance Claims Process
+
+### Lab 1: Create a new Process with Data Intake
+
 
