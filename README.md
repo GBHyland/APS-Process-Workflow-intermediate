@@ -86,7 +86,7 @@ execution.setVariable('newCustomerId', execution.getProcessinstanceId());
 15.	Save the process model by clicking on the Save icon in the top left of the pag-   
 16.	In the Save model popup window, press the Save and close editor button.
 
-##Lab 2: Create a Process Application
+## Lab 2: Create a Process Application
 1.	From the Activiti home page, select the App Designer tile to navigate to the Business Process Models page
 2.	Select the Apps hyperlink in the top blue banner.
 3.	Select the Create App button. 
@@ -104,7 +104,7 @@ execution.setVariable('newCustomerId', execution.getProcessinstanceId());
     -	If not, deploy your new application by selecting the blank tile, depicted with a plus sign “+” (“Add a new app” appears when you hover your mouse over it. Select this tile, then select your application in the Add app to landing page popup window. Press the Deploy button on that window. Your application is now deployee
 
 
-##Lab 3: Generating and Saving a Document
+## Lab 3: Generating and Saving a Document
 1.	Access the App Designer tile from the homepage of the Activiti App (Process Services).
 2.	Enter your New Customer Onboarding process in edit mode by selecting the edit icon when hovering your mouse over its til-    
 3.	Remove the End event and the line connecting to it by selecting each one and clicking the trash can icon that appears. 
@@ -139,3 +139,28 @@ customer_${newCustomerId}
 11.	Save your process and close the editor.
 12.	Navigate to your application and republish. 
 13.	Test your updated process in the Digital Workspace
+
+## Lab 4: Create a Data Model
+1.    Access the data Model page within the App Designer.
+2.    Select the Create Data Model button.
+3.    Enter 9siCustomerData in the Data Model Name field and click the Create button.
+4.    In the Database Tab:
+a.	Select aps-oracle-db from the Data Source dropdown.
+b.	Click the Add Entity button. Enter the following information for the Entity:
+i.	Entity Name: newCustomers
+ii.	Entity Description: Details of all customers
+iii.	Table Name: CUSTOMERS
+c.	Click the Import Attributes button. Notice that the table attributes should import from the connected database. Ensure that the values mapped correctly:
+*Note: the id variable should have the Primary key check box checked. All others do not.
+Attribute name	Column name	Attribute type
+id	ID	Number
+firstname	FIRSTNAME	String
+lastname	LASTNAME	String
+address	ADDRESSLINE1	String
+city	CITY	String
+state	STATE	String
+zipCode	ZIPCODE	String
+
+5	Select the Alfresco Tab. Select alfresco1 in the Repository Source dropdown.
+6	Save and Close the Model.
+
