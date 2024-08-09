@@ -45,7 +45,7 @@ execution.setVariable('newCustomerId', execution.getProcessinstanceId());
         -	Select the Required check box. 
         -	Click on the Close button.
   -	Perform the previous step again to create a Text object with the following information: 
-        -	Label: Last Name:
+        -	Label: ```Last Name:```
         - ID: newCustomerLastName 
         - Required: checked
   -	Create another Text object with the following information:
