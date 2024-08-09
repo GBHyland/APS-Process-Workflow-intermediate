@@ -514,3 +514,11 @@ ${newCustomerCity}, ${newCustomerState}. ${newCustomerZipCode}
 25.	Save and close the process editor.
 
 
+## Lab 11: Add a Sub-process (Custom Email process)
+1.	Open the Claims Process in edit mode.
+2.	Add a Collapsed Subprocess to the process after the Manager Follow-up task.
+a.	Connect the collapsed subprocess from the manager foll-up and to the Create NH Doc task.
+3.	Give the Collapsed Subprocess event the following configuration:
+a.	Name: Send OOS Email
+b.	Referenced Subprocess: choose the Send Custom Email process created in previous lab
+
