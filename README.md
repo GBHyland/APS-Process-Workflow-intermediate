@@ -278,3 +278,64 @@ sql.eachRow('SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE 
 10.	Add the processes to your app that you created in this and the previous la-
 11.	Use the digital workspace to test both processes. The New Customer Onboarding process should now save the customer data into the database. Use the Display DB Values process to view added entries.
 
+## Lab 7: Create a Service Task with Java Delegate
+1.	Enter your New Customer Onboarding process in edit mode.
+2.	Select the Variables attribute in the configuration panel to add a new variable.
+3.	Add a variable titled stateVerify as a string.
+4.	From the left panel, under Activities, drag a Service Task into the stage. 
+5.	Select the Name attribute and give it the following name: KYC Delegate
+6.	Connect this task in the workflow between the Save New Customer Data task and the Create Cust Doc task. 
+7.	Select the Class attribute and paste in the following text: com.activiti.extension.bean.KYCJavaDelegate
+8.	Save and close the editor. 
+9.	Navigate to the Process Application and publish your App so you may test the new additions.
+10.	You may now test your process in the Digital Workspace. 
+a.	*Note: To ensure the KYC Java Delegate task is working you can view the saved document and check the “out of state” box to ensure the true or false variable is being set by the Delegate.
+
+## lab 8: Add a Parallel Gateway and Splitting Paths
+1.	Open your New Claims process in edit mode.
+2.	Delete the end event.
+3.	From the left panel, under Gateways, add a Parallel Gateway to your process. Connect it from the KYC Delegate task.
+4.	From the Exclusive Gateway, add a User Task.
+5.	Name the user task: Manager Follow-Up
+6.	With the user task selected, click on the Referenced form No reference selected value.
+7.	In the Form reference popup window, select the New Form button.
+8.	In the Create a new form window, enter the following values:
+a.	Form name: Manager Follow-Up
+b.	Description: Allows manager to follow up with out-of-state customers.
+c.	Stencil: Default form
+d.	Select the Create form button. 
+9.	 Follow these steps in the Form Editor to create the form:
+a.	Add a Header to the page and go into edit mode. Configure with the following information:
+i.	Label: Customer Information
+b.	Add a Display Text field to the header. Configure with the following information:
+i.	Text to display:  
+```
+Out of State Customer Information:
+
+${newCustomerLastName}, ${newCustomerFirstName} - ${newCustomerId}
+${newCustomerPhoneNumber}
+${newCustomerEmail}
+
+Please follow up with customer regarding out-of-state insurance waiver.
+```
+a.	Add a Header to the page below the first header and go into edit mode. Configure with the following information:
+i.	Label: Manager’s Notes:
+b.	Add a Multi-line text object to the new header. Configure with the following information:
+i.	Label: Please indicate summary of conversation with customer or enter “No Contact”.
+ii.	Override ID: checked
+iii.	ID: customerNotes
+iv.	Required: checked
+c.	Save and close the form editor.
+10.	Select the Manager Follow-Up task and select the Assignment attribute in the configuration panel. This will open an assignment popup window. Set the following configuration in the popup window:
+a.	Type: Identity Store
+b.	Assignment: Assigned to group manager
+c.	Source: Search
+d.	Search for and select the Claims-Team group. The Group attribute should now show the Claims-Team value.
+e.	Press the Save button.
+11.	Connect a sequence flow line from the Parallel gateway task to the Create NH Doc task. Remove any associated sequence flow lines that connect the Create NH Doc task to any previous tasks.
+12.	Create a sequence flow line from the Manager Follow-Up task to the Create NH Doc task.
+13.	Your process should flow like this:
+ 
+14.	Save your process, redeploy your application, and test the process.
+
+
