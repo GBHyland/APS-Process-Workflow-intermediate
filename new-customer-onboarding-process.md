@@ -211,10 +211,10 @@ class Record {
     String zip
 }
 
-def url = 'jdbc:oracle:thin:@//aps-custom-oracle-d-cp58lgpzkwpy.us-east-1.rds.amazonaws.com/ORCL'
+def url = 'jdbc:oracle:thin:@//aps-custom-oracle-db.cp58lgpzkwpy.us-east-1.rds.amazonaws.com/ORCL'
 def user = 'admin'
 def password = 'administrator'
-def driver = 'oracle.jdb-driver.OracleDriver'
+def driver = 'oracle.jdbc.driver.OracleDriver'
 def sql = Sql.newInstance(url, user, password, driver)
 
 rowNum = 0;
