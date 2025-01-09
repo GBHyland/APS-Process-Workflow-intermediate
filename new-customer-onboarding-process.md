@@ -23,7 +23,7 @@
     -	Script format: ```groovy```
     -	Script: enter this code in the popup script window:
 ```
-execution.setVariable('newCustomerId', execution.getProcessinstanceId());
+execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 ```
 8.	Create a new User Task connected to the script task.   
 9.	Give the user task a name by double-clicking on the task to open a text fiel- Name this task Gather Customer Date
