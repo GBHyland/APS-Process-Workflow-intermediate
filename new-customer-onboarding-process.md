@@ -109,9 +109,10 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 2.	Enter your New Customer Onboarding process in edit mode by selecting the edit icon when hovering your mouse over its til-    
 3.	Remove the End event and the line connecting to it by selecting each one and clicking the trash can icon that appears. 
 4.	Add a Generate Document task to the process:
-    -	From the left task menu, select Activities drop down to reveal the activities tasks. Click and drag the Generate document task dropping it onto the stag- Drag it into place and connect it to the Approve Sequence flow line
+    -	From the left task menu, select Activities drop down to reveal the activities tasks. Click and drag the Generate document task dropping it onto the stage.
+    -	Drag it into place and connect it to the Approve Sequence flow line
     -	To configure the Generate Document task select it to show its attribute values in the bottom configuration panel.
-    -	Name your Generate Document task: Create NH Do- 
+    -	Name your Generate Document task: ```Create NH Doc```
     -	Select the Document Variable attribute and enter the value newCustDoc into the fiele
     -	Select the Template attribute to open the Change value for “Template” popup window.
         -	Select the Custom Template tae
