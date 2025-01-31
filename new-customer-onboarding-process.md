@@ -113,19 +113,19 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
     -	Drag it into place and connect it to the Approve Sequence flow line
     -	To configure the Generate Document task select it to show its attribute values in the bottom configuration panel.
     -	Name your Generate Document task: ```Create NH Doc```
-    -	Select the Document Variable attribute and enter the value newCustDoc into the fiele
+    -	Select the Document Variable attribute and enter the value ```newCustDoc``` into the field.
     -	Select the Template attribute to open the Change value for “Template” popup window.
-        -	Select the Custom Template tae
+        -	Select the Custom Template tab.
         -	Select the Choose File button to open a file browsing window. From the file package you received, navigate to the following file path and choose the file named: ```Aps_documents/form_doc_templates/9si_newCustomer.docx```
-        -	The name of the template file should now appear as the value of the Template attribute
+        -	The name of the template file should now appear as the value of the Template attribute.
     -	Select the File name attribute to open the Change value for “File name” popup box.
         -	Enter the following file name: ```customer_${newCustomerId}```
         -	Press the save button to close the popup window.
 5.	Add a Publish to Alfresco task to the process:
     -	From the left task menu, select Alfresco drop down to reveal Alfresco related tasks. Click and drag the Publish to Alfresco task dropping it onto the stag- Drag it into place on the right side of the Create Claim Doc task.
     -	Connect a flow line from the Create Claim Doc task to the new Publish to Alfresco task. 
-6.	Name your Generate Document task by double clicking on task and opening the name fiel- 
-    -	Name the task Save Doc to CMS.
+6.	Name your Generate Document task by double clicking on task and opening the name field.
+    -	Name the task ```Save Doc to CMS```.
 7.	To configure the Publish to Alfresco task select it to show its attribute values in the bottom configuration panel.
 8.	Select the Alfresco Content attribute to open the Change Valu- popup window. Choose Publish all content uploaded in process from the dropdown menu and press the Save button.
 9.	Select the Alfresco Destination attribute to open the Change Valu- popup window.
