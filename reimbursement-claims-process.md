@@ -262,6 +262,123 @@ a.	OPTIONAL: You can change the name of the process that will run by editing the
         2.	Required: checked
         3.	Select the Options tab. Enter the following configuration.
 
+    |        Label        |        ID        |
+    | ------------        | ----------       |
+    |        Damage       |    Damage        |
+    |        Lost         |    Lost          |
+    |        Stolen       |    Stolen        |
+    |        Other        |    Other         |
+
+    10.	Add an Amount object to the Header and go into edit mode. Give it the following configuration:
+        1.	Label: Claim Amount:
+        2.	Select the Override ID checkbox.
+        3.	ID: value
+        4.	Check the Required checkbox.
+        5.	Close the edit prompt.
+16.	Save and close the form editor and return to your process.
+17.	Add an end event to your process connected to the Create Claim task.
+18.	Save and close your process.
+19.	Navigate to the Apps page and republish your application.
+20.	Open the Digital Workspace and test your updated process.
+
+
+### Lab 5. Adding Decision Logic (DecisioniTable)
+1.	Access the App Designer tile from the homepage of the Activiti App (Process Services).
+2.	Enter your New Claims process in edit mode by selecting the edit icon when hovering your mouse over its tile.    
+3.	Delete the end event from the process.
+4.	From the left panel, add a script task to the process and connect it in place of the end event deleted in the previous step. Using the bottom config panel, give the task the following configuration:
+    1.	Name: ```Assign Deductible```
+    2.	Script Format: ```groovy```
+    3.	Enter the following text into the Script popup window:
+script:
+```
+execution.setVariable("deductible", 200);
+```
+5.	From the left panel, drag and place a Decision Task after the Script task and connect it.
+6.	Name the Decision task: Configure Deductible
+7.	In the bottom configuration panel, select the Referenced decision table attribute to open the decision table popup window. Select the New Decision Table button.
+8.	In the top blue header, click the [ Undefined ] title, which opens the Edit input popup. Configure the popup with the following information:
+    1.	Column Label: Equipment Value
+    2.	Variable Type: Form field
+    3.	Form Field: Claim Amount – value
+    4.	Save the popup.
+9.	In the top green header, click the [ Undefined ] title, which opens the Edit output popup. Configure the popup with the following information:
+    1.	Column label: Deductible
+    2.	Column type: Existing
+    3.	Variable Type: Variable
+    4.	Variable: deductible
+    5.	Save the popup.
+10.	In the blue cell underneath the blue header, select the pencil icon to open the Edit rule expression popup window. Configure with the following information:
+    1.	Operator: Less than
+    2.	Variable type: Number
+    3.	Number: 100
+    4.	Click OK.
+11.	In the green cell underneath the green header, select the pencil icon to open the Edit rule expression popup window. Configure with the following information:
+    1.	Variable type: Variable
+    2.	Variable: deductible
+    3.	Method: Subtract
+    4.	Number: 200
+    5.	Click OK.
+12.	Create a new Rule by pressing the Add Rule button.
+13.	In the second blue cell underneath the blue header, select the pencil icon to open the Edit rule expression popup window. Configure with the following information:
+    1.	Operator: Less than
+    2.	Variable type: Number
+    3.	Number: 500
+    4.	Click OK.
+14.	In the second green cell underneath the green header, select the pencil icon to open the Edit rule expression popup window. Configure with the following information:
+    1.	Variable type: Variable
+    2.	Variable: deductible
+    3.	Method: Subtract
+    4.	Number: 150
+    5.	Click OK.
+15.	Create a new Rule by pressing the Add Rule button.
+16.	In the third blue cell underneath the blue header, select the pencil icon to open the Edit rule expression popup window. Configure with the following information:
+    1.	Operator: Less than
+    2.	Variable type: Number
+    3.	Number: 1000
+    4.	Click OK.
+17.	In the third green cell underneath the green header, select the pencil icon to open the Edit rule expression popup window. Configure with the following information:
+    1.	Variable type: Variable
+    2.	Variable: deductible
+    3.	Method: Subtract
+    4.	Number: 100
+    5.	Click OK.
+18.	Create a new Rule by pressing the Add Rule button.
+19.	In the fourth blue cell underneath the blue header, select the pencil icon to open the Edit rule expression popup window. Configure with the following information:
+    1.	Operator: Greater than or equal
+    2.	Variable type: Number
+    3.	Number: 1000
+    4.	Click OK.
+20.	In the fourth green cell underneath the green header, select the pencil icon to open the Edit rule expression popup window. Configure with the following information:
+    1.	Variable type: Variable
+    2.	Variable: deductible
+    3.	Method: Add
+    4.	Number: 200
+    5.	Click OK.
+21.	Save and close the decision table to return to your process.
+22.	Add a new User task to your process and connect it to the decision table task.
+23.	Name the user task: Verify Claim
+24.	Select the Referenced form attribute from the bottom configuration panel, open the referenced form popup window and choose the New Form button. 
+25.	Give the form a name of: Verify Claim and select the New Claim button.
+26.	In the form editor, perform the following steps to create a new claim form:
+    1.	Add a Header object to the page and select the pencil icon to go into edit mode. Give it a label of Verify Claim Information: Close the edit popup.
+    2.	Add a Display Text field to the Header and select the pencil icon to go into edit mode.
+    3.	In the Text to display field, enter the following text:
+text:
+```
+Mr. or Ms. ${cLastName}, your claim has been submitted with the peril type of ${incidenttype}.
+The approximate claim value is $${value}. Due to this amount the cost of your deductible will be $${deductible}.
+Thank you for being a loyal customer of 9 Second Insurance!
+```
+27.	Save and close the form editor to return to your process.
+28.	Save and close the process editor.
+29.	Navigate to the applications page and publish your application.
+30.	Test the new process changes.
+    1.	The decision table logic should scale the deductible down based on the value entered into the claim form. Test by submitting different values.
+
+
+
+
 
 
 
