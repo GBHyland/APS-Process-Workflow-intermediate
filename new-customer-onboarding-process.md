@@ -28,31 +28,31 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 10.	With the user task selected, notice that the Referenced form value in the bottom configuration window is No reference selecte- To create an intake form for this task, click on the No reference selected value
 11.	In the Form reference popup window, select the New Form button.
 12.	In the Create a new form window, enter the following values:
-    -	Form name: ```Add New Customer Data```
-    -	Description: ```Gathers information about the new customer.```
-    -	Stencil: Default form
-    -	Select the Create form button. 
+    - Form name: ```Add New Customer Data```
+    - Description: ```Gathers information about the new customer.```
+    - Stencil: Default form
+    - Select the Create form button. 
 13.	Follow these steps to create the form you’ll need to intake a new hire employee
     - From the left object menu, drag a Header onto the canvas. To edit, click on the pencil icon that appears when you hover your mouse over the header object. In the Label field, name it Customer ID and click the Close button.
-    -	Drag a Display Value object and dop it into the Header object.
-    -	Click on the pencil icon on the Display Value object to open the edit prompt.
-    -	Select the blue Variable button. In the Dropdown below the button, select the **newCustomerId** variable The Label should change to match the variable nam- Close the prompt.
-    -	Drag a Header onto the canvas. To edit, click on the pencil icon that appears when you hover your mouse over the header object. In the Label field, name it Customer Information and click the Close button.
-    -	Drag a Text object onto the canvas and drop it into the header object. Click the pencil to edit the text object and configure the following information: 
-    -	Label: ```First Name: ```
+    - Drag a Display Value object and dop it into the Header object.
+    - Click on the pencil icon on the Display Value object to open the edit prompt.
+    - Select the blue Variable button. In the Dropdown below the button, select the **newCustomerId** variable The Label should change to match the variable nam- Close the prompt.
+    - Drag a Header onto the canvas. To edit, click on the pencil icon that appears when you hover your mouse over the header object. In the Label field, name it Customer Information and click the Close button.
+    - Drag a Text object onto the canvas and drop it into the header object. Click the pencil to edit the text object and configure the following information: 
+    - Label: ```First Name: ```
         - Select the Override ID check box.
         - Enter ```newCustomerFirstName``` into the ID fiele
         - Select the Required check box. 
         - Click on the Close button.
-  -	Perform the previous step again to create a Text object with the following information: 
+    - Perform the previous step again to create a Text object with the following information: 
         - Label: ```Last Name:```
         - ID: ```newCustomerLastName ```
         - Required: checked
-  -	Create another Text object with the following information:
+    - Create another Text object with the following information:
         - Label: ```Address:```
         - ID: ```newCustomerAddress ```
         - Required: checked
-    -	Create another Text object with the following information:
+    - Create another Text object with the following information:
         - Label: ```City:```
         - ID: ```newCustomerCity```
         - Required: checked
