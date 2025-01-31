@@ -127,9 +127,9 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 6.	Name your Generate Document task by double clicking on task and opening the name field.
     -	Name the task ```Save Doc to CMS```.
 7.	To configure the Publish to Alfresco task select it to show its attribute values in the bottom configuration panel.
-8.	Select the Alfresco Content attribute to open the Change Valu- popup window. Choose Publish all content uploaded in process from the dropdown menu and press the Save button.
-9.	Select the Alfresco Destination attribute to open the Change Valu- popup window.
-    -	Next to Destination, click the Select folder… button to open the browse Alfresco popup window. The site you created previously should populate her- Choose your site, then navigate to and select the following folder path: _9SecondInsurance/ documentLibrary/Customer Information_
+8.	Select the Alfresco Content attribute to open the Change Value popup window. Choose Publish all content uploaded in process from the dropdown menu and press the Save button.
+9.	Select the Alfresco Destination attribute to open the Change Value popup window.
+    -	Next to Destination, click the _Select folder_ button to open the browse Alfresco popup window. The site you created previously should populate here. Choose your site, then navigate to and select the following folder path: _9SecondInsurance/ documentLibrary/Customer Information_
 -	Press the Save button on the Change Value popup window.
 10.	Finally, add an end event to your process. Select the Publish to Alfresco task, then select the end event icon from the small popup menu.
 11.	Save your process and close the editor.
@@ -147,7 +147,7 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
             -	Entity Description: ```Details of all customers```
             -	Table Name: ```CUSTOMERS```
     -	Click the Import Attributes button. Notice that the table attributes should import from the connected database. Ensure that the values mapped correctly:
-    - **Note:** the id variable should have the Primary key check box checke- All others do not.
+    - **Note:** the id variable should have the Primary key check box checked All others do not.
 
 | Attribute name | Column name  | Attribute type |
 | ----------     | ---------    | -------------- |
