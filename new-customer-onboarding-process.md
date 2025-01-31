@@ -1,5 +1,3 @@
-# APS-Process-Workflows-Intermediate
-
 ## New Employee Onboarding Process
 
 ### Lab 1. Create an Intake Task
