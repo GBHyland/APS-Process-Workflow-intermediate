@@ -156,6 +156,41 @@ code:
             2.	Property Name: Zip
             3.	Property Type: string
 
+    9.	From the left panel drag a Display text object onto the stage, adding it below the dynamic table. Select the pencil icon to go into edit mode:
+    10.	In the Text to display field, add the following text:
+text:
+    ```
+    Verify that this is the correct customer and proceed.
+    Press Back if customer does not appear.
+    
+    ```
+    11.	Save and close the Form editor and return to your process)
+20.	Add a connected end event to the process, connected to the Display DB Values task.   
+21.	Save the process model by clicking on the Save icon in the top left of the page.   
+22.	In the Save model popup window, press the Save and close editor button.
+
+
+### Lab2. Add the Claims Process to your Process Application
+1.	Perform this lab if you already have a Process Application and need to add your new process.
+2.	From the Activiti home page, select the App Designer tile to navigate to the Business Process Models page.
+3.	Select the Apps hyperlink in the top blue banner.
+4.	Select the process application (in edit mode by using the pencil icon in the top, right corner of the tile) that you want to add your model to.
+5.	Select the Edit Included Models button.
+6.	In the Models included popup window, select the process you want to add. Note: a selected process will show a blue “+” icon in the corner of the thumbnail. Close the popup window once your process is selected.
+7.	Click the save icon to save the App definition, then publish your application.
+
+
+### Lab 3. Testing the Claims Process
+1.	From the Alfresco home page, launch the Alfresco Digital Workspace and sign in with your provided credentials. 
+2.	To start your process, select the Start Process button found in the top right of the page.
+3.	In the New Process popup window, select your 9SecondInsurance application from the Application selector.
+4.	Select your New Claims process.
+a.	OPTIONAL: You can change the name of the process that will run by editing the Process Name field. 
+5.	Click on the START PROCESS hyperlink at the bottom right corner of the page.
+6.	Select My Tasks found under the Workflow dropdown on the left side of the page.
+7.	Your Customer Search task should appear. Click on it to perform the task.
+
+### Lab 4. Create a Form Outcome with Exclusive Pathing
 
 
 
