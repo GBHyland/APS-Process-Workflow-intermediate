@@ -11,15 +11,15 @@ As a systems architect working for 9 Second Insurance, you are tasked with creat
 
 ### Lab 1. Create an Intake Task
 1.	From the Alfresco home page, launch the Activiti App (Process Services) by clicking on the Activiti App hyperlink. 
-    a.	Sign in with your provided username and password. You will be directed to the Activiti App home page.
+    1.	Sign in with your provided username and password. You will be directed to the Activiti App home page.
 2.	Select the App Designer tile to navigate to the Business Process Models page.
 3.	To create a new process, press the Create Process button in the top right of the page.
 4.	In the Create a new business process model popup, enter the following information:
-    a.	Model name: [Your user #] New Claim (ex: U1 New Claim)
-    b.	Description: Create a new claim.
-    c.	Editor Type: Leave as BPMN editor
-    d.	Stencil: Default BPMN
-    e.	Press the Create new model button.
+    1.	Model name: [Your user #] New Claim (ex: U1 New Claim)
+    2.	Description: Create a new claim.
+    3.	Editor Type: Leave as BPMN editor
+    4.	Stencil: Default BPMN
+    5.	Press the Create new model button.
 5.	With nothing selected on the stage, select the Variables attribute in the bottom configuration panel.
 6.	Select the “+” icon below the chart to add new variables. We’ll add a few variables that will be used in this process. Create the following variables with this configuration:
 |  *VARIABLE NAME*    |  VARIABLE TYPE    |
