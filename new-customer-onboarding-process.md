@@ -40,27 +40,27 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
     -	Drag a Header onto the canvas. To edit, click on the pencil icon that appears when you hover your mouse over the header object. In the Label field, name it Customer Information and click the Close button.
     -	Drag a Text object onto the canvas and drop it into the header object. Click the pencil to edit the text object and configure the following information: 
     -	Label: ```First Name: ```
-        -	Select the Override ID check box.
-        -	Enter ```newCustomerFirstName``` into the ID fiele
-        -	Select the Required check box. 
-        -	Click on the Close button.
+        - Select the Override ID check box.
+        - Enter ```newCustomerFirstName``` into the ID fiele
+        - Select the Required check box. 
+        - Click on the Close button.
   -	Perform the previous step again to create a Text object with the following information: 
-        -	Label: ```Last Name:```
+        - Label: ```Last Name:```
         - ID: ```newCustomerLastName ```
         - Required: checked
   -	Create another Text object with the following information:
-        -	Label: ```Address:```
+        - Label: ```Address:```
         - ID: ```newCustomerAddress ```
         - Required: checked
     -	Create another Text object with the following information:
-        -	Label: ```City:```
-        -	ID: ```newCustomerCity```
-        -	Required: checked
+        - Label: ```City:```
+        - ID: ```newCustomerCity```
+        - Required: checked
   j.	Create a Dropdown object with the following information:
-        -	Label: ```State:```
-        -	ID: ```newCustomerState```
-        -	Required: checked
-        -	Select the Options ta- Configure the following information in the options tab:
+        - Label: ```State:```
+        - ID: ```newCustomerState```
+        - Required: checked
+        - Select the Options ta- Configure the following information in the options tab:
             1.	Select the Rest Service button.
             2.	Rest URL: ```https://run.mocky.io/v3/0329674b-51fe-450f-90cf-be8f53cb68a6```
             3.	Path to array in JSON response: ```states```
@@ -69,17 +69,17 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
             6.	Press the Test button. A popup window should appear showing a JSON string of states. Close the window.
             7.	Close the dropdown prompt.
   k.	Create another Text object with the following information:
-        -	Label: ```Zip Code:```
-        -	ID: ```newCustomerZipCode```
-        -	Required: checked
+        - Label: ```Zip Code:```
+        - ID: ```newCustomerZipCode```
+        - Required: checked
   l.	Create another Text object with the following information:
-        -	Label: ```Email Address:```
-        -	ID: ```newCustomerEmail```
-        -	Required: checked
+        - Label: ```Email Address:```
+        - ID: ```newCustomerEmail```
+        - Required: checked
   m.	Create another Text object with the following information:
-        -	Label: ```Phone Number:```
-        -	ID: ```newCustomerPhoneNumber```
-        -	Required: checked
+        - Label: ```Phone Number:```
+        - ID: ```newCustomerPhoneNumber```
+        - Required: checked
   n.	To save the form and return to your process model, click on the save button in the top left of the pag-   
   o.	On the Save form popup window, click the Save and close editor button to return to your process model.
 14.	Create a connected end event by selecting the Gather Customer Data user task and clicking on the end event icon in the small popup menu.   
