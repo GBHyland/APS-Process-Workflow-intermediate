@@ -23,6 +23,7 @@ As a systems architect working for 9 Second Insurance, you are tasked with creat
 5.	With nothing selected on the stage, select the Variables attribute in the bottom configuration panel.
 6.	Select the “+” icon below the chart to add new variables. We’ll add a few variables that will be used in this process. Create the following variables with this configuration:
 |  *VARIABLE NAME*    |  VARIABLE TYPE    |
+|---------------------|-------------------|
 |  ```cAddress```     |  string           |
 |  ```cCity```        |  string           |
 |  ```cFirstName```   |  string           |
@@ -34,16 +35,16 @@ As a systems architect working for 9 Second Insurance, you are tasked with creat
 |  ```recordCount```  |  integer          |
 |  ```recordList```   |  string           |
 
-7.	Create a new User Task connected to the start event.   
-8.	Give the user task a name by double-clicking on the task to open a text field. Name this task Customer Search.
-9.	With the user task selected, notice that the Referenced form value in the bottom configuration window is No reference selected. To create an intake form for this task, click on the No reference selected value.
-10.	In the Form reference popup window, select the New Form button.
-11.	In the Create a new form window, enter the following values:
+8.	Create a new User Task connected to the start event.   
+9.	Give the user task a name by double-clicking on the task to open a text field. Name this task Customer Search.
+10.	With the user task selected, notice that the Referenced form value in the bottom configuration window is No reference selected. To create an intake form for this task, click on the No reference selected value.
+11.	In the Form reference popup window, select the New Form button.
+12.	In the Create a new form window, enter the following values:
     1.	Form name: Customer Lookup
     2.	Description: Gather customer information to retrieve records.
     3.	Stencil: Default form
     4.	Select the Create form button. 
-12.	 Follow these steps to create the form you’ll need to intake a new hire employee.
+13.	 Follow these steps to create the form you’ll need to intake a new hire employee.
     1.	From the left object menu, drag a Header onto the canvas. To edit, click on the pencil icon that appears when you hover your mouse over the header object. In the Label field, name it Enter the Customer’s last name and click the Close button.
     2.	Drag a Text object and dop it into the Header object.
     3.	Click on the pencil icon on the Display Value object to open the edit prompt. Configure the text field with the following options:
@@ -54,7 +55,7 @@ As a systems architect working for 9 Second Insurance, you are tasked with creat
         5.	Close the edit prompt.
     4.	Save and close the form editor by clicking on the save button.
     5.	On the Save form popup window, click the Save and close editor button to return to your process model
-13.	Create a new script task connected to the Customer Search user task. In the bottom configuration panel, configure the following attributes:
+14.	Create a new script task connected to the Customer Search user task. In the bottom configuration panel, configure the following attributes:
     1.	Name: Get DB Values
     2.	Script format: groovy
     3.	Script:
@@ -191,7 +192,74 @@ a.	OPTIONAL: You can change the name of the process that will run by editing the
 7.	Your Customer Search task should appear. Click on it to perform the task.
 
 ### Lab 4. Create a Form Outcome with Exclusive Pathing
-
+1	Access the App Designer tile from the homepage of the Activiti App (Process Services).
+2	Enter your New Claims process in edit mode by selecting the edit icon when hovering your mouse over its tile.    
+3	Select the Display DB Values task and open the Referenced Form in edit mode.
+4	Add an Outcome to the Review Form:
+    1.	Select the Outcomes tab from the top of the form.
+    2.	Select the Use form outcomes for this form radio button.
+    3.	Under Possible outcomes, enter a new outcome in the provided field: Proceed. 
+    4.	Press the Add outcome button and enter another outcome: Back.
+        1.	Note: Do not press the add outcome button again or you will add a third option.
+    5.	Press the Save button and close the form.
+5	Remove the End event and the line connecting to it by selecting each one and clicking the trash can icon that appears. 
+6	Add an Exclusive Gateway task to the process found under the Gateways drop down.
+7	Connect the gateway task to the Display DB Values task.
+8.	Select the Sequence flow line that routes back to the Customer Search task. Click the value to open the Sequence flow condition popup window.
+    1.	Select Simple as the condition type.
+    2.	Select Form outcome as the Depends on selector.
+    3.	In the first dropdown menu, select the form that you added the form outcome to: the Display GB Value form.
+    4.	In the second dropdown menu, select equal.
+    5.	In the last dropdown menu, select Back.
+    6.	Select the Save button on the popup window.
+9.	Select the exclusive gateway event, then select the User Task icon to create a new user task stemming from the gateway event.
+10.	Select the Sequence flow line that ends at the User Task. In the bottom configuration panel, check the check box for the Default flow attribute. This will signify that the default traffic will go this route.
+11.	Select the new user task and give it a name of: Create Claim.
+12.	Select the Referenced form attribute from the bottom configuration panel, open the referenced form popup window and choose the New Form button. 
+13.	Give the form a name of: New Claim and select the New Claim button.
+15	In the form editor, perform the following steps to create a new claim form:
+    1.	Add a Header object to the page and select the pencil icon to go into edit mode. Give it a label of Customer Information: Close the edit popup.
+    2.	Add a Display Value object into the Customer Information Header object. Give it the following configuration:
+        1.	Label: First Name:
+        2.	Select the Variable button.
+        3.	In the drop-down menu select the cFirstName variable.
+        4.	Close the edit popup window.
+    3.	Add a Display Value object into the Customer Information Header object. Give it the following configuration:
+        1.	Label: Last Name:
+        2.	Select the Variable button.
+        3.	In the drop-down menu select the cLastName variable.
+        4.	Close the edit popup window.
+    4.	Add a Display Value object into the Customer Information Header object. Give it the following configuration:
+        1.	Label: Address:
+        2.	Select the Variable button.
+        3.	In the drop-down menu select the cAddress variable.
+        4.	Close the edit popup window.
+    5.	Add a Display Value object into the Customer Information Header object. Give it the following configuration:
+        1.	Label: City:
+        2.	Select the Variable button.
+        3.	In the drop-down menu select the cCity variable.
+        4.	Close the edit popup window.
+    6.	Add a Display Value object into the Customer Information Header object. Give it the following configuration:
+        1.	Label: State:
+        2.	Select the Variable button.
+        3.	In the drop-down menu select the cState variable.
+        4.	Close the edit popup window.
+    7.	Add a Display Value object into the Customer Information Header object. Give it the following configuration:
+        1.	Label: Zip Code:
+        2.	Select the Variable button.
+        3.	In the drop-down menu select the cZip variable.
+        4.	Close the edit popup window.
+    8.	Add another Header object to the page and select the pencil icon to go into edit mode. Give it a label of Claim Information: Close the edit popup.
+        1.	Add a Date object to the Claim Information header and go into edit mode. Give it the following configuration:
+        2.	Label: Incident Date:
+        3.	Required: checked
+        4.	Select the Advanced tab.
+        5.	Enter MM-DD-YYYY into the Date display format field.
+        6.	Close the edit prompt.
+    9.	Add a Dropdown object to the Header and go into edit mode. Give it the following configuration:
+        1.	Label: Incident Type:
+        2.	Required: checked
+        3.	Select the Options tab. Enter the following configuration.
 
 
 
