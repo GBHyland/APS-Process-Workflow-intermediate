@@ -193,19 +193,19 @@ a.	OPTIONAL: You can change the name of the process that will run by editing the
 7.	Your Customer Search task should appear. Click on it to perform the task.
 
 ### Lab 4. Create a Form Outcome with Exclusive Pathing
-1	Access the App Designer tile from the homepage of the Activiti App (Process Services).
-2	Enter your New Claims process in edit mode by selecting the edit icon when hovering your mouse over its tile.    
-3	Select the Display DB Values task and open the Referenced Form in edit mode.
-4	Add an Outcome to the Review Form:
+1.	Access the App Designer tile from the homepage of the Activiti App (Process Services).
+2.	Enter your New Claims process in edit mode by selecting the edit icon when hovering your mouse over its tile.    
+3.	Select the Display DB Values task and open the Referenced Form in edit mode.
+4.	Add an Outcome to the Review Form:
     1.	Select the Outcomes tab from the top of the form.
     2.	Select the Use form outcomes for this form radio button.
     3.	Under Possible outcomes, enter a new outcome in the provided field: Proceed. 
     4.	Press the Add outcome button and enter another outcome: Back.
         1.	Note: Do not press the add outcome button again or you will add a third option.
     5.	Press the Save button and close the form.
-5	Remove the End event and the line connecting to it by selecting each one and clicking the trash can icon that appears. 
-6	Add an Exclusive Gateway task to the process found under the Gateways drop down.
-7	Connect the gateway task to the Display DB Values task.
+5.	Remove the End event and the line connecting to it by selecting each one and clicking the trash can icon that appears. 
+6.	Add an Exclusive Gateway task to the process found under the Gateways drop down.
+7.	Connect the gateway task to the Display DB Values task.
 8.	Select the Sequence flow line that routes back to the Customer Search task. Click the value to open the Sequence flow condition popup window.
     1.	Select Simple as the condition type.
     2.	Select Form outcome as the Depends on selector.
@@ -218,7 +218,7 @@ a.	OPTIONAL: You can change the name of the process that will run by editing the
 11.	Select the new user task and give it a name of: Create Claim.
 12.	Select the Referenced form attribute from the bottom configuration panel, open the referenced form popup window and choose the New Form button. 
 13.	Give the form a name of: New Claim and select the New Claim button.
-15	In the form editor, perform the following steps to create a new claim form:
+15.	In the form editor, perform the following steps to create a new claim form:
     1.	Add a Header object to the page and select the pencil icon to go into edit mode. Give it a label of Customer Information: Close the edit popup.
     2.	Add a Display Value object into the Customer Information Header object. Give it the following configuration:
         1.	Label: First Name:
