@@ -6,7 +6,7 @@
 2.	Select the App Designer tile to navigate to the Business Process Models page
 3.	To create a new process, press the Create Process button in the top right of the page.
 4.	In the Create a new business process model popup, enter the following information:
-    -	Model name: [Your user #] New Customer Onboarding (ex: U1 New Customer Onboarding)
+    -	Model name: ```[Your user #] New Customer Onboarding``` (ex: U1 New Customer Onboarding)
     -	Description: ```Add a new customer.```
     -	Editor Type: Leave as BPMN editor
     -	Stencil: Default BPMN
