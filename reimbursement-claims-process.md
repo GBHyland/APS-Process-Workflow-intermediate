@@ -39,25 +39,25 @@ As a systems architect working for 9 Second Insurance, you are tasked with creat
 9.	With the user task selected, notice that the Referenced form value in the bottom configuration window is No reference selected. To create an intake form for this task, click on the No reference selected value.
 10.	In the Form reference popup window, select the New Form button.
 11.	In the Create a new form window, enter the following values:
-    a.	Form name: Customer Lookup
-    b.	Description: Gather customer information to retrieve records.
-    c.	Stencil: Default form
-    d.	Select the Create form button. 
+    1.	Form name: Customer Lookup
+    2.	Description: Gather customer information to retrieve records.
+    3.	Stencil: Default form
+    4.	Select the Create form button. 
 12.	 Follow these steps to create the form you’ll need to intake a new hire employee.
-    a.	From the left object menu, drag a Header onto the canvas. To edit, click on the pencil icon that appears when you hover your mouse over the header object. In the Label field, name it Enter the Customer’s last name and click the Close button.
-    b.	Drag a Text object and dop it into the Header object.
-    c.	Click on the pencil icon on the Display Value object to open the edit prompt. Configure the text field with the following options:
-        i.	Label: Last Name:
-        ii.	Override ID: check the box
-        iii.	ID: lookup_lastname
-        iv.	Required: check the box
-        v.	Close the edit prompt.
-    d.	Save and close the form editor by clicking on the save button.
-    e.	On the Save form popup window, click the Save and close editor button to return to your process model
+    1.	From the left object menu, drag a Header onto the canvas. To edit, click on the pencil icon that appears when you hover your mouse over the header object. In the Label field, name it Enter the Customer’s last name and click the Close button.
+    2.	Drag a Text object and dop it into the Header object.
+    3.	Click on the pencil icon on the Display Value object to open the edit prompt. Configure the text field with the following options:
+        1.	Label: Last Name:
+        2.	Override ID: check the box
+        3.	ID: lookup_lastname
+        4.	Required: check the box
+        5.	Close the edit prompt.
+    4.	Save and close the form editor by clicking on the save button.
+    5.	On the Save form popup window, click the Save and close editor button to return to your process model
 13.	Create a new script task connected to the Customer Search user task. In the bottom configuration panel, configure the following attributes:
-    a.	Name: Get DB Values
-    b.	Script format: groovy
-    c.	Script:
+    1.	Name: Get DB Values
+    2.	Script format: groovy
+    3.	Script:
 enter this code in the popup script window:
 ```
   import groovy.sql.Sql;
@@ -108,50 +108,50 @@ enter this code in the popup script window:
 15.	In the bottom configuration panel, select the Referenced Form attribute. 
 16.	In the form popup window, select the New Form button.
 17.	In the Create a new form window, enter the following values:
-    a.	Form name: Display DB Values
-    b.	Description: Displays values from customer DB lookup.
-    c.	Stencil: Default form
+    1.	Form name: Display DB Values
+    2.	Description: Displays values from customer DB lookup.
+    3.	Stencil: Default form
 18.	Select the Create form button.
 19.	Follow these steps to create the form:
-    a.	From the left object menu, drag a Header onto the canvas. To edit, click on the pencil icon that appears when you hover your mouse over the header object. In the Label field, name it Query and click the Close button.
-    b.	Drag a Display Text object and dop it into the Header object. Select the pencil icon to edit.
-        i.	In the Text to display field enter the following text, then close the prompt.
+    1.	From the left object menu, drag a Header onto the canvas. To edit, click on the pencil icon that appears when you hover your mouse over the header object. In the Label field, name it Query and click the Close button.
+    2.	Drag a Display Text object and dop it into the Header object. Select the pencil icon to edit.
+        1.	In the Text to display field enter the following text, then close the prompt.
 code:
     ```
       Found ${recordCount} records with the Last Name of "${lu_lastname}".
     
     ```
-    c.	From the left panel drag a Dynamic Table onto the stage adding it below the Header object. Click on the pencil icon to edit.
-    d.	Give it a Label of: CUSTOMERS
-    e.	Select the Override ID check box.
-    f.	Give it an ID of: recordList
-    g.	Select the Table Columns tab at the top of the prompt.
-    h.	Press the “+” icon button to create new property mappings with the following values (Note: for each property check all of the boxes Required, Editable, sortable, show in table):
-        i.	Column 1:
+    3.	From the left panel drag a Dynamic Table onto the stage adding it below the Header object. Click on the pencil icon to edit.
+    4.	Give it a Label of: CUSTOMERS
+    5.	Select the Override ID check box.
+    6.	Give it an ID of: recordList
+    7.	Select the Table Columns tab at the top of the prompt.
+    8.	Press the “+” icon button to create new property mappings with the following values (Note: for each property check all of the boxes Required, Editable, sortable, show in table):
+        1.	Column 1:
             1.	Property ID: recId
             2.	Property Name: ID
             3.	Property Type: string
-        ii.	Column 2:
+        2.	Column 2:
             1.	Property ID: firstname
             2.	Property Name: First name
             3.	Property Type: string
-        iii.	Column 3:
+        3.	Column 3:
             1.	Property ID: lastname
             2.	Property Name: Last Name
             3.	Property Type: string
-        iv.	Column 4:
+        4.	Column 4:
             1.	Property ID: address
             2.	Property Name: Address
             3.	Property Type: string
-        v.	Column 5:
+        5.	Column 5:
             1.	Property ID: state
             2.	Property Name: State
             3.	Property Type: string
-        vi.	Column 6:
+        6.	Column 6:
             1.	Property ID: city
             2.	Property Name: City
             3.	Property Type: string
-        vii.	Column 7:
+        7.	Column 7:
             1.	Property ID: zip
             2.	Property Name: Zip
             3.	Property Type: string
