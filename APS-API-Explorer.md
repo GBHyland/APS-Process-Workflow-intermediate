@@ -34,38 +34,38 @@ Being an open-source application, Alfresco contains open APIs that allow develop
     4.	Select the Try it out button.
     5.	Notice that in the Request body contains a JSON string that can be used to specifiy a search query. We want to query only “active” tasks. Reduce the amount of JSON objects in this string to this string query:
 query:
-  ```
-  {
-    "state": "active"
-  }
-  ```
-  6.	Press the Execute button.
-  7.	Notice that the Response body should show a list of any active tasks. Copy the id of one of your active tasks.
-  8.	Expand the API titled: GET /activiti-app/api/enterprise/tasks/{taskId}/audit Get the audit log for a task.
-  9.	Select the Try it out button.
-  10.	Paste the task id into the taskId field.
-  11.	Press the Execute button.
-  12.	Notice the task details returned in the ResponseBody field.
-  13.	Note the taskId variable for later.
-  14.	Navigate to and expand the users section.
-  15.	Select the GET /activiti-app/api/enterprise/users Query users API.
-  16.	Press the Try it out button.
-  17.	Enter the text “user 0” into the filter field.
-  18.	Press the Execute button.
-  19.	You should get 1 returned user from the ResponseBody field. Copy that user’s id.
-  20.	Navigate to and expand the task-actions section.
-  21.	Expand the API: PUT /activiti-app/api/enterprise/tasks/{taskId}/action/delegate Delegate a task.
-  22.	Select the Try it out button.
-  23.	Enter the task id copied previously into the taskId field.
-  24.	In the Request body field, enter the following text (entering the user id copied previously to replace the “XX”):
-  ```
-  {
-    "email": "user0@example.com",
-    "userId": "XX"
-  }
-  ```
-  25.	Press the Execute button.
-  26.	If no error in the responseBody, navigate back to the activiti-app and review the task in process view. Note that the task now belongs to User 0.
+      ```
+      {
+        "state": "active"
+      }
+      ```
+      6.	Press the Execute button.
+      7.	Notice that the Response body should show a list of any active tasks. Copy the id of one of your active tasks.
+      8.	Expand the API titled: GET /activiti-app/api/enterprise/tasks/{taskId}/audit Get the audit log for a task.
+      9.	Select the Try it out button.
+      10.	Paste the task id into the taskId field.
+      11.	Press the Execute button.
+      12.	Notice the task details returned in the ResponseBody field.
+      13.	Note the taskId variable for later.
+      14.	Navigate to and expand the users section.
+      15.	Select the GET /activiti-app/api/enterprise/users Query users API.
+      16.	Press the Try it out button.
+      17.	Enter the text “user 0” into the filter field.
+      18.	Press the Execute button.
+      19.	You should get 1 returned user from the ResponseBody field. Copy that user’s id.
+      20.	Navigate to and expand the task-actions section.
+      21.	Expand the API: PUT /activiti-app/api/enterprise/tasks/{taskId}/action/delegate Delegate a task.
+      22.	Select the Try it out button.
+      23.	Enter the task id copied previously into the taskId field.
+      24.	In the Request body field, enter the following text (entering the user id copied previously to replace the “XX”):
+      ```
+      {
+        "email": "user0@example.com",
+        "userId": "XX"
+      }
+      ```
+      25.	Press the Execute button.
+      26.	If no error in the responseBody, navigate back to the activiti-app and review the task in process view. Note that the task now belongs to User 0.
 
 
 
