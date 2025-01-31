@@ -139,9 +139,9 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 ### Lab 4: Create a Data Model
 1. Access the data Model page within the App Designer.
 2. Select the Create Data Model button.
-3. Enter 9siCustomerData in the Data Model Name field and click the Create button.
+3. Enter ```9siCustomerData``` in the Data Model Name field and click the Create button.
 4. In the Database Tab:
-    -    Select aps-oracle-db from the Data Source dropdown
+    -    Select ```aps-oracle-db``` from the Data Source dropdown
     -    Click the Add Entity button. Enter the following information for the Entity:
             -	Entity Name: ```newCustomers```
             -	Entity Description: ```Details of all customers```
