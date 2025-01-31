@@ -56,7 +56,7 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
         - Label: ```City:```
         - ID: ```newCustomerCity```
         - Required: checked
-  j.	Create a Dropdown object with the following information:
+    - Create a Dropdown object with the following information:
         - Label: ```State:```
         - ID: ```newCustomerState```
         - Required: checked
@@ -68,20 +68,20 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
             5.	Label property: ```name```
             6.	Press the Test button. A popup window should appear showing a JSON string of states. Close the window.
             7.	Close the dropdown prompt.
-  k.	Create another Text object with the following information:
+    - Create another Text object with the following information:
         - Label: ```Zip Code:```
         - ID: ```newCustomerZipCode```
         - Required: checked
-  l.	Create another Text object with the following information:
+    -	Create another Text object with the following information:
         - Label: ```Email Address:```
         - ID: ```newCustomerEmail```
         - Required: checked
-  m.	Create another Text object with the following information:
+    -	Create another Text object with the following information:
         - Label: ```Phone Number:```
         - ID: ```newCustomerPhoneNumber```
         - Required: checked
-  n.	To save the form and return to your process model, click on the save button in the top left of the pag-   
-  o.	On the Save form popup window, click the Save and close editor button to return to your process model.
+    -	To save the form and return to your process model, click on the save button in the top left of the pag-   
+    -	On the Save form popup window, click the Save and close editor button to return to your process model.
 14.	Create a connected end event by selecting the Gather Customer Data user task and clicking on the end event icon in the small popup menu.   
 15.	Save the process model by clicking on the Save icon in the top left of the pag-   
 16.	In the Save model popup window, press the Save and close editor button.
