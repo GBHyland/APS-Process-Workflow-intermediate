@@ -22,6 +22,7 @@ As a systems architect working for 9 Second Insurance, you are tasked with creat
     5.	Press the Create new model button.
 5.	With nothing selected on the stage, select the Variables attribute in the bottom configuration panel.
 6.	Select the “+” icon below the chart to add new variables. We’ll add a few variables that will be used in this process. Create the following variables with this configuration:
+
 |  VARIABLE NAME      |  VARIABLE TYPE    |
 | -----------------   | ----------------- |
 |  ```cAddress```     |  string           |
