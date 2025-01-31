@@ -124,7 +124,7 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 5.	Add a Publish to Alfresco task to the process:
     -	From the left task menu, select Alfresco drop down to reveal Alfresco related tasks. Click and drag the Publish to Alfresco task dropping it onto the stage. Drag it into place on the right side of the Create Claim Doc task.
     -	Connect a flow line from the Create Claim Doc task to the new Publish to Alfresco task. 
-6.	Name your Generate Document task by double clicking on task and opening the name field.
+6.	Name your _Publish to Alfresco task_ by double clicking on task and opening the name field.
     -	Name the task ```Save Doc to CMS```.
 7.	To configure the Publish to Alfresco task select it to show its attribute values in the bottom configuration panel.
 8.	Select the Alfresco Content attribute to open the Change Value popup window. Choose Publish all content uploaded in process from the dropdown menu and press the Save button.
