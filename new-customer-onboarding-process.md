@@ -172,7 +172,6 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
     -	Select Attribute Mapping to open the mapping popup window. Perform the following actions:
         -	Mapped Data model: ```9siCustomerDatabase```
         -	Mapped entity: ```newCustomers```
-        -   Variable for new/updated entity: Existing variable
         -	New Variable: ```newCustomerdata```
         -	Configure the following attributes in the mapping table by selecting each Attribute Name and choosing the variable / form field it is associated with:
             1.	Id: newCustomerId (Variable)
