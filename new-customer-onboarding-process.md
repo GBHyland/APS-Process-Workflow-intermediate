@@ -410,7 +410,7 @@ Please follow up with customer regarding out-of-state insurance waiver.
         -	Close the Edit stencil properties popup window.
 6.	Save the Stencil using the save icon in the top, left of the page.
 
-### Lab 10: Build a Custome Email Sub-process
+### Lab 10: (FACILITATOR ONLY) Build a Custome Email Sub-process
 1.	Navigate to the Identity Management section.
 2.	Select Tenants from the top blue banner.
 3.	Select Email Templates from the left menu.
@@ -432,16 +432,19 @@ Best Regards,
 9 Second Insurance, Onboarding Team.
 ```
 -	Save the email template.
-7.	Navigate to the App Designer.
-8.	Create a new process with the following configuration:
+
+
+### Lab 11. Build a Custome Email Sub-process 
+1.	Navigate to the App Designer.
+2.	Create a new process with the following configuration:
     -	Name: ```Send Custom Email```
     -	Description: ```Email sub-process.```
     -	Stencil: Select the Custom Email stencil
-9.	In the bottom configuration panel, select the Variables attribute. Enter the following variables:
+3.	In the bottom configuration panel, select the Variables attribute. Enter the following variables:
     -	ccEmailAddress: string
     -	fromEmailAddress: string
     -	newCustomerEmail: string
-10.	Create a Script task. Configure with the following information:
+4.	Create a Script task. Configure with the following information:
     -	Name: ```Set Default Vars```
     -	Script format: ```groovy```
     -	Script:
@@ -449,11 +452,11 @@ Best Regards,
 execution.setVariable("fromEmailAddress", "claims-team@example.com");
 execution.setVariable("ccEmailAddress", "blumbergh@example.com");
 ```
-11.	Create a User task connected to the script task. Name it: Configure Email.
-12.	Select the Referenced Form attribute from the configuration panel to open the referenced for popup. Select  New Form and create a new form with the following config:
+5.	Create a User task connected to the script task. Name it: Configure Email.
+6.	Select the Referenced Form attribute from the configuration panel to open the referenced for popup. Select  New Form and create a new form with the following config:
     -	Name:  ```Email Config Form```
     -	Description: ```Used to configure custom email```
-13.	Add a Header to the form. 
+7.	Add a Header to the form. 
     -	Label it: ```Customer Information:```
     -	Set the Display Text to:
 ```
@@ -463,32 +466,32 @@ ${newCustomerLastName}, ${newCustomerFirstName} - ${newCustomerId}
 ${newCustomerAddress}
 ${newCustomerCity}, ${newCustomerState}. ${newCustomerZipCode}
 ```
-14.	Add a new Header to the form below the first header. Label it: Email Configuration:
-15.	Add a Text object to the Email header with the following configuration:
+8.	Add a new Header to the form below the first header. Label it: Email Configuration:
+9.	Add a Text object to the Email header with the following configuration:
     -	Label: 	```Email Subject:```
     -	ID: ```emailsubject```
     -	Required: checked
-16.	Add a Text object to the Email header with the following configuration:
+10.	Add a Text object to the Email header with the following configuration:
     -	Label: 	```To:```
     -	Override ID: checked
     -	ID: ```newCustomerEmail```
     -	Required: checked
-17.	Add a Text object to the Email header with the following configuration:
+11.	Add a Text object to the Email header with the following configuration:
     -	Label: 	```From:```
     -	Override ID: checked
     -	ID: ```fromEmailAddress```
     -	Required: checked
-18.	Add a Text object to the Email header with the following configuration:
+12.	Add a Text object to the Email header with the following configuration:
     -	Label: 	```CC:```
     -	Override ID: checked
     -	ID: ```ccEmailAddress```
     -	Required: checked
-19.	Add a Check Box object to the Email header with the following configuration:
+13.	Add a Check Box object to the Email header with the following configuration:
     -	Label: 	```Include Attachments:```
     -	Override ID: unchecked
     -	ID: ```includeattachments```
     -	Required: checked
-20.	Add a Drop-Down object to the Email header with the following configuration:
+14.	Add a Drop-Down object to the Email header with the following configuration:
     -	Label: 	```Select Email Template```
     -	Override ID: unchecked
     -	ID: ```selectemailtemplate```
@@ -496,13 +499,13 @@ ${newCustomerCity}, ${newCustomerState}. ${newCustomerZipCode}
     -	Select the options tab and add the following option(s):
         -	Label: ```Out-of-State Email```
         -	ID: ```9si-oos-email```
-21.	Add a Attach File object to the Email header with the following configuration:
+15.	Add a Attach File object to the Email header with the following configuration:
     -	Label: 	```Attachment```
     -	Override ID: checked
     -	ID: ```content```
     -	Required: checked
-22.	Save and close the form editor.
-23.	Add the custom Send Email w Attachments task that was created during the Stencil la- Give it the following configuration:
+16.	Save and close the form editor.
+17.	Add the custom Send Email w Attachments task that was created during the Stencil la- Give it the following configuration:
     -	Name: ```Send Email```
     -	Email Template Name: ```${selectemailtemplate}```
     -	Sent To: ```${newCustomerEmail}```
@@ -511,11 +514,11 @@ ${newCustomerCity}, ${newCustomerState}. ${newCustomerZipCode}
     -	Include Attachments: checked
     -	Send CC: ```${ccEmailAddress}```
     -	From: ```${fromEmailAddress}```
-24.	Add an End Event connected to the Send Mail task.
-25.	Save and close the process editor.
+18.	Add an End Event connected to the Send Mail task.
+19.	Save and close the process editor.
 
 
-### Lab 11: Add a Sub-process (Custom Email process)
+### Lab 12: Add a Sub-process (Custom Email process)
 1.	Open the Claims Process in edit mode.
 2.	Add a Collapsed Subprocess to the process after the Manager Follow-up task.
     -	Connect the collapsed subprocess from the manager foll-up and to the Create NH Doc task.
