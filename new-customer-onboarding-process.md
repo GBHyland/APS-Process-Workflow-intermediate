@@ -112,7 +112,7 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
     -	From the left task menu, select Activities drop down to reveal the activities tasks. Click and drag the Generate document task dropping it onto the stage.
     -	Drag it into place and connect it to the Approve Sequence flow line
     -	To configure the Generate Document task select it to show its attribute values in the bottom configuration panel.
-    -	Name your Generate Document task: ```Create NH Doc```
+    -	Name your Generate Document task: ```Create NC Doc```
     -	Select the Document Variable attribute and enter the value ```newCustDoc``` into the field.
     -	Select the Template attribute to open the Change value for “Template” popup window.
         -	Select the Custom Template tab.
