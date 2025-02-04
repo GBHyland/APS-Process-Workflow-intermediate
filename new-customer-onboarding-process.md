@@ -328,8 +328,8 @@ Please follow up with customer regarding out-of-state insurance waiver.
     -	Source: ```Search```
     -	Search for and select the Claims-Team group. The Group attribute should now show the Claims-Team value.
     -	Press the Save button.
-11.	Connect a sequence flow line from the Parallel gateway task to the Create NH Doc task. Remove any associated sequence flow lines that connect the Create NH Doc task to any previous tasks.
-12.	Create a sequence flow line from the Manager Follow-Up task to the Create NH Doc task.
+11.	Connect a sequence flow line from the Parallel gateway task to the Create NC Doc task. Remove any associated sequence flow lines that connect the Create NC Doc task to any previous tasks.
+12.	Create a sequence flow line from the Manager Follow-Up task to the Create NC Doc task.
 13.	Save your process, redeploy your application, and test the process.
 
 
