@@ -399,13 +399,6 @@ Please follow up with customer regarding out-of-state insurance waiver.
             4.	Select the Include property as field extension checkbox.
             5.	Name of field extension: ```from```
             6.	Select Save Property button.
-        -	Add another property by selecting the + Add a new property link.
-            1.	Name: ```Include Attachments```
-            2.	ID: ```include_attachments```
-            3.	Type: Boolean
-            4.	Select the Include property as field extension checkbox.
-            5.	Name of field extension: ```includeAttachments```
-            6.	Select Save Property button.
         -	Close the Edit stencil properties popup window.
 6.	Save the Stencil using the save icon in the top, left of the page.
 
