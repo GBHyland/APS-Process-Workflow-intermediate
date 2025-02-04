@@ -290,7 +290,7 @@ sql.eachRow('SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE 
 1.	Open your New Customer process in edit mode.
 2.	Delete the end event.
 3.	From the left panel, under Gateways, add a Parallel Gateway to your process. Connect it from the KYC Delegate task.
-4.	From the Exclusive Gateway, add a User Task.
+4.	From the Parallel Gateway, add a User Task.
 5.	Name the user task: Manager Follow-Up
 6.	With the user task selected, click on the Referenced form No reference selected value.
 7.	In the Form reference popup window, select the New Form button.
