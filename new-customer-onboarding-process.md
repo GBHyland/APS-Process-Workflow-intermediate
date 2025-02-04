@@ -287,7 +287,7 @@ sql.eachRow('SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE 
     -	*Note: To ensure the KYC Java Delegate task is working you can view the saved document and check the “out of state” box to ensure the true or false variable is being set by the Delegate.
 
 ### lab 8: Add a Parallel Gateway and Splitting Paths
-1.	Open your New Claims process in edit mode.
+1.	Open your New Customer process in edit mode.
 2.	Delete the end event.
 3.	From the left panel, under Gateways, add a Parallel Gateway to your process. Connect it from the KYC Delegate task.
 4.	From the Exclusive Gateway, add a User Task.
