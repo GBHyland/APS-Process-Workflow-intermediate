@@ -450,7 +450,7 @@ execution.setVariable("ccEmailAddress", "blumbergh@example.com");
     -	Description: ```Used to configure custom email```
 7.	Add a Header to the form. 
     -	Label it: ```Customer Information:```
-    -	Set the Display Text to:
+    7a. Add a Display Text object and set the Display Text to:
 ```
 Customer Information:
 
