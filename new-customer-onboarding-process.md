@@ -299,7 +299,7 @@ sql.eachRow('SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE 
     - Description: ```Allows manager to follow up with out-of-state customers.```
     - Stencil: ```Default form```
     - Select the Create form button. 
-9.	 Follow these steps in the Form Editor to create the form:
+9.	Follow these steps in the Form Editor to create the form:
     - Add a Header to the page and go into edit mode. Configure with the following information:
         - Label: ```Customer Information```
     - Add a Display Text field to the header. Configure with the following information:
@@ -315,7 +315,7 @@ Please follow up with customer regarding out-of-state insurance waiver.
 ```
 end text.
     - Add a Header to the page below the first header and go into edit mode. Configure with the following information:
-        -	Label: ```Manager’s Notes:```
+        - Label: ```Manager’s Notes:```
     -	Add a Multi-line text object to the new header. Configure with the following information:
         - Label: ```Please indicate summary of conversation with customer or enter “No Contact”.```
         - Override ID: checked
