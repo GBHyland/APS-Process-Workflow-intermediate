@@ -359,7 +359,7 @@ execution.setVariable("deductible", 200);
 22.	Add a new User task to your process and connect it to the decision table task.
 23.	Name the user task: Verify Claim
 24.	Select the Referenced form attribute from the bottom configuration panel, open the referenced form popup window and choose the New Form button. 
-25.	Give the form a name of: Verify Claim and select the New Claim button.
+25.	Give the form a name of: Verify Claim and select the Create Form button.
 26.	In the form editor, perform the following steps to create a new claim form:
     1.	Add a Header object to the page and select the pencil icon to go into edit mode. Give it a label of Verify Claim Information: Close the edit popup.
     2.	Add a Display Text field to the Header and select the pencil icon to go into edit mode.
