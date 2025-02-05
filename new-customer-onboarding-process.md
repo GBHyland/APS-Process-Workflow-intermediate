@@ -286,7 +286,7 @@ sql.eachRow('SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE 
 10.	You may now test your process in the Digital Workspace. 
     -	*Note: To ensure the KYC Java Delegate task is working you can view the saved document and check the “out of state” box to ensure the true or false variable is being set by the Delegate.
 
-### lab 8: Add an Exclusive Gateway and Splitting Paths
+### Lab 8: Add an Exclusive Gateway and Splitting Paths
 1.	Open your New Customer process in edit mode.
 2.	Delete the end event.
 3.	From the left panel, under Gateways, add an Exclusive Gateway to your process. Connect it from the KYC Delegate task.
