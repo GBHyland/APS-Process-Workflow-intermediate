@@ -402,7 +402,7 @@ Please follow up with customer regarding out-of-state insurance waiver.
         -	Close the Edit stencil properties popup window.
 6.	Save the Stencil using the save icon in the top, left of the page.
 
-### Lab 10: (FACILITATOR ONLY) Build a Custome Email Sub-process
+### Lab 10: (FACILITATOR ONLY) Create an Email Template
 1.	Navigate to the Identity Management section.
 2.	Select Tenants from the top blue banner.
 3.	Select Email Templates from the left menu.
@@ -426,7 +426,7 @@ Best Regards,
 -	Save the email template.
 
 
-### Lab 11. Build a Custome Email Sub-process 
+### Lab 11. Build a Custom Email Sub-process 
 1.	Navigate to the App Designer.
 2.	Create a new process with the following configuration:
     -	Name: ```Send Custom Email```
