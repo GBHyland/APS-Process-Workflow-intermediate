@@ -286,12 +286,12 @@ sql.eachRow('SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE 
 10.	You may now test your process in the Digital Workspace. 
     -	*Note: To ensure the KYC Java Delegate task is working you can view the saved document and check the “out of state” box to ensure the true or false variable is being set by the Delegate.
 
-### lab 8: Add a Parallel Gateway and Splitting Paths
+### lab 8: Add an Exclusive Gateway and Splitting Paths
 1.	Open your New Customer process in edit mode.
 2.	Delete the end event.
-3.	From the left panel, under Gateways, add a Parallel Gateway to your process. Connect it from the KYC Delegate task.
-4.	From the Parallel Gateway, add a User Task.
-5.	Name the user task: Manager Follow-Up
+3.	From the left panel, under Gateways, add an Exclusive Gateway to your process. Connect it from the KYC Delegate task.
+4.	Select the gateway and add a **User task** using the small menu that appears.
+5.	Name the user task: ```Manager Follow-Up```
 6.	With the user task selected, click on the Referenced form No reference selected value.
 7.	In the Form reference popup window, select the New Form button.
 8.	In the Create a new form window, enter the following values:
@@ -313,8 +313,8 @@ ${newCustomerEmail}
 
 Please follow up with customer regarding out-of-state insurance waiver.
 ```
----
-- Add a Header to the page below the first header and go into edit mode. Configure with the following information:
+--
+    - Add a Header to the page below the first header and go into edit mode. Configure with the following information:
         -	Label: ```Manager’s Notes:```
     -	Add a Multi-line text object to the new header. Configure with the following information:
         -	Label: ```Please indicate summary of conversation with customer or enter “No Contact”.```
@@ -328,8 +328,14 @@ Please follow up with customer regarding out-of-state insurance waiver.
     -	Source: ```Search```
     -	Search for and select the Claims-Team group. The Group attribute should now show the Claims-Team value.
     -	Press the Save button.
-11.	Connect a sequence flow line from the Parallel gateway task to the Create NC Doc task. Remove any associated sequence flow lines that connect the Create NC Doc task to any previous tasks.
-12.	Create a sequence flow line from the Manager Follow-Up task to the Create NC Doc task.
+11.	Connect a sequence flow line from the gateway task to the Create NC Doc task. Remove any associated sequence flow lines that connect the Create NC Doc task to any previous tasks.
+    - With this flow line selected, check the **Default Flow** check-box in the bottom configuration panel.
+12.	Create a sequence flow line from the Manager Follow-Up task to the Create NC Doc task. With this flow selected, select the **Flow condition** attribute and configure the following condition in the pop-up menu:
+    - Condition Type: ```Simple```
+    - Depends on: ```Variable```
+    - Variable Drop-down: ```stateVerify```
+    - Operator: ```equal```
+    - Value: ```false```
 13.	Save your process, redeploy your application, and test the process.
 
 
