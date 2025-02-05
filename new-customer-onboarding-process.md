@@ -429,7 +429,7 @@ Best Regards,
 ### Lab 11. Build a Custom Email Sub-process 
 1.	Navigate to the App Designer.
 2.	Create a new process with the following configuration:
-    -	Name: ```Send Custom Email```
+    -	Name: ```[User #] Send Custom Email```. Ex: ```U1 Send Custom Email```.
     -	Description: ```Email sub-process.```
     -	Stencil: Select the Custom Email stencil
 3.	In the bottom configuration panel, select the Variables attribute. Enter the following variables:
