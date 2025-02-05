@@ -295,15 +295,15 @@ sql.eachRow('SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE 
 6.	With the user task selected, click on the Referenced form No reference selected value.
 7.	In the Form reference popup window, select the New Form button.
 8.	In the Create a new form window, enter the following values:
-    -	Form name: ```Manager Follow-Up```
-    -	Description: ```Allows manager to follow up with out-of-state customers.```
-    -	Stencil: ```Default form```
-    -	Select the Create form button. 
+    - Form name: ```Manager Follow-Up```
+    - Description: ```Allows manager to follow up with out-of-state customers.```
+    - Stencil: ```Default form```
+    - Select the Create form button. 
 9.	 Follow these steps in the Form Editor to create the form:
-    -	Add a Header to the page and go into edit mode. Configure with the following information:
-        -	Label: ```Customer Information```
-    -	Add a Display Text field to the header. Configure with the following information:
-        -	Text to display:
+    - Add a Header to the page and go into edit mode. Configure with the following information:
+        - Label: ```Customer Information```
+    - Add a Display Text field to the header. Configure with the following information:
+        - Text to display:
 ```
 Out of State Customer Information:
                 
@@ -317,17 +317,17 @@ Please follow up with customer regarding out-of-state insurance waiver.
     - Add a Header to the page below the first header and go into edit mode. Configure with the following information:
         -	Label: ```Manager’s Notes:```
     -	Add a Multi-line text object to the new header. Configure with the following information:
-        -	Label: ```Please indicate summary of conversation with customer or enter “No Contact”.```
-        -	Override ID: checked
-        -	ID: ```customerNotes```
-        -  	Required: checked
+        - Label: ```Please indicate summary of conversation with customer or enter “No Contact”.```
+        - Override ID: checked
+        - ID: ```customerNotes```
+        - Required: checked
     - 	Save and close the form editor.
 10.	Select the Manager Follow-Up task and select the Assignment attribute in the configuration panel. This will open an assignment popup window. Set the following configuration in the popup window:
-    -	Type: ```Identity Store```
-    -	Assignment: ```Assigned to group manager```
-    -	Source: ```Search```
-    -	Search for and select the Claims-Team group. The Group attribute should now show the Claims-Team value.
-    -	Press the Save button.
+    - Type: ```Identity Store```
+    - Assignment: ```Assigned to group manager```
+    - Source: ```Search```
+    - Search for and select the Claims-Team group. The Group attribute should now show the Claims-Team value.
+    - Press the Save button.
 11.	Connect a sequence flow line from the gateway task to the Create NC Doc task. Remove any associated sequence flow lines that connect the Create NC Doc task to any previous tasks.
     - With this flow line selected, check the **Default Flow** check-box in the bottom configuration panel.
 12.	Create a sequence flow line from the Manager Follow-Up task to the Create NC Doc task. With this flow selected, select the **Flow condition** attribute and configure the following condition in the pop-up menu:
@@ -346,66 +346,66 @@ Please follow up with customer regarding out-of-state insurance waiver.
     -	Select BPMN from the dropdown.
 3.	Select the Stencil Editor button to go into edit mode.
 4.	Add a new group by selecting the + Add new group button. 
-    -	Name the group ```My Custom Components```
+    - Name the group ```My Custom Components```
 5.	Add a new item by selecting the + Add new item button. Enter the following information:
-    -	Task Type: ```Service Task```
-    -	Name: ```Send Email with Attachments```
-    -	Description: ```Send an email with attachments``` (or enter your own)
-    -	Group: use the dropdown selector to select the group you created above (My Custom Components)
-    -	Icon: Use the change icon prompt to browse your local machine. Find the folder you were provided and select the mail_icon.png found in the Icons folder.
-    -	Delegate Expression: ```${emailServiceWithAttachments}```
-    -	Asynchronous: checked
-    -	Select the Edit hyperlink next to Properties. 
-        -	In the popup window select the + Add a new property link. Fill in the following information.
+    - Task Type: ```Service Task```
+    - Name: ```Send Email with Attachments```
+    - Description: ```Send an email with attachments``` (or enter your own)
+    - Group: use the dropdown selector to select the group you created above (My Custom Components)
+    - Icon: Use the change icon prompt to browse your local machine. Find the folder you were provided and select the mail_icon.png found in the Icons folder.
+    - Delegate Expression: ```${emailServiceWithAttachments}```
+    - Asynchronous: checked
+    - Select the Edit hyperlink next to Properties. 
+        - In the popup window select the + Add a new property link. Fill in the following information.
             1.	Name: ```Email Template Name```
             2.	ID: ```email_template_name```
             3.	Type: String
             4.	Select the Include property as field extension checkbox.
             5.	Name of field extension: ```emailTemplate```
             6.	Select Save Property button.
-        -	Add another property by selecting the + Add a new property link.
+        - Add another property by selecting the + Add a new property link.
             1.	Name: ```Send To```
             2.	ID: ```send_to```
             3.	Type: String
             4.	Select the Include property as field extension checkbox.
             5.	Name of field extension: ```toList```
             6.	Select Save Property button.
-        -	Add another property by selecting the + Add a new property link.
+        - Add another property by selecting the + Add a new property link.
             1.	Name: ```Email Subject```
             2.	ID: ```email_subject```
             3.	Type: String
             4.	Select the Include property as field extension checkbox.
             5.	Name of field extension: ```subject```
             6.	Select Save Property button.
-        -	Add another property by selecting the + Add a new property link.
+        - Add another property by selecting the + Add a new property link.
             1.	Name: ```Attachments```
             2.	ID: ```attachments```
             3.	Type: String
             4.	Select the Include property as field extension checkbox.
             5.	Name of field extension: ```contentField```
             6.	Select Save Property button.
-        -	Add another property by selecting the + Add a new property link.
+        - Add another property by selecting the + Add a new property link.
             1.	Name: ```Include Attachments```
             2.	ID: ```inc_attachments```
             3.	Type: Boolean
             4.	Select the Include property as field extension checkbox.
             5.	Name of field extension: ```includeAttachments```
             6.	Select Save Property button.
-        -	Add another property by selecting the + Add a new property link.
+        - Add another property by selecting the + Add a new property link.
             1.	Name: ```Send CC```
             2.	ID: ```send_cc```
             3.	Type: String
             4.	Select the Include property as field extension checkbox.
             5.	Name of field extension: ```ccList```
             6.	Select Save Property button.
-        -	Add another property by selecting the + Add a new property link.
+        - Add another property by selecting the + Add a new property link.
             1.	Name: ```From```
             2.	ID: ```from```
             3.	Type: String
             4.	Select the Include property as field extension checkbox.
             5.	Name of field extension: ```from```
             6.	Select Save Property button.
-        -	Close the Edit stencil properties popup window.
+        - Close the Edit stencil properties popup window.
 6.	Save the Stencil using the save icon in the top, left of the page.
 
 ### Lab 10: (FACILITATOR ONLY) Create an Email Template
