@@ -217,7 +217,7 @@ a.	OPTIONAL: You can change the name of the process that will run by editing the
 10.	Select the Sequence flow line that ends at the User Task. In the bottom configuration panel, check the check box for the Default flow attribute. This will signify that the default traffic will go this route.
 11.	Select the new user task and give it a name of: Create Claim.
 12.	Select the Referenced form attribute from the bottom configuration panel, open the referenced form popup window and choose the New Form button. 
-13.	Give the form a name of: New Claim and select the New Claim button.
+13.	Give the form a name of: New Claim and select the Craete Form button.
 15.	In the form editor, perform the following steps to create a new claim form:
     1.	Add a Header object to the page and select the pencil icon to go into edit mode. Give it a label of Customer Information: Close the edit popup.
     2.	Add a Display Value object into the Customer Information Header object. Give it the following configuration:
