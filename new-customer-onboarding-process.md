@@ -313,7 +313,7 @@ ${newCustomerEmail}
 
 Please follow up with customer regarding out-of-state insurance waiver.
 ```
-end text.
+<!-- end the list -->
     - Add a Header to the page below the first header and go into edit mode. Configure with the following information:
         - Label: ```Manager’s Notes:```
     -	Add a Multi-line text object to the new header. Configure with the following information:
