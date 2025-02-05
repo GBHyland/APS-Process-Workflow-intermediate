@@ -511,7 +511,7 @@ ${newCustomerCity}, ${newCustomerState}. ${newCustomerZipCode}
 
 
 ### Lab 12: Add a Sub-process (Custom Email process)
-1.	Open the Claims Process in edit mode.
+1.	Open the Customer Onboarding Process in edit mode.
 2.	Add a Collapsed Subprocess to the process after the Manager Follow-up task.
     -	Connect the collapsed subprocess from the manager foll-up and to the Create NH Doc task.
 3.	Give the Collapsed Subprocess event the following configuration:
