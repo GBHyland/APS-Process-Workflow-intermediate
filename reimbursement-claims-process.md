@@ -296,7 +296,7 @@ execution.setVariable("deductible", 200);
 ```
 5.	From the left panel, drag and place a Decision Task after the Script task and connect it.
 6.	Name the Decision task: Configure Deductible
-7.	In the bottom configuration panel, select the Referenced decision table attribute to open the decision table popup window. Select the New Decision Table button.
+7.	In the bottom configuration panel, select the Referenced decision table attribute to open the decision table popup window. Select the New Decision Table button. Name it: ```Configure Deductible```.
 8.	In the top blue header, click the [ Undefined ] title, which opens the Edit input popup. Configure the popup with the following information:
     1.	Column Label: Equipment Value
     2.	Variable Type: Form field
