@@ -206,7 +206,7 @@ a.	OPTIONAL: You can change the name of the process that will run by editing the
 5.	Remove the End event and the line connecting to it by selecting each one and clicking the trash can icon that appears. 
 6.	Add an Exclusive Gateway task to the process found under the Gateways drop down.
 7.	Connect the gateway task to the Display DB Values task.
-8.	Select the Sequence flow line that routes back to the Customer Search task. Click the value to open the Sequence flow condition popup window.
+8.	Create a Sequence flow line that routes back to the Customer Search task. Click the Flow Condition value to open the Sequence flow condition popup window.
     1.	Select Simple as the condition type.
     2.	Select Form outcome as the Depends on selector.
     3.	In the first dropdown menu, select the form that you added the form outcome to: the Display GB Value form.
