@@ -409,7 +409,7 @@ Please follow up with customer regarding out-of-state insurance waiver.
 4.	Select Custom Email Templates.
 5.	Select the +Create new email template button.
 6.	Configure the email template with the following information:
-    -	Name: ```9si-ooo-email```
+    -	Name: ```9si-oos-email```
     -	Subject: ```Welcome to 9 Second insurance```
     -	Email content:
 ```
