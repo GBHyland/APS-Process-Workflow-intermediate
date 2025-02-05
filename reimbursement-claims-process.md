@@ -209,7 +209,7 @@ a.	OPTIONAL: You can change the name of the process that will run by editing the
 8.	Create a Sequence flow line that routes back to the Customer Search task. Click the Flow Condition value to open the Sequence flow condition popup window.
     1.	Select Simple as the condition type.
     2.	Select Form outcome as the Depends on selector.
-    3.	In the first dropdown menu, select the form that you added the form outcome to: the Display GB Value form.
+    3.	In the first dropdown menu, select the form that you added the form outcome to: the Display DB Value form.
     4.	In the second dropdown menu, select equal.
     5.	In the last dropdown menu, select Back.
     6.	Select the Save button on the popup window.
