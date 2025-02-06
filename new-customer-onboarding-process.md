@@ -141,13 +141,14 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 2. Select the Create Data Model button.
 3. Enter ```U[user #]9siCustomerData``` in the Data Model Name field and click the Create button.
 4. In the Database Tab:
-    -    Select ```aps-oracle-db``` from the Data Source dropdown
+    -    Select ```aps-oracle-db``` from the Data Source dropdown.
+    -    **DO NOT Click the Import button.**
     -    Click the Add Entity button. Enter the following information for the Entity:
             -	Entity Name: ```newCustomers```
             -	Entity Description: ```Details of all customers```
             -	Table Name: ```CUSTOMERS```
-    -	Click the Import Attributes button. Notice that the table attributes should import from the connected database. Ensure that the values mapped correctly:
-    - **Note:** the id variable should have the Primary key check box checked All others do not.
+    -	**DO NOT Click the Import Attributes button.**
+    -	Use the **Add Attribute** button to create new attributes. Use the chart below to add attributes and fill in the _attribute name_, _column name_, and select the correct _attribute type_. **Note:** the id variable should have the Primary key check box checked All others do not.
 
 | Attribute name | Column name  | Attribute type |
 | ----------     | ---------    | -------------- |
