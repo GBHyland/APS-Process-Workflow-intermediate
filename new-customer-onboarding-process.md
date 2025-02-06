@@ -300,9 +300,9 @@ sql.eachRow('SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE 
     - Stencil: ```Default form```
     - Select the Create form button. 
 9.	Follow these steps in the Form Editor to create the form:
-    * Add a Header to the page and go into edit mode. Configure with the following information:
+    - Add a Header to the page and go into edit mode. Configure with the following information:
         - Label: ```Customer Information```
-    * Add a Display Text field to the header. Configure with the following information:
+    - Add a Display Text field to the header. Configure with the following information:
 Text to display:
 ```
 Out of State Customer Information:
@@ -314,14 +314,14 @@ ${newCustomerEmail}
 Please follow up with customer regarding out-of-state insurance waiver.
 ```
 code
-    * Add a Header to the page below the first header and go into edit mode. Configure with the following information:
+    - Add a Header to the page below the first header and go into edit mode. Configure with the following information:
         - Label: ```Manager’s Notes:```
-    * Add a Multi-line text object to the new header. Configure with the following information:
+    - Add a Multi-line text object to the new header. Configure with the following information:
         - Label: ```Please indicate summary of conversation with customer or enter “No Contact”.```
         - Override ID: checked
         - ID: ```customerNotes```
         - Required: checked
-    * Save and close the form editor.
+    - Save and close the form editor.
 10.	Select the Manager Follow-Up task and select the Assignment attribute in the configuration panel. This will open an assignment popup window. Set the following configuration in the popup window:
     - Type: ```Identity Store```
     - Assignment: ```Assigned to group manager```
