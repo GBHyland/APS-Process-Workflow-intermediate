@@ -281,7 +281,7 @@ sql.eachRow('SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE 
 4.	From the left panel, under Activities, drag a Service Task into the stage. 
 5.	Select the Name attribute and give it the following name: KYC Delegate
 6.	Connect this task in the workflow between the Save New Customer Data task and the Create Cust Doc task. 
-7.	Select the Class attribute and paste in the following text: ```com.activiti-extension.bean.KYCJavaDelegate```
+7.	Select the Class attribute and paste in the following text: ```com.activiti.extension.bean.KYCJavaDelegate```
 8.	Save and close the editor. 
 9.	Navigate to the Process Application and publish your App so you may test the new additions.
 10.	You may now test your process in the Digital Workspace. 
