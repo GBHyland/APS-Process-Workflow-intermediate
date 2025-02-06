@@ -303,17 +303,16 @@ sql.eachRow('SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE 
     - Add a Header to the page and go into edit mode. Configure with the following information:
         - Label: ```Customer Information```
     - Add a Display Text field to the header. Configure with the following information:
-Text to display:
-```
-Out of State Customer Information:
-                
-${newCustomerLastName}, ${newCustomerFirstName} - ${newCustomerId}
-${newCustomerPhoneNumber}
-${newCustomerEmail}
-
-Please follow up with customer regarding out-of-state insurance waiver.
-```
-code
+            Text to display:
+            ```
+            Out of State Customer Information:
+                            
+            ${newCustomerLastName}, ${newCustomerFirstName} - ${newCustomerId}
+            ${newCustomerPhoneNumber}
+            ${newCustomerEmail}
+            
+            Please follow up with customer regarding out-of-state insurance waiver.
+            ```
     - Add a Header to the page below the first header and go into edit mode. Configure with the following information:
         - Label: ```Manager’s Notes:```
     - Add a Multi-line text object to the new header. Configure with the following information:
@@ -321,22 +320,22 @@ code
         - Override ID: checked
         - ID: ```customerNotes```
         - Required: checked
-    - Save and close the form editor.
-10.	Select the Manager Follow-Up task and select the Assignment attribute in the configuration panel. This will open an assignment popup window. Set the following configuration in the popup window:
+  	- Save and close the form editor.
+11.	Select the Manager Follow-Up task and select the Assignment attribute in the configuration panel. This will open an assignment popup window. Set the following configuration in the popup window:
     - Type: ```Identity Store```
     - Assignment: ```Assigned to group manager```
     - Source: ```Search```
     - Search for and select the Claims-Team group. The Group attribute should now show the Claims-Team value.
     - Press the Save button.
-11.	Connect a sequence flow line from the gateway task to the Create NC Doc task. Remove any associated sequence flow lines that connect the Create NC Doc task to any previous tasks.
+12.	Connect a sequence flow line from the gateway task to the Create NC Doc task. Remove any associated sequence flow lines that connect the Create NC Doc task to any previous tasks.
     - With this flow line selected, check the **Default Flow** check-box in the bottom configuration panel.
-12.	Create a sequence flow line from the Manager Follow-Up task to the Create NC Doc task. With this flow selected, select the **Flow condition** attribute and configure the following condition in the pop-up menu:
+13.	Create a sequence flow line from the Manager Follow-Up task to the Create NC Doc task. With this flow selected, select the **Flow condition** attribute and configure the following condition in the pop-up menu:
     - Condition Type: ```Simple```
     - Depends on: ```Variable```
     - Variable Drop-down: ```stateVerify```
     - Operator: ```equal```
     - Value: ```false```
-13.	Save your process, redeploy your application, and test the process.
+14.	Save your process, redeploy your application, and test the process.
 
 
 ### Lab 9: Create a Stencil for Custom process Tasks
