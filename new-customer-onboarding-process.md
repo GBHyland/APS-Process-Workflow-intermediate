@@ -303,16 +303,16 @@ sql.eachRow('SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE 
     - Add a Header to the page and go into edit mode. Configure with the following information:
         - Label: ```Customer Information```
     - Add a Display Text field to the header. Configure with the following information:
-      
-            ```
-                Out of State Customer Information:
-                                
-                ${newCustomerLastName}, ${newCustomerFirstName} - ${newCustomerId}
-                ${newCustomerPhoneNumber}
-                ${newCustomerEmail}
-                
-                Please follow up with customer regarding out-of-state insurance waiver.
-            ```
+      text:
+        ```
+        Out of State Customer Information:
+                        
+        ${newCustomerLastName}, ${newCustomerFirstName} - ${newCustomerId}
+        ${newCustomerPhoneNumber}
+        ${newCustomerEmail}
+        
+        Please follow up with customer regarding out-of-state insurance waiver.
+        ```
     - Add a Header to the page below the first header and go into edit mode. Configure with the following information:
         - Label: ```Manager’s Notes:```
     - Add a Multi-line text object to the new header. Configure with the following information:
