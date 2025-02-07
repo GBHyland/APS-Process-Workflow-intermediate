@@ -198,7 +198,7 @@ a.	OPTIONAL: You can change the name of the process that will run by editing the
 | Now that we have a method to retrieve a customer's information who is making a reimbursement claim, we need to be able to either go back to the customer search query (in the case we did not get the right customer) or proceed with the claim. |
 | We also need to build a form that captures claim-specific information. |
 
-### Lab 4. Create a Form Outcome with Exclusive Pathing
+### Lab 4. Create a Form Outcome with Exclusive Pathing & Claim Form
 1.	Access the App Designer tile from the homepage of the Activiti App (Process Services).
 2.	Enter your New Claims process in edit mode by selecting the edit icon when hovering your mouse over its tile.    
 3.	Select the Display DB Values task and open the Referenced Form in edit mode.
