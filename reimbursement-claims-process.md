@@ -1,13 +1,13 @@
 # Reimburesement Claims Process
 
-|  **Scenario – 9 Second Insurance: New Customer Process** |
+|  **Overall Scenario – 9 Second Insurance: New Customer Process** |
 | ----------- |
 | As a systems architect working for 9 Second Insurance, you are tasked with creating a process that will allow agents to create reimbursement claims. Your process will include: |
 | Data intake mechanism to capture claim information. |
 | Data review mechanism to determine accuracy of information. |
 | Document generation and saving to content management system. |
-| A REST call to retrieve customer values from a custom database. |
-| A Decision Table to perform logic and edit values. |
+| A REST call to retrieve customer values from the 9SI customer database. |
+| Perform logic to adjust a deductible based on claimed equipment value (Decision Table). |
 
 
 ### Lab 1. Create an Intake Task
@@ -193,6 +193,11 @@ a.	OPTIONAL: You can change the name of the process that will run by editing the
 6.	Select My Tasks found under the Workflow dropdown on the left side of the page.
 7.	Your Customer Search task should appear. Click on it to perform the task.
 
+|  **Next Steps: Decision to Edit or Continue With the Claim** |
+| ----------- |
+| Now that we have a method to retrieve a customer's information who is making a reimbursement claim, we need to be able to either go back to the customer search query (in the case we did not get the right customer) or proceed with the claim. |
+| We also need to build a form that captures claim-specific information. |
+
 ### Lab 4. Create a Form Outcome with Exclusive Pathing
 1.	Access the App Designer tile from the homepage of the Activiti App (Process Services).
 2.	Enter your New Claims process in edit mode by selecting the edit icon when hovering your mouse over its tile.    
@@ -282,8 +287,13 @@ a.	OPTIONAL: You can change the name of the process that will run by editing the
 19.	Navigate to the Apps page and republish your application.
 20.	Open the Digital Workspace and test your updated process.
 
+|  **Next Steps: Configure the Deductible Logic** |
+| ----------- |
+| We are now capturing a customer's claim information. Based on that we'll need logic implemented that will dictate the amount of their deductible. |
+| At 9 Second Insurance, we use a scaffolding approach to set a deductible that is relational to the claimed equipment value. |
+| We'll use a Decision Table to determine the deductibale amount. |
 
-### Lab 5. Adding Decision Logic (DecisioniTable)
+### Lab 5. Adding Decision Logic (Decision Table)
 1.	Access the App Designer tile from the homepage of the Activiti App (Process Services).
 2.	Enter your New Claims process in edit mode by selecting the edit icon when hovering your mouse over its tile.    
 3.	Delete the end event from the process.
