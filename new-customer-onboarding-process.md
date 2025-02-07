@@ -1,5 +1,14 @@
 ## New Customer Onboarding Process
 
+|  **Overall Scenario – 9 Second Insurance: New Customer Process** |
+| ----------- |
+| As a systems architect working for 9 Second Insurance, you are tasked with creating a process that will allow agents to onboard new customers and add them to 9SI's customer database: |
+| Data intake mechanism to capture a customer's information. |
+| Save the new customer's information to 9SI's external customer database. |
+| Document generation and saving to content management system. |
+| A Know-Your-Customer check to determine if an Out-of-State Waiver is applicable or not. |
+| A custom email method that sends documents to the customer. |
+
 ### Lab 1. Create an Intake Task
 1.	From the Alfresco home page, launch the Activiti App (Process Services) by clicking on the Activiti App hyperlink. 
     - Sign in with your provided username and password. You will be directed to the Activiti App home page.
@@ -86,6 +95,14 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 15.	Save the process model by clicking on the Save icon in the top left of the pag-   
 16.	In the Save model popup window, press the Save and close editor button.
 
+
+|  **Next Steps: Process Application** |
+| ----------- |
+| In APS, a process cannot deploy by itself; it needs to be included in a Process Application. The Process Application is the engine that deploys and drives processes.  |
+| A process application can deploy mutliple processes. |
+| A Process App is a container for handling a group of published processes and deploying them to a Process Engine. |
+| [Creating a Process Application(]https://docs.alfresco.com/process-services/latest/using/process/app-designer/#create-your-first-app) |
+
 ### Lab 2: Create a Process Application
 1.	From the Activiti home page, select the App Designer tile to navigate to the Business Process Models page
 2.	Select the Apps hyperlink in the top blue banner.
@@ -103,6 +120,11 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 13.	If your application already appears on the home page as a tile you are done.
     -	If not, deploy your new application by selecting the blank tile, depicted with a plus sign “+” (“Add a new app” appears when you hover your mouse over it. Select this tile, then select your application in the Add app to landing page popup window. Press the Deploy button on that window. Your application is now deployee
 
+|  **Next Steps: Creating and Saving a Customer Document** |
+| ----------- |
+| Since we are now capturing customer information we need to be able to create a real document for our customer and save it to our content management system (ACS). |
+| In APS, generating and saving a document are two seperate steps. |
+| [Generating a Document](https://docs.alfresco.com/process-automation/latest/model/connectors/generate/) |
 
 ### Lab 3: Generating and Saving a Document
 1.	Access the App Designer tile from the homepage of the Activiti App (Process Services).
@@ -135,6 +157,13 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 11.	Save your process and close the editor.
 12.	Navigate to your application and republish.
 13.	Test your updated process.
+
+|  **Next Steps: Saving Information to 9 Second Insurance's Customer Database** |
+| ----------- |
+| We are capturing customer information, creating and saving a customer document, and now we need to save our customer's data to the 9SI customer database. |
+| First, we'll need to create a Data Model that will allow us to specifiy the correct format of data that exists in the Database Table we want to map our process data to. |
+| We'll then need to create a Service Task that implements the Data Model and allows us to map our process variables to the data model structure. |
+| [BPMN Tasks](https://docs.alfresco.com/process-automation/latest/model/processes/bpmn/#tasks) |
 
 ### Lab 4: Create a Data Model
 1. Access the data Model page within the App Designer.
