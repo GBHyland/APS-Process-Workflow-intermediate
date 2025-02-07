@@ -101,7 +101,7 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 | In APS, a process cannot deploy by itself; it needs to be included in a Process Application. The Process Application is the engine that deploys and drives processes.  |
 | A process application can deploy mutliple processes. |
 | A Process App is a container for handling a group of published processes and deploying them to a Process Engine. |
-| [Creating a Process Application(]https://docs.alfresco.com/process-services/latest/using/process/app-designer/#create-your-first-app) |
+| [Creating a Process Application](https://docs.alfresco.com/process-services/latest/using/process/app-designer/#create-your-first-app) |
 
 ### Lab 2: Create a Process Application
 1.	From the Activiti home page, select the App Designer tile to navigate to the Business Process Models page
