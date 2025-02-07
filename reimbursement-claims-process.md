@@ -1,6 +1,6 @@
 # Reimburesement Claims Process
 
-|  **Overall Scenario – 9 Second Insurance: New Customer Process** |
+|  **Overall Scenario – 9 Second Insurance: Reimbursement Claim Process** |
 | ----------- |
 | As a systems architect working for 9 Second Insurance, you are tasked with creating a process that will allow agents to create reimbursement claims. Your process will include: |
 | Data intake mechanism to capture claim information. |
