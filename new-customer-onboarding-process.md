@@ -403,7 +403,7 @@ sql.eachRow('SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE 
     - Name: ```Send Email with Attachments```
     - Description: ```Send an email with attachments``` (or enter your own)
     - Group: use the dropdown selector to select the group you created above (My Custom Components)
-    - Icon: Use the change icon prompt to browse your local machine. Find the folder you were provided and select the mail_icon.png found in the Icons folder.
+    - Icon: Use the change icon prompt to browse your local machine. Find where you downloaded and select the _emailicon.png_.
     - Delegate Expression: ```${emailServiceWithAttachments}```
     - Asynchronous: checked
     - Select the Edit hyperlink next to Properties. 
