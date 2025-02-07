@@ -214,6 +214,12 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
         -	Press Save on the mapping window.
 6. Save and close your process.
 
+
+|  **Next Steps: Stand-alone Database Look-up Process** |
+| ----------- |
+| Our Customer Onboarding process now contains the ability to add customer data to 9SI's customer database. Before we test it, we need a method of retrieving and displaying data from the database in order to ensure we're saving values correctly. |
+| We'll build a stand-alone process that will do two simple things: retrieve and display customer data from the database. |
+
 ### Lab 6: Create a Database Lookup Process
 1.	Create a new Process called Lookup DB Values.
 2.	In the bottom configuration panel, launch the Variables attribute window and add the following variable:
@@ -303,6 +309,11 @@ sql.eachRow('SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE 
 10.	Add the processes to your app that you created in this and the previous lab
 11.	Use the digital workspace to test both processes. The New Customer Onboarding process should now save the customer data into the database. Use the Display DB Values process to view added entries.
 
+|  **Next Steps: Know-Your-Customer Logic for Out-of-State Documentation** |
+| ----------- |
+| 9 Second Insurance is a Ohio-based insurance company, and our leaders need to be able determine if a customer resides in-state or out-of-state. In order to meet state insurance regulations. We're already capturing a customer's state which allows us to implement the conditional logic we need to achieve this functionality. There are a few ways we could implement this, one of them a Script task, which we've already seen an example of. However, knowing that this KYC logic is likely to evolve in the near future to include additional conditions, we'll apply some forward thinking and use a Java Delegate in order to determine in or out of state. |
+| [Java Delgates](https://support.hyland.com/r/Alfresco/Alfresco-Process-Services/24.3/Alfresco-Process-Services/Develop/Develop-extensions-for-Process-Services/Custom-Logic/Java-Delegates) |
+
 ### Lab 7: Create a Service Task with Java Delegate
 1.	Enter your New Customer Onboarding process in edit mode.
 2.	Select the Variables attribute in the configuration panel to add a new variable.
@@ -315,6 +326,12 @@ sql.eachRow('SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE 
 9.	Navigate to the Process Application and publish your App so you may test the new additions.
 10.	You may now test your process in the Digital Workspace. 
     -	*Note: To ensure the KYC Java Delegate task is working you can view the saved document and check the “out of state” box to ensure the true or false variable is being set by the Delegate.
+
+|  **Next Steps: In-State and Out-of-State Impact on our Process** |
+| ----------- |
+| We're now using a Service Task to call a method that exists in our Java delegate to set a process variable to be true or false in relation to the customer being in or out of state. In the event our customer is Ohio-based, we need not do anything extra, however for all others 9SI would like a task to engage the team's manager and prompt them to reach out to the customer and send a Out-of-State waiver. |
+| We'll add an exclusive gateway that will allow us to go down either path specified above. |
+| Our Out-of-State path will include a User Task assigned to our Team's manager. |
 
 ### Lab 8: Add an Exclusive Gateway and Splitting Paths
 1.	Open your New Customer process in edit mode.
@@ -367,6 +384,11 @@ sql.eachRow('SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE 
     - Value: ```false```
 14.	Save your process, redeploy your application, and test the process.
 
+|  **Next Steps: Custom Email Sub-Process** |
+| ----------- |
+| In order to complete the functionality our Manager needs, they'll need to send an email with attachments to the customer. We'll also want to use an email template, saving our Manager time in having to formulate the email. Our out-of-the-box email capabilities will not allow us to implement this functionality completely, so we'll create our own BPMN Stencil that will extend the Mail Task functionality to include our needs. |
+| I'll also create the email template that we'll all call to in our processes. |
+| The end-result will be a stand-alone, dynamic process that we will be able to embedd in other processes. |
 
 ### Lab 9: Create a Stencil for Custom process Tasks
 1.	From the AppDesigner page, select Stencils from the top, blue banner.
@@ -544,6 +566,9 @@ ${newCustomerCity}, ${newCustomerState}. ${newCustomerZipCode}
 18.	Add an End Event connected to the Send Mail task.
 19.	Save and close the process editor.
 
+|  **Next Steps: Add the Email Sub-Process to our Onboarding Process** |
+| ----------- |
+| Our stand-alone email sub-process is now complete and we're ready to add it to the customer onboarding process. |
 
 ### Lab 12: Add a Sub-process (Custom Email process)
 1.	Open the Customer Onboarding Process in edit mode.
