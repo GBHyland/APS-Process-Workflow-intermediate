@@ -1,12 +1,13 @@
 # Reimburesement Claims Process
 
-### Scenario – 9 Second Insurance: New Customer Process
-As a systems architect working for 9 Second Insurance, you are tasked with creating a process that will allow agents to create reimbursement claims. Your process will include:
-- Data intake mechanism to capture claim information. 
-- Data review mechanism to determine accuracy of information.
-- Document generation and saving to content management system.
-- A REST call to retrieve customer values from a custom database.
-- A Decision Table to perform logic and edit values.
+| ### Scenario – 9 Second Insurance: New Customer Process |
+| ----------- |
+| As a systems architect working for 9 Second Insurance, you are tasked with creating a process that will allow agents to create reimbursement claims. Your process will include: |
+| - Data intake mechanism to capture claim information. |
+| - Data review mechanism to determine accuracy of information. |
+| - Document generation and saving to content management system. |
+| - A REST call to retrieve customer values from a custom database. |
+| - A Decision Table to perform logic and edit values. |
 
 
 ### Lab 1. Create an Intake Task
