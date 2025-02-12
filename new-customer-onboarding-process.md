@@ -299,12 +299,14 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 4. With the Task selected, select the **Endpoint** paramter in the bottom configuration panel to open the _Change value for endpoint_ popup window. Use the following configuration:
    - **HTTP Method:** GET
    - **Base enpoint:** _choose aps from the drop-down_ and save the configuration.
-   - **Response Mapping:** _Add a new variable with the following config_
-     - **Property name:** ```data```
-     - **Variable type:** ```string```
-     - **Variable name:** ```userData```
-     - Save the configuration.
-5. Add a **Script Task** connected to the _Get All Users_ Task. Configure the following parameters in the bottom configuration panel:
+   - **To add URL parameters...:** ```/api/enterprise/users```
+   - Save the configuration.
+5. Select the **Response Mapping** paramter to open the _Change value for Response mapping_ pop-up window and add a new variable with the following config:
+   - **Property name:** ```data```
+   - **Variable type:** ```string```
+   - **Variable name:** ```userData```
+   - Save the configuration.
+6. Add a **Script Task** connected to the _Get All Users_ Task. Configure the following parameters in the bottom configuration panel:
    - **NAme:** ```Get Database User```
    - **Script format:** ```groovy```
    - **Script:**
@@ -342,10 +344,10 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
           println new JsonBuilder( recordList ).toPrettyString()
           execution.setVariable("recordList", new JsonBuilder( recordList ).toPrettyString())
      ```
-6. Create a new **User Task** connected to the _Get Database User_ script task.
+7. Create a new **User Task** connected to the _Get Database User_ script task.
    - Name the user task: ```Verify User Data```.
-7. In the bottom config panel, select the **Form reference** parameter and choose Create Form on the form reference popup window. Name it: ```Verify User data```.
-8. Follow these steps in the Form Editor to create a new form:
+8. In the bottom config panel, select the **Form reference** parameter and choose Create Form on the form reference popup window. Name it: ```Verify User data```.
+9. Follow these steps in the Form Editor to create a new form:
     - Drag a Dynamic Table onto the form stage. Select the pencil icon to go into edit mode.
     - Enter into Label field: ```Verify Database Data:```
     - Select the Override Id checkbox.
@@ -409,9 +411,9 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
             3.	Property Type: ```string```
     - Close the edit prompt.
     - Save and close the form.
-9. Add an end event to the _Verify User Data_ User task.
-10. Save and close the process.
-11. Deploy and test the process in ADW.
+10. Add an end event to the _Verify User Data_ User task.
+11. Save and close the process.
+12. Deploy and test the process in ADW.
 
 ---
 
