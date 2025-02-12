@@ -409,8 +409,9 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
             3.	Property Type: ```string```
     - Close the edit prompt.
     - Save and close the form.
-9. Save and close the process.
-10. Deploy and test the process in ADW.
+9. Add an end event to the _Verify User Data_ User task.
+10. Save and close the process.
+11. Deploy and test the process in ADW.
 
 ---
 
