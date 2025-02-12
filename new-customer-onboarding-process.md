@@ -273,10 +273,21 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
         userRepository.save(newUser);
      ```
    - Save the script.
-8. Add a **REST-Call Task** to your process (under Activities).
+5. Save the process.
+
+
+|  **Next Steps: Verify Customer Data was Saved** |
+| ----------- |
+| We're now saving our customer data in two places, in the 9SI customer database and as a new user in APS. Before we move on, we need to add a review mechanism that retrieves and displays those records so we can esnure that the data was saved correctly. This is standard functionality in database operations. |
+
+### Lab 8. Add Data Retrieval and Verification Method
+1. With your Onboarding Process in edit mode, add a new variable to your process by selecting the **Variables** parameter in the bottom configuration panel. Add the following variable:
+   - **Variable name:** ```recordList```
+   - **Variable type:** ```string```
+2. Add a **REST-Call Task** to your process (under Activities).
    - Name the task ```Get All Users```.
-9. Connect this task in the workflow **AFTER** the _Add User to APS_ task.
-10. With the Task selected, select the **Endpoint** paramter in the bottom configuration panel to open the _Change value for endpoint_ popup window. Use the following configuration:
+3. Connect this task in the workflow **AFTER** the _Add User to APS_ script task.
+4. With the Task selected, select the **Endpoint** paramter in the bottom configuration panel to open the _Change value for endpoint_ popup window. Use the following configuration:
    - **HTTP Method:** GET
    - **Base enpoint:** _choose aps from the drop-down_ and save the configuration.
    - **Response Mapping:** _Add a new variable with the following config_
@@ -284,18 +295,121 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
      - **Variable type:** ```string```
      - **Variable name:** ```userData```
      - Save the configuration.
-11. Add a **User Task** connected to the _Get All Users_ Task.
-12. Name the user task: ```Add User```.
-13. In the bottom config panel, select the **Form reference** parameter and choose Create Form on the form reference popup window.
-14. Follow these steps in the Form Editor to create a new form:
-    - 
+5. Add a **Script Task** connected to the _Get All Users_ Task. Configure the following parameters in the bottom configuration panel:
+   - **NAme:** ```Get Database User```
+   - **Script format:** ```groovy```
+   - **Script:**
+     ```
+        import groovy.sql.Sql;
+        import groovy.json.*
+        import groovy.json.JsonBuilder
+        
+        class Record {
+            String recId
+            String firstname
+            String lastname
+            String address
+            String city
+            String state
+            String zip
+        }
+        
+        def url = 'jdbc:oracle:thin:@//aps-custom-oracle-db.cp58lgpzkwpy.us-east-1.rds.amazonaws.com/ORCL'
+        def user = 'admin'
+        def password = 'administrator'
+        def driver = 'oracle.jdbc.driver.OracleDriver'
+        def sql = Sql.newInstance(url, user, password, driver)
+        
+        rowNum = 0;
+        def recordList = [];
+        
+        sql.eachRow('SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE FROM CUSTOMERS WHERE FIRSTNAME=${newCustomerFirstName} AND LASTNAME=${newCustomerLastName}') { row ->
+           
+          def r = new Record( recId: row.id, firstname:row.firstname, lastname:row.lastname, address:row.addressLine1, city:row.city, state:row.state, zip:row.zipcode)
+            recordList.add(r);
+          
+        }
+        
+          println new JsonBuilder( recordList ).toPrettyString()
+          execution.setVariable("recordList", new JsonBuilder( recordList ).toPrettyString())
+     ```
+6. Create a new **User Task** connected to the _Get Database User_ script task.
+   - Name the user task: ```Verify User Data```.
+7. In the bottom config panel, select the **Form reference** parameter and choose Create Form on the form reference popup window. Name it: ```Verify User data```.
+8. Follow these steps in the Form Editor to create a new form:
+    - Drag a Dynamic Table onto the form stage. Select the pencil icon to go into edit mode.
+    - Enter into Label field: ```Verify Database Data:```
+    - Select the Override Id checkbox.
+    - Enter into the ID field: ```recordList```
+    - Select the Table Columns tab.
+    - Press the "+" icon button to create new property mappings with the following values:
+        - Column 1:
+            1.	Property ID: ```recId```
+            2.	Property Name: ```ID```
+            3.	Property Type: ```string```
+        - Column 2:
+            1.	Property ID: ```firstname```
+            2.	Property Name: ```First name```
+            3.	Property Type: ```string```
+        - Column 3:
+            1.	Property ID: ```lastname```
+            2.	Property Name: ```Last Name```
+            3.	Property Type: ```string```
+        - Column 4:
+            1.	Property ID: ```address```
+            2.	Property Name: ```Address```
+            3.	Property Type: ```string```
+        - Column 5:
+            1.	Property ID: ```state```
+            2.	Property Name: ```State```
+            3.	Property Type: ```string```
+        - Column 6:
+            1.	Property ID: ```city```
+            2.	Property Name: ```City```
+            3.	Property Type: ```string```
+        - Column 7:
+            1.	Property ID: ```zip```
+            2.	Property Name: ```Zip```
+            3.	Property Type: ```string```
+    - Close the edit prompt.
+    - Add another **Dynamic Table** to the form.
+    - Enter into Label field: ```Verify APS User Data:```
+    - Select the Override Id checkbox.
+    - Enter into the ID field: ```userData```
+    - Select the Table Columns tab.
+    - Press the "+" icon button to create new property mappings with the following values:
+        - Column 1:
+            1.	Property ID: ```id```
+            2.	Property Name: ```ID```
+            3.	Property Type: ```string```
+        - Column 2:
+            1.	Property ID: ```firstname```
+            2.	Property Name: ```First name```
+            3.	Property Type: ```string```
+        - Column 3:
+            1.	Property ID: ```lastname```
+            2.	Property Name: ```Last Name```
+            3.	Property Type: ```string```
+        - Column 4:
+            1.	Property ID: ```company```
+            2.	Property Name: ```Company```
+            3.	Property Type: ```string```
+        - Column 5:
+            1.	Property ID: ```email```
+            2.	Property Name: ```Email```
+            3.	Property Type: ```string```
+    - Close the edit prompt.
+    - Save and close the form.
+9. Save and close the process.
+10. Deploy and test the process in ADW.
+
 
 |  **Next Steps: Know-Your-Customer Logic for Out-of-State Documentation** |
 | ----------- |
 | 9 Second Insurance is a Ohio-based insurance company, and our leaders need to be able determine if a customer resides in-state or out-of-state. In order to meet state insurance regulations. We're already capturing a customer's state which allows us to implement the conditional logic we need to achieve this functionality. There are a few ways we could implement this, one of them a Script task, which we've already seen an example of. However, knowing that this KYC logic is likely to evolve in the near future to include additional conditions, we'll apply some forward thinking and use a Java Delegate in order to determine in or out of state. |
 | [Java Delgates](https://support.hyland.com/r/Alfresco/Alfresco-Process-Services/24.3/Alfresco-Process-Services/Develop/Develop-extensions-for-Process-Services/Custom-Logic/Java-Delegates) |
 
-### Lab 7: Create a Service Task with Java Delegate
+### Lab 9: Create a Service Task with Java Delegate
 1.	Enter your New Customer Onboarding process in edit mode.
 2.	Select the Variables attribute in the configuration panel to add a new variable.
 3.	Add a variable titled ```stateVerify``` as a ```string```
@@ -314,7 +428,7 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 | We'll add an exclusive gateway that will allow us to go down either path specified above. |
 | Our Out-of-State path will include a User Task assigned to our Team's manager. |
 
-### Lab 8: Add an Exclusive Gateway and Splitting Paths
+### Lab 10: Add an Exclusive Gateway and Splitting Paths
 1.	Open your New Customer process in edit mode.
 2.	Delete the end event.
 3.	From the left panel, under Gateways, add an Exclusive Gateway to your process. Connect it from the KYC Delegate task.
