@@ -293,20 +293,23 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 1. With your Onboarding Process in edit mode, add a new variable to your process by selecting the **Variables** parameter in the bottom configuration panel. Add the following variable:
    - **Variable name:** ```recordList```
    - **Variable type:** ```string```
-2. Add a **REST-Call Task** to your process (under Activities).
+2. Add a **Intermediate Timer Catching Event** to your process (found under the Intermediate Catching Events header) connected from the _Add User to APS_ script task.
+   - Name it: ```Delay of 5 Seconds```
+   - In the configuration panel, set the **Time Duration** parameter to: ```PT5S```.
+3. Add a **REST-Call Task** to your process (under Activities).
    - Name the task ```Get All Users```.
-3. Connect this task in the workflow **AFTER** the _Add User to APS_ script task.
-4. With the Task selected, select the **Endpoint** paramter in the bottom configuration panel to open the _Change value for endpoint_ popup window. Use the following configuration:
+4. Connect this task in the workflow **AFTER** the _Delay of 5 Seconds_ timer event.
+5. With the Task selected, select the **Endpoint** paramter in the bottom configuration panel to open the _Change value for endpoint_ popup window. Use the following configuration:
    - **HTTP Method:** GET
    - **Base enpoint:** _choose aps from the drop-down_ and save the configuration.
    - **To add URL parameters...:** ```/api/enterprise/users```
    - Save the configuration.
-5. Select the **Response Mapping** paramter to open the _Change value for Response mapping_ pop-up window and add a new variable with the following config:
+6. Select the **Response Mapping** paramter to open the _Change value for Response mapping_ pop-up window and add a new variable with the following config:
    - **Property name:** ```data```
    - **Variable type:** ```string```
    - **Variable name:** ```userData```
    - Save the configuration.
-6. Add a **Script Task** connected to the _Get All Users_ Task. Configure the following parameters in the bottom configuration panel:
+7. Add a **Script Task** connected to the _Get All Users_ Task. Configure the following parameters in the bottom configuration panel:
    - **NAme:** ```Get Database User```
    - **Script format:** ```groovy```
    - **Script:**
@@ -344,10 +347,10 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
           println new JsonBuilder( recordList ).toPrettyString()
           execution.setVariable("recordList", new JsonBuilder( recordList ).toPrettyString())
      ```
-7. Create a new **User Task** connected to the _Get Database User_ script task.
+8. Create a new **User Task** connected to the _Get Database User_ script task.
    - Name the user task: ```Verify User Data```.
-8. In the bottom config panel, select the **Form reference** parameter and choose Create Form on the form reference popup window. Name it: ```Verify User data```.
-9. Follow these steps in the Form Editor to create a new form:
+9. In the bottom config panel, select the **Form reference** parameter and choose Create Form on the form reference popup window. Name it: ```Verify User data```.
+10. Follow these steps in the Form Editor to create a new form:
     - Drag a Dynamic Table onto the form stage. Select the pencil icon to go into edit mode.
     - Enter into Label field: ```Verify Database Data:```
     - Select the Override Id checkbox.
@@ -411,9 +414,9 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
             3.	Property Type: ```string```
     - Close the edit prompt.
     - Save and close the form.
-10. Add an end event to the _Verify User Data_ User task.
-11. Save and close the process.
-12. Deploy and test the process in ADW.
+11. Add an end event to the _Verify User Data_ User task.
+12. Save and close the process.
+13. Deploy and test the process in ADW.
 
 ---
 
