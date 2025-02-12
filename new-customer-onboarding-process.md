@@ -81,13 +81,17 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
         - Label: ```Zip Code:```
         - ID: ```newCustomerZipCode```
         - Required: checked
-    -	Create another Text object with the following information:
+    - Create another Text object with the following information:
         - Label: ```Email Address:```
         - ID: ```newCustomerEmail```
         - Required: checked
-    -	Create another Text object with the following information:
+    - Create another Text object with the following information:
         - Label: ```Phone Number:```
         - ID: ```newCustomerPhoneNumber```
+        - Required: checked
+    - Create another Text object with the following information:
+        - Label: ```Password:```
+        - ID: ```newCustomerPassword```
         - Required: checked
     -	To save the form and return to your process model, click on the save button in the top left of the pag-   
     -	On the Save form popup window, click the Save and close editor button to return to your process model.
@@ -195,10 +199,10 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 ### Lab 5: Create a Store Entity Task / Save Values to Database
 1. Access the App Designer tile from the homepage of the Activiti App (Process Services).
 2. Enter your New Claims process in edit mode by selecting the edit icon when hovering your mouse over its tile.    
-3. Delete the sequence flow line going from the Add Customer Data task to the Create Cust Doc task.
-4. Add a Store Entity Task to the process and connect it in place of the deleted flow line. Connect flow lines to and from the Add Customer Data and Create Cust Doc tasks. Your Store Entity task should be connected like this:	 
+3. Delete the sequence flow line that connects the _Gather Customer data_ taske to the _Create NC Doc_ task.
+4. Add a Store Entity Task to the process and connect it to the sequence flow line from the _Gather Customer data_ task.
 5. Select the new Store Entity Task and set the following configuration in the bottom panel:
-    -	Name: Save Cust data to DB
+    -	Name: ```Save Cust data to DB```
     -	Select Attribute Mapping to open the mapping popup window. Perform the following actions:
         -	Mapped Data model: ```9siCustomerDatabase```
         -	Mapped entity: ```newCustomers```
@@ -212,102 +216,79 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
             6.	State: State (Form field)
             7.	zipCode: Zip Code (Form field)
         -	Press Save on the mapping window.
-6. Save and close your process.
+6. Save the process (Do not save a close - without an end event you may get a validation error, save anyway).
 
 
-|  **Next Steps: Stand-alone Database Look-up Process** |
+|  **Next Steps: Add the Customer as New User to APS** |
 | ----------- |
-| Our Customer Onboarding process now contains the ability to add customer data to 9SI's customer database. Before we test it, we need a method of retrieving and displaying data from the database in order to ensure we're saving values correctly. |
-| We'll build a stand-alone process that will do two simple things: retrieve and display customer data from the database. |
+| Now that we're saving our new user to the customer 9 Second Insurance database, we also need to add the customer as a new user to APS so we can easily access their data within the system. |
+| To do this, we'll leverage a REST-Call Task and a Script Task. |
 
-### Lab 6: Create a Database Lookup Process
-1.	Create a new Process called Lookup DB Values.
-2.	In the bottom configuration panel, launch the Variables attribute window and add the following variable:
-    -	Variable name: ```recordList```
-    -	Variable type: ```string```
-    -	Save the variable.
-3.	Create a Script Task and use the configuration panel to assign the following values:
-    -	Name: ```Get DB Values```
-    -	Script Format: ```groovy```
-    -	Script: (paste the following code into the scripting window)
-```
-import groovy.sql.Sql;
-import groovy.json.*
-import groovy.json.JsonBuilder
-
-class Record {
-    String recId
-    String firstname
-    String lastname
-    String address
-    String city
-    String state
-    String zip
-}
-
-def url = 'jdbc:oracle:thin:@//aps-custom-oracle-db.cp58lgpzkwpy.us-east-1.rds.amazonaws.com/ORCL'
-def user = 'admin'
-def password = 'administrator'
-def driver = 'oracle.jdbc.driver.OracleDriver'
-def sql = Sql.newInstance(url, user, password, driver)
-
-rowNum = 0;
-def recordList = [];
-
-sql.eachRow('SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE FROM CUSTOMERS') { row ->
-   
-  def r = new Record( recId: row.id, firstname:row.firstname, lastname:row.lastname, address:row.addressLine1, city:row.city, state:row.state, zip:row.zipcode)
-    recordList.add(r);
-  
-}
-
-  println new JsonBuilder( recordList ).toPrettyString()
-  execution.setVariable("recordList", new JsonBuilder( recordList ).toPrettyString())
-```
-4.	Add a User Task to the process and connect it from the Script Task. Name it: Display DB Values.
-5.	Select the referenced form attribute and open the form prompt.
-6.	Select New form.
-7.	In the Form Editor page follow these steps to create the form:
-    -	Drag a Dynamic Table onto the form stage. Select the pencil icon to go into edit mode.
-    -	Enter into Label field: ```CUSTOMERS```
-    -	Select the Override Id checkbox.
-    -	Enter into the ID field: ```recordList```
-    -	Select the Table Columns tab
-    -	Press the "+" icon button to create new property mappings with the following values:
-        -	Column 1:
-            1.	Property ID: ```recId```
-            2.	Property Name: ```ID```
-            3.	Property Type: ```string```
-        -	Column 2:
-            1.	Property ID: ```firstname```
-            2.	Property Name: ```First name```
-            3.	Property Type: ```string```
-        -	Column 3:
-            1.	Property ID: ```lastname```
-            2.	Property Name: ```Last Name```
-            3.	Property Type: ```string```
-        -	Column 4:
-            1.	Property ID: ```address```
-            2.	Property Name: ```Address```
-            3.	Property Type: ```string```
-        -	Column 5:
-            1.	Property ID: ```state```
-            2.	Property Name: ```State```
-            3.	Property Type: ```string```
-        -	Column 6:
-            1.	Property ID: ```city```
-            2.	Property Name: ```City```
-            3.	Property Type: ```string```
-        -	Column 7:
-            1.	Property ID: ```zip```
-            2.	Property Name: ```Zip```
-            3.	Property Type: ```string```
-    -	Close the edit prompt.
-    -	Save and close the form.
-8.	Add an End Event to the end of the process.
-9.	Save and close the process.
-10.	Add the processes to your app that you created in this and the previous lab
-11.	Use the digital workspace to test both processes. The New Customer Onboarding process should now save the customer data into the database. Use the Display DB Values process to view added entries.
+### Lab 7. Add a User to APS from Within onboarding Process
+1. Enter your New Customer Onboarding process in edit mode.
+2. Add a **Script Task** to your process (under Activities).
+   - Name the task ```Add User to APS```.
+3. Connect this task in the workflow **AFTER** the _Save Cust data to DB_ task.
+4. In the bottom configuration panel configure the following:
+   - **Script format:** ```groovy```
+   - **Script:**
+     ```
+        import com.activiti.service.idm.UserServiceImpl;
+        import com.activiti.security.SecurityUtils;
+        import com.activiti.domain.idm.UserStatus;
+        import com.activiti.domain.idm.AccountType;
+        import com.activiti.domain.idm.User;
+        import com.activiti.repository.idm.UserRepository;
+        
+        
+        User currentUser = SecurityUtils.getCurrentUserObject();
+        
+        
+        String email = execution.getVariable("newCustomerEmail");
+        String firstName = execution.getVariable("newCustomerFirstName");
+        String lastName = execution.getVariable("newCustomerLastName");
+        String password = execution.getVariable("newCustomerPassword");
+        String company = execution.getVariable("newCustomerCompany");
+        String externalId = firstName + "" + lastName;
+        externalId = externalId.toLowerCase();
+        
+        UserStatus initialStatus = UserStatus.ACTIVE;
+        AccountType accountType = AccountType.ENTERPRISE;
+        Long tenantId = currentUser.getTenantId();
+        
+        User newUser = userService.createNewUser(
+                email,
+                firstName,
+                lastName,
+                password,
+                company,
+                initialStatus,
+                accountType,
+                tenantId,
+                externalId
+            );
+            
+        println("newUser.getId() >>> "+newUser.getId());
+        
+        userRepository.save(newUser);
+     ```
+   - Save the script.
+8. Add a **REST-Call Task** to your process (under Activities).
+   - Name the task ```Get All Users```.
+9. Connect this task in the workflow **AFTER** the _Add User to APS_ task.
+10. With the Task selected, select the **Endpoint** paramter in the bottom configuration panel to open the _Change value for endpoint_ popup window. Use the following configuration:
+   - **HTTP Method:** GET
+   - **Base enpoint:** _choose aps from the drop-down_ and save the configuration.
+   - **Response Mapping:** _Add a new variable with the following config_
+     - **Property name:** ```data```
+     - **Variable type:** ```string```
+     - **Variable name:** ```userData```
+     - Save the configuration.
+11. Add a **User Task** connected to the _Get All Users_ Task.
+12. Name the user task: ```Add User```.
+13. In the bottom config panel, select the **Form reference** parameter and choose Create Form on the form reference popup window.
+14. Follow these steps in the Form Editor to create a new form:
+    - 
 
 |  **Next Steps: Know-Your-Customer Logic for Out-of-State Documentation** |
 | ----------- |
@@ -374,211 +355,16 @@ sql.eachRow('SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE 
     - Source: ```Search```
     - Search for and select the Claims-Team group. The Group attribute should now show the Claims-Team value.
     - Press the Save button.
-12.	Connect a sequence flow line from the gateway task to the Create NC Doc task. Remove any associated sequence flow lines that connect the Create NC Doc task to any previous tasks.
+12.	Connect the sequence flow line from the gateway task to the Create NC Doc task. Remove any associated sequence flow lines that connect the Create NC Doc task to any previous tasks.
     - With this flow line selected, check the **Default Flow** check-box in the bottom configuration panel.
-13.	Create a sequence flow line from the Manager Follow-Up task to the Create NC Doc task. With this flow selected, select the **Flow condition** attribute and configure the following condition in the pop-up menu:
+13. Select the sequence flow line from the Gateway event to the Manager Follow-Up Task and use the **Flow condition** parameter to configure the following flow:
     - Condition Type: ```Simple```
     - Depends on: ```Variable```
     - Variable Drop-down: ```stateVerify```
     - Operator: ```equal```
     - Value: ```false```
+13.	Create a sequence flow line from the Manager Follow-Up task to the Create NC Doc task.
 14.	Save your process, redeploy your application, and test the process.
-
-|  **Next Steps: Custom Email Sub-Process** |
-| ----------- |
-| In order to complete the functionality our Manager needs, they'll need to send an email with attachments to the customer. We'll also want to use an email template, saving our Manager time in having to formulate the email. Our out-of-the-box email capabilities will not allow us to implement this functionality completely, so we'll create our own BPMN Stencil that will extend the Mail Task functionality to include our needs. |
-| I'll also create the email template that we'll all call to in our processes. |
-| The end-result will be a stand-alone, dynamic process that we will be able to embedd in other processes. |
-
-### Lab 9: Create a Stencil for Custom process Tasks
-1.	From the AppDesigner page, select Stencils from the top, blue banner.
-2.	Select the Create Stencil button.
-    -	Name the stencil [user #] - Custom Email.
-    -	Select BPMN from the dropdown.
-3.	Select the Stencil Editor button to go into edit mode.
-4.	Add a new group by selecting the + Add new group button. 
-    - Name the group ```My Custom Components```
-5.	Add a new item by selecting the + Add new item button. Enter the following information:
-    - Task Type: ```Service Task```
-    - Name: ```Send Email with Attachments```
-    - Description: ```Send an email with attachments``` (or enter your own)
-    - Group: use the dropdown selector to select the group you created above (My Custom Components)
-    - Icon: Use the change icon prompt to browse your local machine. Find where you downloaded and select the _emailicon.png_.
-    - Delegate Expression: ```${emailServiceWithAttachments}```
-    - Asynchronous: checked
-    - Select the Edit hyperlink next to Properties. 
-        - In the popup window select the + Add a new property link. Fill in the following information.
-            1.	Name: ```Email Template Name```
-            2.	ID: ```email_template_name```
-            3.	Type: String
-            4.	Select the Include property as field extension checkbox.
-            5.	Name of field extension: ```emailTemplate```
-            6.	Select Save Property button.
-        - Add another property by selecting the + Add a new property link.
-            1.	Name: ```Send To```
-            2.	ID: ```send_to```
-            3.	Type: String
-            4.	Select the Include property as field extension checkbox.
-            5.	Name of field extension: ```toList```
-            6.	Select Save Property button.
-        - Add another property by selecting the + Add a new property link.
-            1.	Name: ```Email Subject```
-            2.	ID: ```email_subject```
-            3.	Type: String
-            4.	Select the Include property as field extension checkbox.
-            5.	Name of field extension: ```subject```
-            6.	Select Save Property button.
-        - Add another property by selecting the + Add a new property link.
-            1.	Name: ```Attachments```
-            2.	ID: ```attachments```
-            3.	Type: String
-            4.	Select the Include property as field extension checkbox.
-            5.	Name of field extension: ```contentField```
-            6.	Select Save Property button.
-        - Add another property by selecting the + Add a new property link.
-            1.	Name: ```Include Attachments```
-            2.	ID: ```inc_attachments```
-            3.	Type: Boolean
-            4.	Select the Include property as field extension checkbox.
-            5.	Name of field extension: ```includeAttachments```
-            6.	Select Save Property button.
-        - Add another property by selecting the + Add a new property link.
-            1.	Name: ```Send CC```
-            2.	ID: ```send_cc```
-            3.	Type: String
-            4.	Select the Include property as field extension checkbox.
-            5.	Name of field extension: ```ccList```
-            6.	Select Save Property button.
-        - Add another property by selecting the + Add a new property link.
-            1.	Name: ```From```
-            2.	ID: ```from```
-            3.	Type: String
-            4.	Select the Include property as field extension checkbox.
-            5.	Name of field extension: ```from```
-            6.	Select Save Property button.
-        - Close the Edit stencil properties popup window.
-6.	Save the Stencil using the save icon in the top, left of the page.
-
-### Lab 10: (FACILITATOR ONLY) Create an Email Template
-1.	Navigate to the Identity Management section.
-2.	Select Tenants from the top blue banner.
-3.	Select Email Templates from the left menu.
-4.	Select Custom Email Templates.
-5.	Select the +Create new email template button.
-6.	Configure the email template with the following information:
-    -	Name: ```9si-oos-email```
-    -	Subject: ```Welcome to 9 Second insurance```
-    -	Email content:
-```
-Hello, ${newCustomerFirstName}!
-
-We value your business more than ever and look forward to providing you with exceptional service.
-
-You have indicated that your home address is located within the state of ${newCustomerState}. Since 9 Second Insurance is an Ohio-based company, and due to federal regulations, we need to capture just a little bit more information from you. Attached is a Out-Of-State Policy form that we need completed in order to offer you the best insurance policy. Please complete and return at your leisure.
-
-Best Regards,
-
-9 Second Insurance, Onboarding Team.
-```
--	Save the email template.
-
-
-### Lab 11. Build a Custom Email Sub-process 
-1.	Navigate to the App Designer.
-2.	Create a new process with the following configuration:
-    -	Name: ```[User #] Send Custom Email```. Ex: ```U1 Send Custom Email```.
-    -	Description: ```Email sub-process.```
-    -	Stencil: Select the Custom Email stencil
-3.	In the bottom configuration panel, select the Variables attribute. Enter the following variables:
-    -	ccEmailAddress: string
-    -	fromEmailAddress: string
-    -	newCustomerEmail: string
-4.	Create a Script task. Configure with the following information:
-    -	Name: ```Set Default Vars```
-    -	Script format: ```groovy```
-    -	Script:
-```
-execution.setVariable("fromEmailAddress", "claims-team@example.com");
-execution.setVariable("ccEmailAddress", "blumbergh@example.com");
-```
-5.	Create a User task connected to the script task. Name it: Configure Email.
-6.	Select the Referenced Form attribute from the configuration panel to open the referenced for popup. Select  New Form and create a new form with the following config:
-    -	Name:  ```Email Config Form```
-    -	Description: ```Used to configure custom email```
-7.	Add a Header to the form. 
-    -	Label it: ```Customer Information:```
-    7a. Add a Display Text object and set the Display Text to:
-```
-Customer Information:
-
-${newCustomerLastName}, ${newCustomerFirstName} - ${newCustomerId}
-${newCustomerAddress}
-${newCustomerCity}, ${newCustomerState}. ${newCustomerZipCode}
-```
-8.	Add a new Header to the form below the first header. Label it: Email Configuration:
-9.	Add a Text object to the Email header with the following configuration:
-    -	Label: 	```Email Subject:```
-    -	ID: ```emailsubject```
-    -	Required: checked
-10.	Add a Text object to the Email header with the following configuration:
-    -	Label: 	```To:```
-    -	Override ID: checked
-    -	ID: ```newCustomerEmail```
-    -	Required: checked
-11.	Add a Text object to the Email header with the following configuration:
-    -	Label: 	```From:```
-    -	Override ID: checked
-    -	ID: ```fromEmailAddress```
-    -	Required: checked
-12.	Add a Text object to the Email header with the following configuration:
-    -	Label: 	```CC:```
-    -	Override ID: checked
-    -	ID: ```ccEmailAddress```
-    -	Required: checked
-13.	Add a Check Box object to the Email header with the following configuration:
-    -	Label: 	```Include Attachments:```
-    -	Override ID: unchecked
-    -	ID: ```includeattachments```
-    -	Required: checked
-14.	Add a Drop-Down object to the Email header with the following configuration:
-    -	Label: 	```Select Email Template```
-    -	Override ID: unchecked
-    -	ID: ```selectemailtemplate```
-    -	Required: checked
-    -	Select the options tab and add the following option(s):
-        -	Label: ```Out-of-State Email```
-        -	ID: ```9si-oos-email```
-15.	Add a Attach File object to the Email header with the following configuration:
-    -	Label: 	```Attachment```
-    -	Override ID: checked
-    -	ID: ```content```
-    -	Required: checked
-16.	Save and close the form editor.
-17.	Add the custom Send Email w Attachments task that was created during the Stencil la- Give it the following configuration:
-    -	Name: ```Send Email```
-    -	Email Template Name: ```${selectemailtemplate}```
-    -	Sent To: ```${newCustomerEmail}```
-    -	Email Subject: ```${emailsubject}```
-    -	Attachments: ```content```
-    -	Include Attachments: checked
-    -	Send CC: ```${ccEmailAddress}```
-    -	From: ```${fromEmailAddress}```
-18.	Add an End Event connected to the Send Mail task.
-19.	Save and close the process editor.
-
-|  **Next Steps: Add the Email Sub-Process to our Onboarding Process** |
-| ----------- |
-| Our stand-alone email sub-process is now complete and we're ready to add it to the customer onboarding process. |
-
-### Lab 12: Add a Sub-process (Custom Email process)
-1.	Open the Customer Onboarding Process in edit mode.
-2.	Add a Collapsed Subprocess to the process after the Manager Follow-up task.
-    -	Connect the collapsed subprocess from the manager foll-up and to the Create NH Doc task.
-3.	Give the Collapsed Subprocess event the following configuration:
-    -	Name: ```Send OOS Email```
-    -	Referenced Subprocess: choose the ```Send Custom Email process``` created in previous la-
-4. Save and test the process.
-
 
 ---
 
