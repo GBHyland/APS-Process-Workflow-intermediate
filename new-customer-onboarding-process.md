@@ -99,6 +99,7 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 15.	Save the process model by clicking on the Save icon in the top left of the pag-   
 16.	In the Save model popup window, press the Save and close editor button.
 
+---
 
 |  **Next Steps: Process Application** |
 | ----------- |
@@ -123,6 +124,8 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 12.	Navigate back to the home page by clicking the home button in the top, blue banner:  
 13.	If your application already appears on the home page as a tile you are done.
     -	If not, deploy your new application by selecting the blank tile, depicted with a plus sign “+” (“Add a new app” appears when you hover your mouse over it. Select this tile, then select your application in the Add app to landing page popup window. Press the Deploy button on that window. Your application is now deployee
+
+---
 
 |  **Next Steps: Creating and Saving a Customer Document** |
 | ----------- |
@@ -162,6 +165,8 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 12.	Navigate to your application and republish.
 13.	Test your updated process.
 
+---
+
 |  **Next Steps: Saving Information to 9 Second Insurance's Customer Database** |
 | ----------- |
 | We are capturing customer information, creating and saving a customer document, and now we need to save our customer's data to the 9SI customer database. |
@@ -196,6 +201,8 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 5. Select the Alfresco Tab Select alfresco1 in the Repository Source dropdown.
 6. Save and Close the Model.
 
+---
+
 ### Lab 5: Create a Store Entity Task / Save Values to Database
 1. Access the App Designer tile from the homepage of the Activiti App (Process Services).
 2. Enter your New Claims process in edit mode by selecting the edit icon when hovering your mouse over its tile.    
@@ -218,6 +225,7 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
         -	Press Save on the mapping window.
 6. Save the process (Do not save a close - without an end event you may get a validation error, save anyway).
 
+---
 
 |  **Next Steps: Add the Customer as New User to APS** |
 | ----------- |
@@ -275,6 +283,7 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
    - Save the script.
 5. Save the process.
 
+---
 
 |  **Next Steps: Verify Customer Data was Saved** |
 | ----------- |
@@ -403,6 +412,7 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 9. Save and close the process.
 10. Deploy and test the process in ADW.
 
+---
 
 |  **Next Steps: Know-Your-Customer Logic for Out-of-State Documentation** |
 | ----------- |
