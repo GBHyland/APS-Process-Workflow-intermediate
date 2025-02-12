@@ -278,7 +278,7 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 
 |  **Next Steps: Verify Customer Data was Saved** |
 | ----------- |
-| We're now saving our customer data in two places, in the 9SI customer database and as a new user in APS. Before we move on, we need to add a review mechanism that retrieves and displays those records so we can esnure that the data was saved correctly. This is standard functionality in database operations. |
+| We're now saving our customer data in two places, in the 9SI customer database and as a new user in APS. Before we move on, we need to add a review mechanism that retrieves and displays those records so we can ensure that the data was saved correctly. This is standard functionality in database operations. |
 
 ### Lab 8. Add Data Retrieval and Verification Method
 1. With your Onboarding Process in edit mode, add a new variable to your process by selecting the **Variables** parameter in the bottom configuration panel. Add the following variable:
