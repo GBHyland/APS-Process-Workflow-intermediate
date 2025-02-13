@@ -290,7 +290,7 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
         rowNum = 0;
         def recordList = [];
         
-        sql.eachRow('SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE FROM CUSTOMERS WHERE FIRSTNAME=${newCustomerFirstName} AND LASTNAME=${newCustomerLastName}') { row ->
+        sql.eachRow("SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE FROM CUSTOMERS WHERE FIRSTNAME=${newCustomerFirstName} AND LASTNAME=${newCustomerLastName}") { row ->
            
           def r = new Record( recId: row.id, firstname:row.firstname, lastname:row.lastname, address:row.addressLine1, city:row.city, state:row.state, zip:row.zipcode)
             recordList.add(r);
