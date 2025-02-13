@@ -38,21 +38,21 @@
 |  ```recordList```   |  string           |
 
 8.	Create a new User Task connected to the start event.   
-9.	Give the user task a name by double-clicking on the task to open a text field. Name this task Customer Search.
+9.	Give the user task a name by double-clicking on the task to open a text field. Name this task ```Customer Search```.
 10.	With the user task selected, notice that the Referenced form value in the bottom configuration window is No reference selected. To create an intake form for this task, click on the No reference selected value.
 11.	In the Form reference popup window, select the New Form button.
 12.	In the Create a new form window, enter the following values:
-    1.	Form name: Customer Lookup
-    2.	Description: Gather customer information to retrieve records.
+    1.	Form name: ```Customer Lookup```
+    2.	Description: ```Gather customer information to retrieve records.```
     3.	Stencil: Default form
     4.	Select the Create form button. 
 13.	Follow these steps to create the form:
     1.	From the left object menu, drag a Header onto the canvas. To edit, click on the pencil icon that appears when you hover your mouse over the header object. In the Label field, name it Enter the Customer’s last name and click the Close button.
     2.	Drag a Text object and dop it into the Header object.
     3.	Click on the pencil icon on the Display Value object to open the edit prompt. Configure the text field with the following options:
-        1.	Label: Last Name:
+        1.	Label: ```Last Name:```
         2.	Override ID: check the box
-        3.	ID: lookup_lastname
+        3.	ID: ```lookup_lastname```
         4.	Required: check the box
         5.	Close the edit prompt.
     4.	Save and close the form editor by clicking on the save button.
