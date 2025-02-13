@@ -122,46 +122,6 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 
 ---
 
-|  **Next Steps: Creating and Saving a Customer Document** |
-| ----------- |
-| Since we are now capturing customer information we need to be able to create a real document for our customer and save it to our content management system (ACS). |
-| In APS, generating and saving a document are two seperate steps. |
-| [Generating a Document](https://docs.alfresco.com/process-automation/latest/model/connectors/generate/) |
-
-### Lab 3: Generating and Saving a Document
-1.	Access the App Designer tile from the homepage of the Activiti App (Process Services).
-2.	Enter your New Customer Onboarding process in edit mode by selecting the edit icon when hovering your mouse over its til-    
-3.	Remove the End event and the line connecting to it by selecting each one and clicking the trash can icon that appears. 
-4.	Add a Generate Document task to the process:
-    -	From the left task menu, select Activities drop down to reveal the activities tasks. Click and drag the Generate document task dropping it onto the stage.
-    -	Drag it into place and connect it to the Approve Sequence flow line
-    -	To configure the Generate Document task select it to show its attribute values in the bottom configuration panel.
-    -	Name your Generate Document task: ```Create NC Doc```
-    -	Select the Document Variable attribute and enter the value ```newCustDoc``` into the field.
-    -	Select the Template attribute to open the Change value for “Template” popup window.
-        -	Select the Custom Template tab.
-        -	Select the Choose File button to open a file browsing window. From the file package you received, navigate to the following file path and choose the file named: ```Aps_documents/form_doc_templates/9si_newCustomer.docx```
-        -	The name of the template file should now appear as the value of the Template attribute.
-    -	Select the File name attribute to open the Change value for “File name” popup box.
-        -	Enter the following file name: ```customer_${newCustomerLastName}_${newCustomerId}```
-        -	Press the save button to close the popup window.
-5.	Add a Publish to Alfresco task to the process:
-    -	From the left task menu, select Alfresco drop down to reveal Alfresco related tasks. Click and drag the Publish to Alfresco task dropping it onto the stage. Drag it into place on the right side of the Create Claim Doc task.
-    -	Connect a flow line from the Create Claim Doc task to the new Publish to Alfresco task. 
-6.	Name your _Publish to Alfresco task_ by double clicking on task and opening the name field.
-    -	Name the task ```Save Doc to CMS```.
-7.	To configure the Publish to Alfresco task select it to show its attribute values in the bottom configuration panel.
-8.	Select the Alfresco Content attribute to open the Change Value popup window. Choose Publish all content uploaded in process from the dropdown menu and press the Save button.
-9.	Select the Alfresco Destination attribute to open the Change Value popup window.
-    -	Next to Destination, click the _Select folder_ button to open the browse Alfresco popup window. The site you created previously should populate here. Choose your site, then navigate to and select the following folder path: _9SecondInsurance/ documentLibrary/Customer Information_
--	Press the Save button on the Change Value popup window.
-10.	Finally, add an end event to your process. Select the Publish to Alfresco task, then select the end event icon from the small popup menu.
-11.	Save your process and close the editor.
-12.	Navigate to your application and republish.
-13.	Test your updated process.
-
----
-
 |  **Next Steps: Saving Information to 9 Second Insurance's Customer Database** |
 | ----------- |
 | We are capturing customer information, creating and saving a customer document, and now we need to save our customer's data to the 9SI customer database. |
@@ -196,14 +156,12 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 5. Select the Alfresco Tab Select alfresco1 in the Repository Source dropdown.
 6. Save and Close the Model.
 
----
 
 ### Lab 5: Create a Store Entity Task / Save Values to Database
-1. Access the App Designer tile from the homepage of the Activiti App (Process Services).
-2. Enter your New Claims process in edit mode by selecting the edit icon when hovering your mouse over its tile.    
-3. Delete the sequence flow line that connects the _Gather Customer data_ taske to the _Create NC Doc_ task.
-4. Add a Store Entity Task to the process and connect it to the sequence flow line from the _Gather Customer data_ task.
-5. Select the new Store Entity Task and set the following configuration in the bottom panel:
+1. Enter your Customer Onboarding process in edit mode.    
+2. Delete the sequence flow line that connects the _Gather Customer data_ taske to the _Create NC Doc_ task.
+3. Add a Store Entity Task to the process and connect it to the sequence flow line from the _Gather Customer data_ task.
+4. Select the new Store Entity Task and set the following configuration in the bottom panel:
     -	Name: ```Save Cust data to DB```
     -	Select Attribute Mapping to open the mapping popup window. Perform the following actions:
         -	Mapped Data model: ```9siCustomerDatabase```
@@ -218,7 +176,7 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
             6.	State: State (Form field)
             7.	zipCode: Zip Code (Form field)
         -	Press Save on the mapping window.
-6. Save the process (Do not save a close - without an end event you may get a validation error, save anyway).
+5. Save the process (Do not save a close - without an end event you may get a validation error, save anyway).
 
 ---
 
@@ -493,5 +451,43 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 
 ---
 
+|  **Next Steps: Creating and Saving a Customer Document** |
+| ----------- |
+| Since we are now capturing customer information we need to be able to create a real document for our customer and save it to our content management system (ACS). |
+| In APS, generating and saving a document are two seperate steps. |
+| [Generating a Document](https://docs.alfresco.com/process-automation/latest/model/connectors/generate/) |
 
+### Lab 3: Generating and Saving a Document
+1.	Access the App Designer tile from the homepage of the Activiti App (Process Services).
+2.	Enter your New Customer Onboarding process in edit mode by selecting the edit icon when hovering your mouse over its til-    
+3.	Remove the End event and the line connecting to it by selecting each one and clicking the trash can icon that appears. 
+4.	Add a Generate Document task to the process:
+    -	From the left task menu, select Activities drop down to reveal the activities tasks. Click and drag the Generate document task dropping it onto the stage.
+    -	Drag it into place and connect it to the Approve Sequence flow line
+    -	To configure the Generate Document task select it to show its attribute values in the bottom configuration panel.
+    -	Name your Generate Document task: ```Create NC Doc```
+    -	Select the Document Variable attribute and enter the value ```newCustDoc``` into the field.
+    -	Select the Template attribute to open the Change value for “Template” popup window.
+        -	Select the Custom Template tab.
+        -	Select the Choose File button to open a file browsing window. From the file package you received, navigate to the following file path and choose the file named: ```Aps_documents/form_doc_templates/9si_newCustomer.docx```
+        -	The name of the template file should now appear as the value of the Template attribute.
+    -	Select the File name attribute to open the Change value for “File name” popup box.
+        -	Enter the following file name: ```customer_${newCustomerLastName}_${newCustomerId}```
+        -	Press the save button to close the popup window.
+5.	Add a Publish to Alfresco task to the process:
+    -	From the left task menu, select Alfresco drop down to reveal Alfresco related tasks. Click and drag the Publish to Alfresco task dropping it onto the stage. Drag it into place on the right side of the Create Claim Doc task.
+    -	Connect a flow line from the Create Claim Doc task to the new Publish to Alfresco task. 
+6.	Name your _Publish to Alfresco task_ by double clicking on task and opening the name field.
+    -	Name the task ```Save Doc to CMS```.
+7.	To configure the Publish to Alfresco task select it to show its attribute values in the bottom configuration panel.
+8.	Select the Alfresco Content attribute to open the Change Value popup window. Choose Publish all content uploaded in process from the dropdown menu and press the Save button.
+9.	Select the Alfresco Destination attribute to open the Change Value popup window.
+    -	Next to Destination, click the _Select folder_ button to open the browse Alfresco popup window. The site you created previously should populate here. Choose your site, then navigate to and select the following folder path: _9SecondInsurance/ documentLibrary/Customer Information_
+-	Press the Save button on the Change Value popup window.
+10.	Finally, add an end event to your process. Select the Publish to Alfresco task, then select the end event icon from the small popup menu.
+11.	Save your process and close the editor.
+12.	Navigate to your application and republish.
+13.	Test your updated process.
+
+---
 
