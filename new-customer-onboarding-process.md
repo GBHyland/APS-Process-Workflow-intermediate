@@ -159,8 +159,8 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 
 ### Lab 5: Create a Store Entity Task / Save Values to Database
 1. Enter your Customer Onboarding process in edit mode.    
-2. Delete the sequence flow line that connects the _Gather Customer data_ taske to the _Create NC Doc_ task.
-3. Add a Store Entity Task to the process and connect it to the sequence flow line from the _Gather Customer data_ task.
+2. Delete the end event.
+3. Add a Store Entity Task to the process and connect it to the end of the process.
 4. Select the new Store Entity Task and set the following configuration in the bottom panel:
     -	Name: ```Save Cust data to DB```
     -	Select Attribute Mapping to open the mapping popup window. Perform the following actions:
