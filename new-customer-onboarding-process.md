@@ -2,7 +2,7 @@
 
 |  **Overall Scenario – 9 Second Insurance: New Customer Process** |
 | ----------- |
-| As a systems architect working for 9 Second Insurance, you are tasked with creating a process that will allow agents to onboard new customers and add them to 9SI's customer database: |
+| As a systems architect working for 9 Second Insurance, you are tasked with creating a process that will allow agents to onboard new customers and add them to 9SI's customer database. The process should include: |
 | Data intake mechanism to capture a customer's information. |
 | Save the new customer's information to 9SI's external customer database. |
 | Document generation and saving to content management system. |
