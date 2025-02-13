@@ -42,7 +42,6 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
     - Stencil: Default form
     - Select the Create form button. 
 13.	Follow these steps to create the form you’ll need to intake a new customer:
-    - From the left object menu, drag a Header onto the canvas. To edit, click on the pencil icon that appears when you hover your mouse over the header object. In the Label field, name it Customer ID and click the Close button.
     - Drag a Display Value object and dop it into the Header object.
     - Click on the pencil icon on the Display Value object to open the edit prompt.
     - Select the blue Variable button. In the Dropdown below the button, select the **newCustomerId** variable The Label should change to match the variable nam- Close the prompt.
