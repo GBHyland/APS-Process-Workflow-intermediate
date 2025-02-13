@@ -47,7 +47,7 @@
     3.	Stencil: Default form
     4.	Select the Create form button. 
 13.	Follow these steps to create the form:
-    1.	From the left object menu, drag a Header onto the canvas. To edit, click on the pencil icon that appears when you hover your mouse over the header object. In the Label field, name it Enter the Customer’s last name and click the Close button.
+    1.	From the left object menu, drag a Header onto the canvas. To edit, click on the pencil icon that appears when you hover your mouse over the header object. In the Label field, name it ```Enter the Customer’s Last Name:``` and click the Close button.
     2.	Drag a Text object and dop it into the Header object.
     3.	Click on the pencil icon on the Display Value object to open the edit prompt. Configure the text field with the following options:
         1.	Label: ```Last Name:```
