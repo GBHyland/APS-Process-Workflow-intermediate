@@ -68,7 +68,7 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
         - Label: ```State:```
         - ID: ```newCustomerState```
         - Required: checked
-        - Select the Options ta- Configure the following information in the options tab:
+        - Select the Options tab and Configure the following information:
             1.	Select the Rest Service button.
             2.	Rest URL: ```https://run.mocky.io/v3/0329674b-51fe-450f-90cf-be8f53cb68a6```
             3.	Path to array in JSON response: ```states```
