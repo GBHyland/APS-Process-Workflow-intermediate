@@ -143,7 +143,7 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
         -	Select the Choose File button to open a file browsing window. From the file package you received, navigate to the following file path and choose the file named: ```Aps_documents/form_doc_templates/9si_newCustomer.docx```
         -	The name of the template file should now appear as the value of the Template attribute.
     -	Select the File name attribute to open the Change value for “File name” popup box.
-        -	Enter the following file name: ```customer_${newCustomerId}```
+        -	Enter the following file name: ```customer_${newCustomerLastName}_${newCustomerId}```
         -	Press the save button to close the popup window.
 5.	Add a Publish to Alfresco task to the process:
     -	From the left task menu, select Alfresco drop down to reveal Alfresco related tasks. Click and drag the Publish to Alfresco task dropping it onto the stage. Drag it into place on the right side of the Create Claim Doc task.
