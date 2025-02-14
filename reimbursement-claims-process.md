@@ -3,14 +3,12 @@
 |  **Overall Scenario – 9 Second Insurance: Reimbursement Claim Process** |
 | ----------- |
 | As a systems architect working for 9 Second Insurance, you are tasked with creating a process that will allow agents to create reimbursement claims. Your process will include: |
-| Data intake mechanism to capture claim information. |
-| Data review mechanism to determine accuracy of information. |
-| Document generation and saving to content management system. |
-| A REST call to retrieve customer values from the 9SI customer database. |
+| Selection mechanism to retrieve customer information in both APS and the 9SecondInsurance customer database. |
+| A method to verify customer information. |
 | Perform logic to adjust a deductible based on claimed equipment value (Decision Table). |
 
 
-### Lab 1. Create an Intake Task
+### Lab 1. Create a Customer Selection and Retrieve Customer Values
 1.	From the Alfresco home page, launch the Activiti App (Process Services) by clicking on the Activiti App hyperlink. 
     1.	Sign in with your provided username and password. You will be directed to the Activiti App home page.
 2.	Select the App Designer tile to navigate to the Business Process Models page.
@@ -141,8 +139,8 @@ execution.setVariable("recordList", new JsonBuilder( recordList ).toPrettyString
 16.	In the bottom configuration panel, select the Referenced Form attribute. 
 17.	In the form popup window, select the New Form button.
 18.	In the Create a new form window, enter the following values:
-    1.	Form name: ```Create Claim```
-    2.	Description: ```Create a new claim.```
+    1.	Form name: ```Verify Customer```
+    2.	Description: ```Verify a customer's information.```
     3.	Stencil: ```Default form```
 19.	Select the Create form button.
 20.	Follow these steps to create the form:
@@ -151,36 +149,15 @@ execution.setVariable("recordList", new JsonBuilder( recordList ).toPrettyString
         1.	In the _Text to display_ field enter the following text, then close the prompt.
 code:
     ```
-    Creating Claim for:
+    Verify the Customer's information before proceeding:
     ${cFullName} - ${cId}
     ${cEmail}
     ${cAddress} ${cCity}, ${cState}  ${cZip}
     ```
-    3. From the left panel drag a **Header Object** and place it under the _Customer Information_ header. Label it: ```Claim infoamtion:```.
-    4. Add a **Date Object** to the header and input the following configuration:
-       - **Label:** ```Incident Date:```
-       - **Required:** _checked_
-    5. Add a Dropdown object to the Header and go into edit mode. Give it the following configuration:
-        1.	Label: ```Incident Type:```
-        2.	Required: checked
-        3.	Select the Options tab. Enter the following configuration.
-
-    |        Label        |        ID        |
-    | ------------        | ----------       |
-    |        Damage       |    Damage        |
-    |        Lost         |    Lost          |
-    |        Stolen       |    Stolen        |
-    |        Other        |    Other         |
-
-    6. Add an Amount object to the Header and go into edit mode. Give it the following configuration:
-        1.	Label: ```Claim Amount:```
-        2.	Select the Override ID checkbox.
-        3.	ID: ```value```
-        4.	Check the Required checkbox.
-        5.	Close the edit prompt.
-21.	Add a connected end event to the process, connected to the Display DB Values task.   
-22.	Save the process model by clicking on the Save icon in the top left of the page.   
-23.	In the Save model popup window, press the Save and close editor button.
+    3. Close the prompt.
+    4. Select the **save icon** in the top-left of the page and choose _Save and Close_ to return to your process.
+21. Add an **End event** to your _Verify Customer_ user task.
+22. Save and close the process.
 
 
 ### Lab2. Add the Claims Process to your Process Application
@@ -201,12 +178,44 @@ code:
 a.	OPTIONAL: You can change the name of the process that will run by editing the Process Name field. 
 5.	Click on the START PROCESS hyperlink at the bottom right corner of the page.
 6.	Select My Tasks found under the Workflow dropdown on the left side of the page.
-7.	Your Customer Search task should appear. Click on it to perform the task.
+7.	Your _Customer Search_ task should appear. Click on it to perform the task.
 
 |  **Next Steps: Decision to Edit or Continue With the Claim** |
 | ----------- |
 | Now that we have a method to retrieve a customer's information who is making a reimbursement claim, we need to be able to either go back to the customer search query (in the case we did not get the right customer) or proceed with the claim. |
 | We also need to build a form that captures claim-specific information. |
+
+
+
+// add this somewhere
+8. From the left panel drag a **Header Object** and place it under the _Customer Information_ header. Label it: ```Claim infoamtion:```.
+9. Add a **Date Object** to the header and input the following configuration:
+   - **Label:** ```Incident Date:```
+   - **Required:** _checked_
+10. Add a Dropdown object to the Header and go into edit mode. Give it the following configuration:
+    1.	Label: ```Incident Type:```
+    2.	Required: checked
+    3.	Select the Options tab. Enter the following configuration.
+
+|        Label        |        ID        |
+| ------------        | ----------       |
+|        Damage       |    Damage        |
+|        Lost         |    Lost          |
+|        Stolen       |    Stolen        |
+|        Other        |    Other         |
+
+6. Add an Amount object to the Header and go into edit mode. Give it the following configuration:
+        1.	Label: ```Claim Amount:```
+        2.	Select the Override ID checkbox.
+        3.	ID: ```value```
+        4.	Check the Required checkbox.
+        5.	Close the edit prompt.
+21.	Add a connected end event to the process, connected to the Display DB Values task.   
+22.	Save the process model by clicking on the Save icon in the top left of the page.   
+23.	In the Save model popup window, press the Save button (You may get a validation error; save anyway).
+// end this
+
+
 
 ### Lab 4. Create a Form Outcome with Exclusive Pathing & Claim Form
 1.	Access the App Designer tile from the homepage of the Activiti App (Process Services).
