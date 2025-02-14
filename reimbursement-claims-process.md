@@ -16,7 +16,7 @@
 2.	Select the App Designer tile to navigate to the Business Process Models page.
 3.	To create a new process, press the Create Process button in the top right of the page.
 4.	In the Create a new business process model popup, enter the following information:
-    1.	Model name: [Your user #] New Claim (ex: U1 New Claim)
+    1.	Model name: ```[Your user #] New Claim``` (ex: U1 New Claim)
     2.	Description: Create a new claim.
     3.	Editor Type: Leave as BPMN editor
     4.	Stencil: Default BPMN
@@ -48,129 +48,139 @@
     4.	Select the Create form button. 
 13.	Follow these steps to create the form:
     1.	From the left object menu, drag a Header onto the canvas. To edit, click on the pencil icon that appears when you hover your mouse over the header object. In the Label field, name it ```Enter the Customer’s Last Name:``` and click the Close button.
-    2.	Drag a Text object and dop it into the Header object.
+    2.	Drag a **People** object and dop it into the Header object.
     3.	Click on the pencil icon on the Display Value object to open the edit prompt. Configure the text field with the following options:
         1.	Label: ```Last Name:```
         2.	Override ID: check the box
-        3.	ID: ```lookup_lastname```
+        3.	ID: ```customer```
         4.	Required: check the box
         5.	Close the edit prompt.
     4.	Save and close the form editor by clicking on the save button.
     5.	On the Save form popup window, click the Save and close editor button to return to your process model
 14.	Create a new script task connected to the Customer Search user task. In the bottom configuration panel, configure the following attributes:
-    1.	Name: Get DB Values
+    1.	Name: ```Get APS Customer```
     2.	Script format: groovy
     3.	Script:
 enter this code in the popup script window:
 ```
-  import groovy.sql.Sql;
-  import groovy.json.*;
-  import groovy.json.JsonBuilder;
-  import com.activiti.security.SecurityUtils;
-  
-  class Record {
-      String recId
-      String firstname
-      String lastname
-      String address
-      String city
-      String state
-      String zip
-  }
-  
-  def ln = execution.getVariable("lookup_lastname");
-  execution.setVariable("lu_lastname", ln);
-  
-  def url = 'jdbc:oracle:thin:@//aps-custom-oracle-db.cp58lgpzkwpy.us-east-1.rds.amazonaws.com/ORCL';
-  def user = 'admin';
-  def password = 'administrator';
-  def driver = 'oracle.jdbc.driver.OracleDriver';
-  def sql = Sql.newInstance(url, user, password, driver);
-  
-  rowNum = 0;
-  def recordList = [];
-  
-  sql.eachRow("SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE FROM CUSTOMERS WHERE LASTNAME = ${lu_lastname}") { row ->
-     
-      def r = new Record( recId: row.id, firstname:row.firstname, lastname:row.lastname, address:row.addressLine1, city:row.city, state:row.state, zip:row.zipcode)
-      execution.setVariable("cFirstName", row.firstname);
-      execution.setVariable("cLastName", row.lastname);
-      execution.setVariable("cAddress", row.addressLine1);
-      execution.setVariable("cCity", row.city);
-      execution.setVariable("cState", row.state);
-      execution.setVariable("cZip", row.zipcode);
-      recordList.add(r);
-    
-  }
-  execution.setVariable("recordCount", recordList.size);
-    println new JsonBuilder( recordList ).toPrettyString();
-    execution.setVariable("recordList", new JsonBuilder( recordList ).toPrettyString());
+import com.activiti.domain.idm.User;
+import com.activiti.security.SecurityUtils;
+import com.activiti.domain.idm.User;
+
+out.println('Customer Details');
+
+Long cId = execution.getVariable("customer");
+User customer = userService.getUser(cId);
+
+execution.setVariable("cCustomerId", cId);
+execution.setVariable("cEmail", customer.getEmail());
+execution.setVariable("cFirstName", customer.getFirstName());
+execution.setVariable("cLastName", customer.getLastName());
+execution.setVariable("cFullName", customer.getFirstName()+" "+customer.getLastName());
 
 ```
-14.	Create a new User Task and connect it to the script task. Name it Display DB Values.
-15.	In the bottom configuration panel, select the Referenced Form attribute. 
-16.	In the form popup window, select the New Form button.
-17.	In the Create a new form window, enter the following values:
-    1.	Form name: Display DB Values
-    2.	Description: Displays values from customer DB lookup.
-    3.	Stencil: Default form
-18.	Select the Create form button.
-19.	Follow these steps to create the form:
-    1.	From the left object menu, drag a Header onto the canvas. To edit, click on the pencil icon that appears when you hover your mouse over the header object. In the Label field, name it Query and click the Close button.
-    2.	Drag a Display Text object and dop it into the Header object. Select the pencil icon to edit.
-        1.	In the Text to display field enter the following text, then close the prompt.
+14. Create another **Script Task** and connect it to the _Get APS Customer_ script task. Give it the following configuration:
+    - **Name:** ```Get DB Customer```
+    - **Script Type:** ```groovy```
+    - **Script:**
+```
+import groovy.sql.Sql;
+import groovy.json.*
+import groovy.json.JsonBuilder
+
+class Record {
+    String recId
+    String firstname
+    String lastname
+    String address
+    String city
+    String state
+    String zip
+}
+
+def url = 'jdbc:oracle:thin:@//aps-custom-oracle-db.cp58lgpzkwpy.us-east-1.rds.amazonaws.com/ORCL'
+def user = 'admin'
+def password = 'administrator'
+def driver = 'oracle.jdbc.driver.OracleDriver'
+def sql = Sql.newInstance(url, user, password, driver)
+
+rowNum = 0;
+def recordList = [];
+
+println( "=======================================\n=== DEBUG ===\n============================" );
+println( "Get cust data where firstname=${cFirstName} & lastname=${cLastName}" );
+
+
+sql.query("SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE FROM CUSTOMERS WHERE FIRSTNAME=${cFirstName} AND LASTNAME=${cLastName}") { resultSet ->
+  while (resultSet.next()) {
+    println("RECORD 1: \n>>> "+resultSet.getString('ADDRESSLINE1'));
+    execution.setVariable("cId", resultSet.getString('ID'));
+    execution.setVariable("cAddress", resultSet.getString('ADDRESSLINE1'));
+    execution.setVariable("cCity", resultSet.getString('CITY'));
+    execution.setVariable("cState", resultSet.getString('STATE'));
+    execution.setVariable("cZip", resultSet.getString('ZIPCODE'));
+    println("IS RECORD SET? "+execution.getVariable("cAddress"));
+  }
+}
+
+/*
+sql.eachRow("SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE FROM CUSTOMERS WHERE FIRSTNAME=${cFirstName} AND LASTNAME=${cLastName}") { row ->
+    //def r = new Record( recId: row.id, firstname:row.firstname, lastname:row.lastname, address:row.addressLine1, city:row.city, state:row.state, zip:row.zipcode)
+    //recordList.add(r);
+    execution.setVariable("cAddress", address:row.addressLine1);
+    execution.setVariable("cCity", city:row.city);
+    execution.setVariable("cState", state:row.state);
+    execution.setVariable("cZip", zip:row.zipcode);
+}
+
+println new JsonBuilder( recordList ).toPrettyString()
+execution.setVariable("recordList", new JsonBuilder( recordList ).toPrettyString())
+*/
+```
+15. Create a new User Task and connect it to the script task. Name it: ```Create Claim```.
+16.	In the bottom configuration panel, select the Referenced Form attribute. 
+17.	In the form popup window, select the New Form button.
+18.	In the Create a new form window, enter the following values:
+    1.	Form name: ```Create Claim```
+    2.	Description: ```Create a new claim.```
+    3.	Stencil: ```Default form```
+19.	Select the Create form button.
+20.	Follow these steps to create the form:
+    1.	From the left object menu, drag a Header onto the canvas. To edit, click on the pencil icon that appears when you hover your mouse over the header object. In the Label field, name it: ```Customer Information:```. Click the Close button.
+    2.	Drag a **Display Text** object and dop it into the Header object. Select the pencil icon to edit.
+        1.	In the _Text to display_ field enter the following text, then close the prompt.
 code:
     ```
-      Found ${recordCount} records with the Last Name of "${lu_lastname}".
-    
+    Creating Claim for:
+    ${cFullName} - ${cId}
+    ${cEmail}
+    ${cAddress} ${cCity}, ${cState}  ${cZip}
     ```
-    3.	From the left panel drag a Dynamic Table onto the stage adding it below the Header object. Click on the pencil icon to edit.
-    4.	Give it a Label of: CUSTOMERS
-    5.	Select the Override ID check box.
-    6.	Give it an ID of: recordList
-    7.	Select the Table Columns tab at the top of the prompt.
-    8.	Press the “+” icon button to create new property mappings with the following values (Note: for each property check all of the boxes Required, Editable, sortable, show in table):
-        1.	Column 1:
-            1.	Property ID: recId
-            2.	Property Name: ID
-            3.	Property Type: string
-        2.	Column 2:
-            1.	Property ID: firstname
-            2.	Property Name: First name
-            3.	Property Type: string
-        3.	Column 3:
-            1.	Property ID: lastname
-            2.	Property Name: Last Name
-            3.	Property Type: string
-        4.	Column 4:
-            1.	Property ID: address
-            2.	Property Name: Address
-            3.	Property Type: string
-        5.	Column 5:
-            1.	Property ID: state
-            2.	Property Name: State
-            3.	Property Type: string
-        6.	Column 6:
-            1.	Property ID: city
-            2.	Property Name: City
-            3.	Property Type: string
-        7.	Column 7:
-            1.	Property ID: zip
-            2.	Property Name: Zip
-            3.	Property Type: string
+    3. From the left panel drag a **Header Object** and place it under the _Customer Information_ header. Label it: ```Claim infoamtion:```.
+    4. Add a **Date Object** to the header and input the following configuration:
+       - **Label:** ```Incident Date:```
+       - **Required:** _checked_
+    5. Add a Dropdown object to the Header and go into edit mode. Give it the following configuration:
+        1.	Label: ```Incident Type:```
+        2.	Required: checked
+        3.	Select the Options tab. Enter the following configuration.
 
-    9.	From the left panel drag a Display text object onto the stage, adding it below the dynamic table. Select the pencil icon to go into edit mode:
-    10.	In the Text to display field, add the following text:
-text:
-    ```
-    Verify that this is the correct customer and proceed.
-    Press Back if customer does not appear.
-    
-    ```
-    11.	Save and close the Form editor and return to your process)
-20.	Add a connected end event to the process, connected to the Display DB Values task.   
-21.	Save the process model by clicking on the Save icon in the top left of the page.   
-22.	In the Save model popup window, press the Save and close editor button.
+    |        Label        |        ID        |
+    | ------------        | ----------       |
+    |        Damage       |    Damage        |
+    |        Lost         |    Lost          |
+    |        Stolen       |    Stolen        |
+    |        Other        |    Other         |
+
+    6. Add an Amount object to the Header and go into edit mode. Give it the following configuration:
+        1.	Label: ```Claim Amount:```
+        2.	Select the Override ID checkbox.
+        3.	ID: ```value```
+        4.	Check the Required checkbox.
+        5.	Close the edit prompt.
+21.	Add a connected end event to the process, connected to the Display DB Values task.   
+22.	Save the process model by clicking on the Save icon in the top left of the page.   
+23.	In the Save model popup window, press the Save and close editor button.
 
 
 ### Lab2. Add the Claims Process to your Process Application
