@@ -382,14 +382,15 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 1.	Enter your New Customer Onboarding process in edit mode.
 2.	Select the Variables attribute in the configuration panel to add a new variable.
 3.	Add a variable titled ```stateVerify``` as a ```string```
-4.	From the left panel, under Activities, drag a Service Task into the stage. 
-5.	Select the Name attribute and give it the following name: KYC Delegate
-6.	Connect this task in the workflow between the Save New Customer Data task and the Create Cust Doc task. 
-7.	Select the Class attribute and paste in the following text: ```com.activiti.extension.bean.KYCJavaDelegate```
+4.	From the left panel, under Activities, drag a Service Task into the stage. Connect it from the _Verify user Data_ user task.
+5.	Select the Name attribute and give it the following name: ```KYC Delegate```
+6.	Select the Class attribute and paste in the following text: ```com.activiti.extension.bean.KYCJavaDelegate```
+7.  Add an **End Event** to the _KYC Delegate_ service task.
 8.	Save and close the editor. 
 9.	Navigate to the Process Application and publish your App so you may test the new additions.
 10.	You may now test your process in the Digital Workspace. 
     -	*Note: To ensure the KYC Java Delegate task is working you can view the saved document and check the “out of state” box to ensure the true or false variable is being set by the Delegate.
+
 
 |  **Next Steps: In-State and Out-of-State Impact on our Process** |
 | ----------- |
@@ -400,7 +401,7 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 ### Lab 10: Add an Exclusive Gateway and Splitting Paths
 1.	Open your New Customer process in edit mode.
 2.	Delete the end event.
-3.	From the left panel, under Gateways, add an Exclusive Gateway to your process. Connect it from the KYC Delegate task.
+3.	From the left panel, under Gateways, add an Exclusive Gateway to your process. Connect it from the _KYC Delegate_ service task.
 4.	Select the gateway and add a **User task** using the small menu that appears.
 5.	Name the user task: ```Manager Follow-Up```
 6.	With the user task selected, click on the Referenced form No reference selected value.
@@ -432,22 +433,21 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
         - ID: ```customerNotes```
         - Required: checked
   	- Save and close the form editor.
-11.	Select the Manager Follow-Up task and select the Assignment attribute in the configuration panel. This will open an assignment popup window. Set the following configuration in the popup window:
+10.	Select the Manager Follow-Up task and select the Assignment attribute in the configuration panel. This will open an assignment popup window. Set the following configuration in the popup window:
     - Type: ```Identity Store```
     - Assignment: ```Assigned to group manager```
     - Source: ```Search```
     - Search for and select the Claims-Team group. The Group attribute should now show the Claims-Team value.
     - Press the Save button.
-12.	Connect the sequence flow line from the gateway task to the Create NC Doc task. Remove any associated sequence flow lines that connect the Create NC Doc task to any previous tasks.
-    - With this flow line selected, check the **Default Flow** check-box in the bottom configuration panel.
-13. Select the sequence flow line from the Gateway event to the Manager Follow-Up Task and use the **Flow condition** parameter to configure the following flow:
+11.	Create an **End Event** from the _Exclusive gateway_ using the small menu that appears when the gateway is selected. 
+    - Select the _Sequence Flow Line_ that connects the gateway toi the end event. Check the **Default Flow** check-box in the bottom configuration panel.
+12. Select the sequence flow line from the Gateway event to the Manager Follow-Up Task and use the **Flow condition** parameter to configure the following flow:
     - Condition Type: ```Simple```
     - Depends on: ```Variable```
     - Variable Drop-down: ```stateVerify```
     - Operator: ```equal```
     - Value: ```false```
-13.	Create a sequence flow line from the Manager Follow-Up task to the Create NC Doc task.
-14.	Save your process, redeploy your application, and test the process.
+13.	Save your process, redeploy your application, and test the process.
 
 ---
 
@@ -457,37 +457,32 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 | In APS, generating and saving a document are two seperate steps. |
 | [Generating a Document](https://docs.alfresco.com/process-automation/latest/model/connectors/generate/) |
 
-### Lab 3: Generating and Saving a Document
-1.	Access the App Designer tile from the homepage of the Activiti App (Process Services).
-2.	Enter your New Customer Onboarding process in edit mode by selecting the edit icon when hovering your mouse over its til-    
-3.	Remove the End event and the line connecting to it by selecting each one and clicking the trash can icon that appears. 
-4.	Add a Generate Document task to the process:
-    -	From the left task menu, select Activities drop down to reveal the activities tasks. Click and drag the Generate document task dropping it onto the stage.
-    -	Drag it into place and connect it to the Approve Sequence flow line
-    -	To configure the Generate Document task select it to show its attribute values in the bottom configuration panel.
-    -	Name your Generate Document task: ```Create NC Doc```
-    -	Select the Document Variable attribute and enter the value ```newCustDoc``` into the field.
-    -	Select the Template attribute to open the Change value for “Template” popup window.
-        -	Select the Custom Template tab.
-        -	Select the Choose File button to open a file browsing window. From the file package you received, navigate to the following file path and choose the file named: ```Aps_documents/form_doc_templates/9si_newCustomer.docx```
-        -	The name of the template file should now appear as the value of the Template attribute.
-    -	Select the File name attribute to open the Change value for “File name” popup box.
+### Lab 11: Generating and Saving a Document
+1.	Enter your New Customer Onboarding process in edit mode.
+3.	Remove the **End event** from the process. 
+4.	From the left task menu under Activities, add a **Generate Document** task to the process in place of the deleted end event (connected from the _Exclusive Gateway_).
+    -	Give the Generate Document task the following configuration:
+        -	Name: ```Create NC Doc```
+        -	Select the Document Variable attribute and enter the value ```newCustDoc``` into the field.
+        -	Select the Template attribute to open the Change value for “Template” popup window.
+            -	Select the Custom Template tab.
+            -	Select the Choose File button to open a file browsing window. From the file package you received, navigate to the following file path and choose the file named: 
+```Aps_documents/form_doc_templates/9si_newCustomer.docx```
+            -	The name of the template file should now appear as the value of the Template attribute.
+        -	Select the File name attribute to open the Change value for “File name” popup box.
         -	Enter the following file name: ```customer_${newCustomerLastName}_${newCustomerId}```
         -	Press the save button to close the popup window.
-5.	Add a Publish to Alfresco task to the process:
-    -	From the left task menu, select Alfresco drop down to reveal Alfresco related tasks. Click and drag the Publish to Alfresco task dropping it onto the stage. Drag it into place on the right side of the Create Claim Doc task.
-    -	Connect a flow line from the Create Claim Doc task to the new Publish to Alfresco task. 
-6.	Name your _Publish to Alfresco task_ by double clicking on task and opening the name field.
-    -	Name the task ```Save Doc to CMS```.
-7.	To configure the Publish to Alfresco task select it to show its attribute values in the bottom configuration panel.
-8.	Select the Alfresco Content attribute to open the Change Value popup window. Choose Publish all content uploaded in process from the dropdown menu and press the Save button.
-9.	Select the Alfresco Destination attribute to open the Change Value popup window.
-    -	Next to Destination, click the _Select folder_ button to open the browse Alfresco popup window. The site you created previously should populate here. Choose your site, then navigate to and select the following folder path: _9SecondInsurance/ documentLibrary/Customer Information_
+5.	From the left task menu under the Alfresco header, add a **Publish to Alfresco** task to the process connected from the _Create NC Doc_ document task.
+6.	Name your _Publish to Alfresco task_: ```Save Doc to CMS```.
+7.	To configure the Publish to Alfresco task select it to show its attribute values in the bottom configuration panel. Give it the following configuration:
+    - Select the Alfresco Content attribute to open the Change Value popup window. Choose **Publish all content uploaded in process** from the dropdown menu and press the Save button.
+    - Select the Alfresco Destination attribute to open the Change Value popup window.
+    -	Next to **Destination**, click the _Select folder_ button to open the browse Alfresco popup window. The site you created previously should populate here. Choose your site, then navigate to and select the following folder path: _9SecondInsurance/documentLibrary/Customer Information_
 -	Press the Save button on the Change Value popup window.
-10.	Finally, add an end event to your process. Select the Publish to Alfresco task, then select the end event icon from the small popup menu.
+10.	Finally, add an end event to your process. Select the _Create NC Doc_ Publish to Alfresco task, then select the end event icon from the small popup menu.
 11.	Save your process and close the editor.
 12.	Navigate to your application and republish.
-13.	Test your updated process.
+13.	Test your completed process in ADW.
 
 ---
 
