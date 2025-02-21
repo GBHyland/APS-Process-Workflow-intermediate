@@ -2,9 +2,9 @@
 
 |  **Overall Scenario – 9 Second Insurance: Reimbursement Claim Process** |
 | ----------- |
-| As a systems architect working for 9 Second Insurance, you are tasked with creating a process that will allow agents to create reimbursement claims on behalf of customers. Your process will include: |
+| As a systems architect working for 9 Second Insurance, you are tasked with creating a process that will allow agents to create reimbursement claims on behalf of customers. Our process will need to find the customer and capture and verify claim specific data. Specifically, our process will include: |
 | Selection mechanism to retrieve customer information in both APS and the 9SecondInsurance customer database. |
-| A method to verify customer information. |
+| A method to verify customer and claim information. |
 | Perform logic to adjust a deductible based on claimed equipment value (Decision Table). |
 
 
