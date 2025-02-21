@@ -173,7 +173,7 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
             3.	Lastname: Last Name (Form field)
             4.	Address: Address (Form field)
             5.	City: City (Form field)
-            6.	State: State (Form field)
+            6.	State: State - id (Form field)
             7.	zipCode: Zip Code (Form field)
         -	Press Save on the mapping window.
 5. Save the process (Do not save a close - without an end event you may get a validation error, save anyway).
