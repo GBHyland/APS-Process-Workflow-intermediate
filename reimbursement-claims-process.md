@@ -275,13 +275,14 @@ a.	OPTIONAL: You can change the name of the process that will run by editing the
 
 ---
 
-|  **Next Steps: Configure the Deductible Logic** |
+|  **Next Steps: Configure the Deductible Logic and Verify the Claim** |
 | ----------- |
-| We are now capturing a customer's claim information. Based on that we'll need logic implemented that will dictate the amount of their deductible. |
+| We are now capturing a customer's claim information. Based on that we'll need logic implemented that will dictate the amount of their deductible. We also want to finalize our claim with a method that will allow our agents to read back and confirm the claim and deductible information to the customer. |
 | At 9 Second Insurance, we use a scaffolding approach to set a deductible that is relational to the claimed equipment value. |
 | We'll use a Decision Table to determine the deductibale amount. |
+| Finally, we'll finish the process with a User Task and Form that will display the final claim information. |
 
-### Lab 6. Adding Decision Logic (Decision Table)
+### Lab 6. Adding Decision Logic (Decision Table) and Claim Verification
 1.	Access the App Designer tile from the homepage of the Activiti App (Process Services).
 2.	Enter your New Claims process in edit mode by selecting the edit icon when hovering your mouse over its tile.    
 3.	Delete the end event from the process.
