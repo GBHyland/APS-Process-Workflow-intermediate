@@ -350,7 +350,7 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
             3.	Property Type: ```string```
         - Column 2:
             1.	Property ID: ```firstname```
-            2.	Property Name: ```First name```
+            2.	Property Name: ```First Name```
             3.	Property Type: ```string```
         - Column 3:
             1.	Property ID: ```lastname```
@@ -412,7 +412,7 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
     - Select the Create form button. 
 9.	Follow these steps in the Form Editor to create the form:
     - Add a Header to the page and go into edit mode. Configure with the following information:
-        - Label: ```Customer Information```
+        - Label: ```Customer Information:```
     - Add a Display Text field to the header. Configure with the following information:
       text:
         ```
