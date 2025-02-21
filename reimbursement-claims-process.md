@@ -2,7 +2,7 @@
 
 |  **Overall Scenario – 9 Second Insurance: Reimbursement Claim Process** |
 | ----------- |
-| As a systems architect working for 9 Second Insurance, you are tasked with creating a process that will allow agents to create reimbursement claims. Your process will include: |
+| As a systems architect working for 9 Second Insurance, you are tasked with creating a process that will allow agents to create reimbursement claims on behalf of customers. Your process will include: |
 | Selection mechanism to retrieve customer information in both APS and the 9SecondInsurance customer database. |
 | A method to verify customer information. |
 | Perform logic to adjust a deductible based on claimed equipment value (Decision Table). |
@@ -135,7 +135,7 @@ println new JsonBuilder( recordList ).toPrettyString()
 execution.setVariable("recordList", new JsonBuilder( recordList ).toPrettyString())
 */
 ```
-15. Create a new User Task and connect it to the script task. Name it: ```Create Claim```.
+15. Create a new **User Task** and connect it to the script task. Name it: ```Verfiy Customer```.
 16.	In the bottom configuration panel, select the Referenced Form attribute. 
 17.	In the form popup window, select the New Form button.
 18.	In the Create a new form window, enter the following values:
@@ -161,130 +161,96 @@ code:
 
 
 ### Lab2. Add the Claims Process to your Process Application
-1.	Perform this lab if you already have a Process Application and need to add your new process.
-2.	From the Activiti home page, select the App Designer tile to navigate to the Business Process Models page.
-3.	Select the Apps hyperlink in the top blue banner.
-4.	Select the process application (in edit mode by using the pencil icon in the top, right corner of the tile) that you want to add your model to.
-5.	Select the Edit Included Models button.
-6.	In the Models included popup window, select the process you want to add. Note: a selected process will show a blue “+” icon in the corner of the thumbnail. Close the popup window once your process is selected.
-7.	Click the save icon to save the App definition, then publish your application.
+**Perform this lab if you already have a Process Application created.**
+1.	From the Activiti home page, select the App Designer tile to navigate to the Business Process Models page.
+2.	Select the Apps hyperlink in the top blue banner.
+3.	Select the process application (in edit mode by using the pencil icon in the top, right corner of the tile) that you want to add your model to.
+4.	Select the Edit Included Models button.
+5.	In the Models included popup window, select the process you want to add. Note: a selected process will show a blue “+” icon in the corner of the thumbnail. Close the popup window once your process is selected.
+6.	Click the save icon to save the App definition, then publish your application.
 
 
 ### Lab 3. Testing the Claims Process
 1.	From the Alfresco home page, launch the Alfresco Digital Workspace and sign in with your provided credentials. 
 2.	To start your process, select the Start Process button found in the top right of the page.
 3.	In the New Process popup window, select your 9SecondInsurance application from the Application selector.
-4.	Select your New Claims process.
+4.	Select your _New Claims_ process.
 a.	OPTIONAL: You can change the name of the process that will run by editing the Process Name field. 
 5.	Click on the START PROCESS hyperlink at the bottom right corner of the page.
-6.	Select My Tasks found under the Workflow dropdown on the left side of the page.
+6.	Select _My Tasks_ found under the Workflow dropdown on the left side of the page.
 7.	Your _Customer Search_ task should appear. Click on it to perform the task.
+8.	Use the form to select the customer 
+
+---
 
 |  **Next Steps: Decision to Edit or Continue With the Claim** |
 | ----------- |
 | Now that we have a method to retrieve a customer's information who is making a reimbursement claim, we need to be able to either go back to the customer search query (in the case we did not get the right customer) or proceed with the claim. |
 | We also need to build a form that captures claim-specific information. |
 
-
-
-// add this somewhere
-8. From the left panel drag a **Header Object** and place it under the _Customer Information_ header. Label it: ```Claim infoamtion:```.
-9. Add a **Date Object** to the header and input the following configuration:
-   - **Label:** ```Incident Date:```
-   - **Required:** _checked_
-10. Add a Dropdown object to the Header and go into edit mode. Give it the following configuration:
-    1.	Label: ```Incident Type:```
-    2.	Required: checked
-    3.	Select the Options tab. Enter the following configuration.
-
-|        Label        |        ID        |
-| ------------        | ----------       |
-|        Damage       |    Damage        |
-|        Lost         |    Lost          |
-|        Stolen       |    Stolen        |
-|        Other        |    Other         |
-
-6. Add an Amount object to the Header and go into edit mode. Give it the following configuration:
-        1.	Label: ```Claim Amount:```
-        2.	Select the Override ID checkbox.
-        3.	ID: ```value```
-        4.	Check the Required checkbox.
-        5.	Close the edit prompt.
-21.	Add a connected end event to the process, connected to the Display DB Values task.   
-22.	Save the process model by clicking on the Save icon in the top left of the page.   
-23.	In the Save model popup window, press the Save button (You may get a validation error; save anyway).
-// end this
-
-
-
 ### Lab 4. Create a Form Outcome with Exclusive Pathing & Claim Form
 1.	Access the App Designer tile from the homepage of the Activiti App (Process Services).
-2.	Enter your New Claims process in edit mode by selecting the edit icon when hovering your mouse over its tile.    
-3.	Select the Display DB Values task and open the Referenced Form in edit mode.
-4.	Add an Outcome to the Review Form:
-    1.	Select the Outcomes tab from the top of the form.
-    2.	Select the Use form outcomes for this form radio button.
-    3.	Under Possible outcomes, enter a new outcome in the provided field: Proceed. 
-    4.	Press the Add outcome button and enter another outcome: Back.
-        1.	Note: Do not press the add outcome button again or you will add a third option.
-    5.	Press the Save button and close the form.
-5.	Remove the End event and the line connecting to it by selecting each one and clicking the trash can icon that appears. 
-6.	Add an Exclusive Gateway task to the process found under the Gateways drop down.
-7.	Connect the gateway task to the Display DB Values task.
-8.	Create a Sequence flow line that routes back to the Customer Search task. Click the Flow Condition value to open the Sequence flow condition popup window.
-    1.	Select Simple as the condition type.
-    2.	Select Form outcome as the Depends on selector.
-    3.	In the first dropdown menu, select the form that you added the form outcome to: the Display DB Value form.
-    4.	In the second dropdown menu, select equal.
-    5.	In the last dropdown menu, select Back.
-    6.	Select the Save button on the popup window.
-9.	Select the exclusive gateway event, then select the User Task icon to create a new user task stemming from the gateway event.
-10.	Select the Sequence flow line that ends at the User Task. In the bottom configuration panel, check the check box for the Default flow attribute. This will signify that the default traffic will go this route.
-11.	Select the new user task and give it a name of: Create Claim.
-12.	Select the Referenced form attribute from the bottom configuration panel, open the referenced form popup window and choose the New Form button. 
-13.	Give the form a name of: New Claim and select the Create Form button.
-15.	In the form editor, perform the following steps to create a new claim form:
-    1.	Add a Header object to the page and select the pencil icon to go into edit mode. Give it a label of Customer Information: Close the edit popup.
-    2.	Add a Display Value object into the Customer Information Header object. Give it the following configuration:
-        1.	Label: First Name:
-        2.	Select the Variable button.
-        3.	In the drop-down menu select the cFirstName variable.
-        4.	Close the edit popup window.
-    3.	Add a Display Value object into the Customer Information Header object. Give it the following configuration:
-        1.	Label: Last Name:
-        2.	Select the Variable button.
-        3.	In the drop-down menu select the cLastName variable.
-        4.	Close the edit popup window.
-    4.	Add a Display Value object into the Customer Information Header object. Give it the following configuration:
-        1.	Label: Address:
-        2.	Select the Variable button.
-        3.	In the drop-down menu select the cAddress variable.
-        4.	Close the edit popup window.
-    5.	Add a Display Value object into the Customer Information Header object. Give it the following configuration:
-        1.	Label: City:
-        2.	Select the Variable button.
-        3.	In the drop-down menu select the cCity variable.
-        4.	Close the edit popup window.
-    6.	Add a Display Value object into the Customer Information Header object. Give it the following configuration:
-        1.	Label: State:
-        2.	Select the Variable button.
-        3.	In the drop-down menu select the cState variable.
-        4.	Close the edit popup window.
-    7.	Add a Display Value object into the Customer Information Header object. Give it the following configuration:
-        1.	Label: Zip Code:
-        2.	Select the Variable button.
-        3.	In the drop-down menu select the cZip variable.
-        4.	Close the edit popup window.
-    8.	Add another Header object to the page and select the pencil icon to go into edit mode. Give it a label of Claim Information: Close the edit popup.
+2.	Enter your New Claims process in edit mode by selecting the edit icon when hovering your mouse over its tile.
+3.	Select the _Verfiy Customer_ user task and open the form.
+4.	In the form editor, select the **Outcomes** tab. Enter the following configuration:
+    - **Use custom outcomes for this form:** _Selected_
+    - **Add TWO outcomes to the form:** _Enter text into the provided field then TAB out of the field_
+      - ```Back```
+      - ```Continue```   
+5.  Save and close the form.
+6.  Add an **Exclusive gateway** to the process and connect it from the _Verify Customer_ user task.
+7.  Create a **Sequence Flow line** from the _gateway_ to the _Customer Search_ user task.
+8.  Select the _Sequence Flow Line_ and access the **Flow Condition** property. Enter the following configuration:
+    - **Condition Type:** _Simple_
+    - **Depends On:** _Form outcome_
+    - **Form:** _Verify Customer_
+    - **Operator:** _equal_
+    - **Value:** ```Back```
+10. Save the configuration.
+17. Select the exclusive gateway event, then select the **End Event** icon to add an end event to the process.
+18. Select the **Sequence Flow Line** connected to the gateway and the end event.
+19. Check the **Default Flow** check-box in the bottom configuration panel.
+20. Save and close the process.
+21. Republish your process under the **Apps** page and test in ADW.
+22. **NOTE:** You should now be able to use the back button in the form to return to the Customer Selector form in order to retrieve a different customer from the database.
+
+---
+
+
+|  **Next Steps: Capture the Claim Information** |
+| ----------- |
+| With a method to either return to the Customer Selector or continue with the claim, we're now ready to add a method to capture the customer's claim information. |
+| We'll do this by adding a new User Task and a Form. |
+
+### Lab 5. Add a Claim Capture Task
+1. Enter your New Claims process in edit mode by selecting the edit icon when hovering your mouse over its tile.
+2. Select and delete the **End Event** from the process.
+3. Drag a **User Task** onto the stage and connect it to the Sequence Flow line stemming from the Gateway Event. 
+4. Select the new user task and give it a name of: ```Create Claim```.
+5. Select the Referenced form attribute from the bottom configuration panel, open the referenced form popup window and choose the New Form button. 
+6. Give the form a name of: ```New Claim``` and select the Create Form button.
+7. In the form editor, perform the following steps to create a new claim form:
+    1.	Add a **Header object** to the page and select the pencil icon to go into edit mode. Give it a label of ```Customer Information:```. Close the edit popup.
+    2.	Add a **Display Text** object into the Customer Information Header object. Give it the following configuration:
+        - **Text to Display:**
+           ```
+            Creating Claim for:
+            ${cFullName} - ${cId}
+            ${cEmail}
+            ${cAddress} ${cCity}, ${cState}  ${cZip}
+           ```
+        - Close the edit popup window.
+       
+    8.	Add another Header object to the page and select the pencil icon to go into edit mode. Give it a label of ```Claim Information:```. Close the edit popup.
         1.	Add a Date object to the Claim Information header and go into edit mode. Give it the following configuration:
-        2.	Label: Incident Date:
-        3.	Required: checked
+        2.	**Label:** Incident Date:
+        3.	**Required:** checked
         4.	Select the Advanced tab.
         5.	Enter MM-DD-YYYY into the Date display format field.
         6.	Close the edit prompt.
     9.	Add a Dropdown object to the Header and go into edit mode. Give it the following configuration:
-        1.	Label: Incident Type:
-        2.	Required: checked
+        1.	**Label:** Incident Type:
+        2.	**Required:** checked
         3.	Select the Options tab. Enter the following configuration.
 
     |        Label        |        ID        |
@@ -295,16 +261,16 @@ a.	OPTIONAL: You can change the name of the process that will run by editing the
     |        Other        |    Other         |
 
     10.	Add an Amount object to the Header and go into edit mode. Give it the following configuration:
-        1.	Label: Claim Amount:
+        1.	**Label:** Claim Amount:
         2.	Select the Override ID checkbox.
-        3.	ID: value
+        3.	**ID:** value
         4.	Check the Required checkbox.
         5.	Close the edit prompt.
-16.	Save and close the form editor and return to your process.
-17.	Add an end event to your process connected to the Create Claim task.
-18.	Save and close your process.
-19.	Navigate to the Apps page and republish your application.
-20.	Open the Digital Workspace and test your updated process.
+28.	Save and close the form editor and return to your process.
+29.	Add an end event to your process connected to the _Create Claim_ user task.
+30.	Save and close your process.
+31.	Navigate to the Apps page and republish your application.
+32.	Open the Digital Workspace and test your updated process.
 
 |  **Next Steps: Configure the Deductible Logic** |
 | ----------- |
@@ -410,7 +376,33 @@ Thank you for being a loyal customer of 9 Second Insurance!
 
 
 
+// add this somewhere
+8. From the left panel drag a **Header Object** and place it under the _Customer Information_ header. Label it: ```Claim infoamtion:```.
+9. Add a **Date Object** to the header and input the following configuration:
+   - **Label:** ```Incident Date:```
+   - **Required:** _checked_
+10. Add a Dropdown object to the Header and go into edit mode. Give it the following configuration:
+    1.	Label: ```Incident Type:```
+    2.	Required: checked
+    3.	Select the Options tab. Enter the following configuration.
 
+|        Label        |        ID        |
+| ------------        | ----------       |
+|        Damage       |    Damage        |
+|        Lost         |    Lost          |
+|        Stolen       |    Stolen        |
+|        Other        |    Other         |
+
+6. Add an Amount object to the Header and go into edit mode. Give it the following configuration:
+        1.	Label: ```Claim Amount:```
+        2.	Select the Override ID checkbox.
+        3.	ID: ```value```
+        4.	Check the Required checkbox.
+        5.	Close the edit prompt.
+21.	Add a connected end event to the process, connected to the Display DB Values task.   
+22.	Save the process model by clicking on the Save icon in the top left of the page.   
+23.	In the Save model popup window, press the Save button (You may get a validation error; save anyway).
+// end this
 
 
 
