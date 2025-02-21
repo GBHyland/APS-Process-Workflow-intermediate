@@ -225,8 +225,7 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
                 company,
                 initialStatus,
                 accountType,
-                tenantId,
-                externalId
+                tenantId
             );
             
         println("newUser.getId() >>> "+newUser.getId());
