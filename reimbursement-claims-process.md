@@ -159,6 +159,7 @@ code:
 21. Add an **End event** to your _Verify Customer_ user task.
 22. Save and close the process.
 
+---
 
 ### Lab2. Add the Claims Process to your Process Application
 **Perform this lab if you already have a Process Application created.**
@@ -169,6 +170,7 @@ code:
 5.	In the Models included popup window, select the process you want to add. Note: a selected process will show a blue “+” icon in the corner of the thumbnail. Close the popup window once your process is selected.
 6.	Click the save icon to save the App definition, then publish your application.
 
+---
 
 ### Lab 3. Testing the Claims Process
 1.	From the Alfresco home page, launch the Alfresco Digital Workspace and sign in with your provided credentials. 
@@ -207,15 +209,14 @@ a.	OPTIONAL: You can change the name of the process that will run by editing the
     - **Operator:** _equal_
     - **Value:** ```Back```
 10. Save the configuration.
-17. Select the exclusive gateway event, then select the **End Event** icon to add an end event to the process.
-18. Select the **Sequence Flow Line** connected to the gateway and the end event.
-19. Check the **Default Flow** check-box in the bottom configuration panel.
-20. Save and close the process.
-21. Republish your process under the **Apps** page and test in ADW.
-22. **NOTE:** You should now be able to use the back button in the form to return to the Customer Selector form in order to retrieve a different customer from the database.
+11. Select the exclusive gateway event, then select the **End Event** icon to add an end event to the process.
+12. Select the **Sequence Flow Line** connected to the gateway and the end event.
+13. Check the **Default Flow** check-box in the bottom configuration panel.
+14. Save and close the process.
+15. Republish your process under the **Apps** page and test in ADW.
+16. **NOTE:** You should now be able to use the back button in the form to return to the Customer Selector form in order to retrieve a different customer from the database.
 
 ---
-
 
 |  **Next Steps: Capture the Claim Information** |
 | ----------- |
@@ -266,11 +267,13 @@ a.	OPTIONAL: You can change the name of the process that will run by editing the
         3.	**ID:** value
         4.	Check the Required checkbox.
         5.	Close the edit prompt.
-28.	Save and close the form editor and return to your process.
-29.	Add an end event to your process connected to the _Create Claim_ user task.
-30.	Save and close your process.
-31.	Navigate to the Apps page and republish your application.
-32.	Open the Digital Workspace and test your updated process.
+8.	Save and close the form editor and return to your process.
+9.	Add an end event to your process connected to the _Create Claim_ user task.
+10.	Save and close your process.
+11.	Navigate to the Apps page and republish your application.
+12.	Open the Digital Workspace and test your updated process.
+
+---
 
 |  **Next Steps: Configure the Deductible Logic** |
 | ----------- |
@@ -278,7 +281,7 @@ a.	OPTIONAL: You can change the name of the process that will run by editing the
 | At 9 Second Insurance, we use a scaffolding approach to set a deductible that is relational to the claimed equipment value. |
 | We'll use a Decision Table to determine the deductibale amount. |
 
-### Lab 5. Adding Decision Logic (Decision Table)
+### Lab 6. Adding Decision Logic (Decision Table)
 1.	Access the App Designer tile from the homepage of the Activiti App (Process Services).
 2.	Enter your New Claims process in edit mode by selecting the edit icon when hovering your mouse over its tile.    
 3.	Delete the end event from the process.
@@ -292,14 +295,14 @@ execution.setVariable("deductible", 200);
 ```
 5.	From the left panel, drag and place a Decision Task after the Script task and connect it.
 6.	Name the Decision task: Configure Deductible
-7.	In the bottom configuration panel, select the Referenced decision table attribute to open the decision table popup window. Select the New Decision Table button. Name it: ```Configure Deductible```.
+7.	In the bottom configuration panel, select the Referenced decision table attribute to open the decision table popup window. Select the New Decision Table button. Name it: ```U[Your User #] Configure Deductible```. Ex: ```U3 Configure Deductible```.
 8.	In the top blue header, click the [ Undefined ] title, which opens the Edit input popup. Configure the popup with the following information:
-    1.	Column Label: Equipment Value
-    2.	Variable Type: Form field
+    1.	Column Label: ```Equipment Value```
+    2.	Variable Type: ```Form field```
     3.	Form Field: Claim Amount – value
     4.	Save the popup.
 9.	In the top green header, click the [ Undefined ] title, which opens the Edit output popup. Configure the popup with the following information:
-    1.	Column label: Deductible
+    1.	Column label: ```Deductible```
     2.	Column type: Existing
     3.	Variable Type: Variable
     4.	Variable: deductible
@@ -345,12 +348,7 @@ execution.setVariable("deductible", 200);
     2.	Variable type: Number
     3.	Number: 1000
     4.	Click OK.
-20.	In the fourth green cell underneath the green header, select the pencil icon to open the Edit rule expression popup window. Configure with the following information:
-    1.	Variable type: Variable
-    2.	Variable: deductible
-    3.	Method: Add
-    4.	Number: 200
-    5.	Click OK.
+20.	_We will leave the fourth green cell blank so the deductible remains at it's default value of 200_.
 21.	Save and close the decision table to return to your process.
 22.	Add a new User task to your process and connect it to the decision table task.
 23.	Name the user task: Verify Claim
@@ -371,41 +369,5 @@ Thank you for being a loyal customer of 9 Second Insurance!
 29.	Navigate to the applications page and publish your application.
 30.	Test the new process changes.
     1.	The decision table logic should scale the deductible down based on the value entered into the claim form. Test by submitting different values.
-
-
-
-
-
-// add this somewhere
-8. From the left panel drag a **Header Object** and place it under the _Customer Information_ header. Label it: ```Claim infoamtion:```.
-9. Add a **Date Object** to the header and input the following configuration:
-   - **Label:** ```Incident Date:```
-   - **Required:** _checked_
-10. Add a Dropdown object to the Header and go into edit mode. Give it the following configuration:
-    1.	Label: ```Incident Type:```
-    2.	Required: checked
-    3.	Select the Options tab. Enter the following configuration.
-
-|        Label        |        ID        |
-| ------------        | ----------       |
-|        Damage       |    Damage        |
-|        Lost         |    Lost          |
-|        Stolen       |    Stolen        |
-|        Other        |    Other         |
-
-6. Add an Amount object to the Header and go into edit mode. Give it the following configuration:
-        1.	Label: ```Claim Amount:```
-        2.	Select the Override ID checkbox.
-        3.	ID: ```value```
-        4.	Check the Required checkbox.
-        5.	Close the edit prompt.
-21.	Add a connected end event to the process, connected to the Display DB Values task.   
-22.	Save the process model by clicking on the Save icon in the top left of the page.   
-23.	In the Save model popup window, press the Save button (You may get a validation error; save anyway).
-// end this
-
-
-
-
 
 
