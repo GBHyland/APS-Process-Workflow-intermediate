@@ -129,7 +129,7 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 | We'll then need to create a Service Task that implements the Data Model and allows us to map our process variables to the data model structure. |
 | [BPMN Tasks](https://docs.alfresco.com/process-automation/latest/model/processes/bpmn/#tasks) |
 
-### Lab 4: Create a Data Model
+### Lab 3: Create a Data Model
 1. Access the data Model page within the App Designer.
 2. Select the Create Data Model button.
 3. Enter ```U[user #]9siCustomerData``` in the Data Model Name field and click the Create button.
@@ -157,7 +157,7 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 6. Save and Close the Model.
 
 
-### Lab 5: Create a Store Entity Task / Save Values to Database
+### Lab 4: Create a Store Entity Task / Save Values to Database
 1. Enter your Customer Onboarding process in edit mode.    
 2. Delete the end event.
 3. Add a Store Entity Task to the process and connect it to the end of the process.
@@ -185,7 +185,7 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 | Now that we're saving our new user to the customer 9 Second Insurance database, we also need to add the customer as a new user to APS so we can easily access their data within the system. |
 | To do this, we'll leverage a REST-Call Task and a Script Task. |
 
-### Lab 7. Add a User to APS from Within onboarding Process
+### Lab 5. Add a User to APS from Within onboarding Process
 1. Enter your New Customer Onboarding process in edit mode.
 2. Add a **Script Task** to your process (under Activities).
    - Name the task ```Add User to APS```.
@@ -241,7 +241,7 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 | ----------- |
 | We're now saving our customer data in two places, in the 9SI customer database and as a new user in APS. Before we move on, we need to add a review mechanism that retrieves and displays those records so we can ensure that the data was saved correctly. This is standard functionality in database operations. |
 
-### Lab 8. Add Data Retrieval and Verification Method
+### Lab 6. Add Data Retrieval and Verification Method
 1. With your Onboarding Process in edit mode, add a new variable to your process by selecting the **Variables** parameter in the bottom configuration panel. Add the following variable:
    - **Variable name:** ```recordList```
    - **Variable type:** ```string```
@@ -377,7 +377,7 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 | 9 Second Insurance is a Ohio-based insurance company, and our leaders need to be able determine if a customer resides in-state or out-of-state. In order to meet state insurance regulations. We're already capturing a customer's state which allows us to implement the conditional logic we need to achieve this functionality. There are a few ways we could implement this, one of them a Script task, which we've already seen an example of. However, knowing that this KYC logic is likely to evolve in the near future to include additional conditions, we'll apply some forward thinking and use a Java Delegate in order to determine in or out of state. |
 | [Java Delgates](https://support.hyland.com/r/Alfresco/Alfresco-Process-Services/24.3/Alfresco-Process-Services/Develop/Develop-extensions-for-Process-Services/Custom-Logic/Java-Delegates) |
 
-### Lab 9: Create a Service Task with Java Delegate
+### Lab 7: Create a Service Task with Java Delegate
 1.	Enter your New Customer Onboarding process in edit mode.
 2.	Select the Variables attribute in the configuration panel to add a new variable.
 3.	Add a variable titled ```stateVerify``` as a ```string```
@@ -397,7 +397,7 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 | We'll add an exclusive gateway that will allow us to go down either path specified above. |
 | Our Out-of-State path will include a User Task assigned to our Team's manager. |
 
-### Lab 10: Add an Exclusive Gateway and Splitting Paths
+### Lab 8: Add an Exclusive Gateway and Splitting Paths
 1.	Open your New Customer process in edit mode.
 2.	Delete the end event.
 3.	From the left panel, under Gateways, add an Exclusive Gateway to your process. Connect it from the _KYC Delegate_ service task.
@@ -456,7 +456,7 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 | In APS, generating and saving a document are two seperate steps. |
 | [Generating a Document](https://docs.alfresco.com/process-automation/latest/model/connectors/generate/) |
 
-### Lab 11: Generating and Saving a Document
+### Lab 9: Generating and Saving a Document
 1.	Enter your New Customer Onboarding process in edit mode.
 3.	Remove the **End event** from the process. 
 4.	From the left task menu under Activities, add a **Generate Document** task to the process in place of the deleted end event (connected from the _Exclusive Gateway_).
