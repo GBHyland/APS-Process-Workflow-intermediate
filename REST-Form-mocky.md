@@ -1,6 +1,8 @@
 ## Rest form info
 
-https://designer.mocky.io/design
+[https://designer.mocky.io/design](http://cic-webapps.alfdemo.com/rest-states/)
+
+REST calling to this URL will return the JSON string below:
 
 ```
     {
