@@ -2,6 +2,10 @@
 
 [http://cic-webapps.alfdemo.com/rest-states/](http://cic-webapps.alfdemo.com/rest-states/)
 
+or
+
+https://mocki.io/fake-json-api
+
 REST calling to this URL will return the JSON string below:
 
 ```
