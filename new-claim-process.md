@@ -11,6 +11,40 @@
 | Verify the claim information. |
 
 
+### Pre-Requisite Steps (Configuration)
+
+**Create an Aspect for the Claim Document**
+1. In Share, navigate to _Admin Tools > Model Manager_.
+2. Select the _Insurance_ model.
+3. Select the **Create Aspect** Button.
+4. Select the **Create Property** Button.
+5. Use the create property wizard to add the following properties (ensure to select **create and add another** after each property). 
+
+| Name     |
+| ---               | 
+| firstname             | 
+| lastname      | 
+| address       | 
+| city        | 
+| state           | 
+| zip          | 
+| type        | 
+| severity        |     |
+| status        |
+| date        | 
+
+
+**Create & configure the necessary Folder Structure**
+1. In Share, navigate to the ```9 Second Insurance``` Site.
+2. In the DocumentLibrary, navigate to the _Customer Claims_ folder.
+3. Create a new folder titled: ```Claim [Your User Number]```.
+4. Add a folder rule to your folder with the following configuration:
+   - **Name:** ```Add claim aspect```
+   - **When:** _Items are created or enter this folder_
+   - **Criteria:** _All items_
+   - **Perform Actions:** _Add Aspect_, _claim[your-user-unumber]_
+
+
 ### Lab 1. Create an Configure a New Process.
 This lab will walk you through creating a new process and configuring the variables needed to perform actions to support future labs. 
 1.	From the Alfresco home page, launch the Activiti App (Process Services) by clicking on the Activiti App hyperlink. 
