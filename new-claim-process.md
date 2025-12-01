@@ -448,6 +448,11 @@ In this lab, we'll perform two actions; generate a PDF document from a template 
 21. Save the process.
 
 
+
+|  **Next Steps: Update Metadata in your Repository** |
+| ----------- |
+| We have a content file for our customer's claim saved to our repository, where an **Aspect** is applied to any documents saved within our Customer Claims folder. We want the claim data values saved to that aspect, so they can be viewed without having to open the document to find essential data about the customer. |
+
 ### Lab 10. Save Metadata values to the Document Aspect.
 The process is now generating and saving a PDF document to the Content Repository in a folder that is configured to apply the **Claim** Aspect. In this lab, we'll apply some of the values captured about this claim and save them to that aspect.
 1. Add a **Update Alfresco Properties** Task to your process and connect it to the _Publish t Alfresco_ Task.

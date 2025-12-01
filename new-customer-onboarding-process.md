@@ -508,6 +508,8 @@ For classes, please regard the instructor for a brief presentation on Data Sourc
 
 ---
 
+
+
 |  **Next Steps: Update Metadata in your Repository** |
 | ----------- |
 | We have a content file for our customers saved to our repository, where an **Aspect** is applied to any documents saved within our Customer Policies folder. We want the customer data values saved to that aspect, so they can be viewed without having to open the document to find essential data about the customer. |
