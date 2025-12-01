@@ -12,6 +12,7 @@
 
 
 ### Configure Your APS Environment. 
+[FACITLITATOR ONLY STEPS]
 **Scenario:** Before you can begin the labs here you must configure a few elements within your APS environment in order for the functionality to work. These configuration steps must be performed by a user with **administration** privledges. _Configure the following:_
 1. **The Share Connector:** _Allows APS to connect and communicate with your ACS environment._
    - In APS, navigate to the Tenants section.
@@ -56,7 +57,8 @@ This lab will walk you through creating a new process and configuring the variab
     -	Stencil: Default BPMN
     -	Press the Create new model button.
 5.	With nothing selected on the stage, select the Variables attribute in the bottom configuration panel.
-6.	Select the “+” icon below the chart to add new variables. Add the following variables:
+6.	Select the “+” icon below the chart to add new variables. Add the following variables:  
+
 | Variable Name     | Variable Type     |
 | ---               | ---               |
 | firstName     | String            |
@@ -294,7 +296,8 @@ For classes, please regard the instructor for a brief presentation on Data Sourc
         -	Mapped Data model: _Select the Data Model you created that contains your user number_. Ex: ```U[user #]9siCustomerData```
         -	Mapped entity: ```newCustomers```
         -	New Variable: ```newCustomerdata```
-        -	Configure the following attributes in the mapping table by selecting each Attribute Name and choosing the variable / form field it is associated with:
+        -	Configure the following attributes in the mapping table by selecting each Attribute Name and choosing the variable / form field it is associated with:  
+
 | Attribute Name        | Mapped Value Type     | Variable.     |
 | ---                   | ---                   | ---           |
 | id    | Variable  | customerId    |
