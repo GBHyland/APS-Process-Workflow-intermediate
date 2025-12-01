@@ -16,7 +16,7 @@
 **Create an Aspect for the Claim Document**
 1. In Share, navigate to _Admin Tools > Model Manager_.
 2. Select the _Insurance_ model.
-3. Select the **Create Aspect** Button.
+3. Select the **Create Aspect** Button. Name the Aspect: ```claim[your-user-#]```.
 4. Select the **Create Property** Button.
 5. Use the create property wizard to add the following properties (ensure to select **create and add another** after each property). 
 
