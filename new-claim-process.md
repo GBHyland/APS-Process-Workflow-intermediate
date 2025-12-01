@@ -24,7 +24,8 @@ This lab will walk you through creating a new process and configuring the variab
     -	Stencil: Default BPMN
     -	Press the Create new model button.
 5.	With nothing selected on the stage, select the Variables attribute in the bottom configuration panel.
-6.	Select the “+” icon below the chart to add new variables. Add the following variables:
+6.	Select the “+” icon below the chart to add new variables. Add the following variables:  
+
 | Variable Name     | Variable Type     |
 | ---               | ---               |
 | cFirstName     | String            |
@@ -136,7 +137,8 @@ execution.setVariable("recordCount", recordList.size);
       - _Override the ID_
       - **ID:** ```recordList```
    5. Select the **Table Columns** tab in the dynamic table editor.
-   6. Use the following chart to map the process variables to each Header of the dynamic table.
+   6. Use the following chart to map the process variables to each Header of the dynamic table.  
+
 | **Property ID**       | **Property Name**     | **Property Type**     |
 | ---       | ---       | ---       |
 | redId     | ID        | String        |
@@ -216,7 +218,8 @@ Press Back if customer does not appear.
 8. Add a **Display Value** field to the Header and select the pencil icon to edit the field.
 9. Select the blue **Variable** button and use the drop-down below the button to select the ```cFirstName``` variable.
 10. Notice the **Label** changed to reflect the name fo the variable selected. You can now change the label to be more formal: ```First name:```.
-11. Add more **Display Value** fields to the Header for each customer value coming from the customer database. Use the following chart to add each display value field.
+11. Add more **Display Value** fields to the Header for each customer value coming from the customer database. Use the following chart to add each display value field.  
+
 | **Field Type**       | **Variable**     | **Label**     |
 | ---       | ---       | ---       |
 | Display Value     | cFirstName        | First Name:        |
