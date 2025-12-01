@@ -159,7 +159,7 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 | In APS, a process cannot deploy by itself; it needs to be included in a Process Application. The Process Application is the engine that deploys and drives processes.  |
 | A process application can deploy mutliple processes. |
 | A Process App is a container for handling a group of published processes and deploying them to a Process Engine. |
-| [Creating a Process Application](https://docs.alfresco.com/process-services/latest/using/process/app-designer/#create-your-first-app) |
+| [Creating a Process Application](https://support.hyland.com/r/Alfresco/Alfresco-Process-Services/25.3/Alfresco-Process-Services/Using/Getting-started-with-Process-Services/Step-2-Create-and-publish-the-process-application) |
 
 ### Lab 3: Create a Process Application
 1.	From the Activiti home page, select the App Designer tile to navigate to the Business Process Models page
@@ -254,7 +254,7 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
 | We are capturing customer information, creating and saving a customer document, and now we need to save our customer's data to the 9SI customer database. |
 | First, we'll need to create a Data Model that will allow us to specifiy the correct format of data that exists in the Database Table we want to map our process data to. |
 | We'll then need to create a Service Task that implements the Data Model and allows us to map our process variables to the data model structure. |
-| [BPMN Tasks](https://docs.alfresco.com/process-automation/latest/model/processes/bpmn/#tasks) |
+| [BPMN Tasks](https://support.hyland.com/r/Alfresco/Alfresco-Process-Services/25.3/Alfresco-Process-Services/Using/Getting-started-with-Process-Services/Step-2-Create-and-publish-the-process-application) |
 
 
 
@@ -528,15 +528,15 @@ For classes, please regard the instructor for a brief presentation on Data Sourc
 
 | File Property | Property Type  | Variable |
 | ----------     | ---------    | -------------- |
-| ins:FirstName             | string           | firstName         |
-| ins:LastName      | string    | lastName         |
-| ins:StreetAddress       | string     | address         |
-| ins:City        | string | city         |
-| ins:State           | string	        | state         |
-| ins:ZipCode          | string        | zipCode         |
-| ins:Email        | string      | email         |
-| ins:Phone        | string      | phoneNumber         |
-| ins:PolicyNumber        | string      | policyNumber         |
+| claim[user#]:FirstName             | string           | firstName         |
+| claim[user#]:LastName      | string    | lastName         |
+| claim[user#]:StreetAddress       | string     | address         |
+| claim[user#]:City        | string | city         |
+| claim[user#]:State           | string	        | state         |
+| claim[user#]:ZipCode          | string        | zipCode         |
+| claim[user#]:Email        | string      | email         |
+| claim[user#]:Phone        | string      | phoneNumber         |
+| claim[user#]:PolicyNumber        | string      | policyNumber         |
 
 8.	Save and close the property mapping wizard.
 9. Add an end event to the process from the _Update Metadata_ task.
