@@ -88,7 +88,7 @@ m.  Note the **taskId** for later
 n.  Expand the **users** section\
 o.  Select **GET /activiti-app/api/enterprise/users -- Query users**\
 p.  Click **Try it out**\
-q.  Enter `"user 0"` in the **filter** field\
+q.  Enter `"demo"` in the **filter** field\
 r.  Press **Execute**\
 s.  Copy the returned user's **id**
 
@@ -107,11 +107,11 @@ x.  Enter the following into the request body, replacing `"XX"` with the
 
 ``` json
 {
-  "email": "user0@example.com",
+  "email": "demo@example.com",
   "userId": "XX"
 }
 ```
 
 y.  Press **Execute**\
 z.  If no errors, return to **activiti-app** and verify the task is now
-    assigned to **User 0**.
+    assigned to **User 0**. (Facilitator log into the Demo account and show the delegation)
