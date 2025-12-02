@@ -7,8 +7,7 @@
 | Save the new customer's information to 9SI's external customer database. |
 | Create a new user for our customer in the APS user database. |
 | Document generation and saving to content management system. |
-| A Know-Your-Customer check to determine if an Out-of-State Waiver is applicable or not. |
-| A custom email method that sends documents to the customer. |
+| A Know-Your-Customer check to determine if the customer is Out-of-State in order to route documents accordingly. |
 
 
 ### Configure Your APS Environment. 
