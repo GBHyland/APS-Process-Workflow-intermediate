@@ -12,7 +12,7 @@
 
 -----------
 
-## Configure the ACS Anvironment.  
+## Configure the ACS Environment.  
 Before creation of the Process, a folder and Content Model (Aspects) structure needs to be created to support Alfresco Actions the process will leverage. The next few labs will focus on creating the folders and Aspects.
 
 ### ACS Lab: Create Insurance Content Model
@@ -37,7 +37,7 @@ In this lab, each user will create their own Aspect using the Data Model created
 6. Press the **Create** button.
 **NOTE:** At the time of this guide, you are not automatically navigated to the Aspect page. If this occurrs, refresh the page and select the Aspect you created.
 7. On the Aspect page, Select **Create Property**. 
-**NOTE:** In the property wizard you only need to provide a **Name**. You'll input the name, then press the **Create and Start Another** button at the bottom of the wizard. Repeat this process and add the following properties:
+**NOTE:** In the property wizard you only need to provide a **Name**. You'll input the name, then press the **Create and Start Another** button at the bottom of the wizard. Repeat this process and add the following properties:  
 | Property |
 | --- |
 | FirstName |
@@ -49,6 +49,7 @@ In this lab, each user will create their own Aspect using the Data Model created
 | Email |
 | Phone |
 | PolicyNumber |
+
 8. This lab is complete.
 
 
@@ -574,6 +575,7 @@ For classes, please regard the instructor for a brief presentation on Data Sourc
      - **Drop-Down:** _Publish content uploaded in field_
      - **Value Type:** _Variable_
      - **Variable:** _custDoc_
+     - **Aspects:** _Select the plus sign button under the Aspect chart and add: ```ins:claim```_
    - Save the Config.
 11. Select the _Save to Non-OH_ Publish to Alfresco task and give it the following configuration:
    - **Alfresco Destination** 
@@ -584,6 +586,7 @@ For classes, please regard the instructor for a brief presentation on Data Sourc
      - **Drop-Down:** _Publish content uploaded in field_
      - **Value Type:** _Variable_
      - **Variable:** _custDoc_
+     - **Aspects:** _Select the plus sign button under the Aspect chart and add: ```ins:claim```_
    - Save the Config.
 12.	Save your process.
 
