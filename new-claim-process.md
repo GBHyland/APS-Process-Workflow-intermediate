@@ -162,7 +162,7 @@ execution.setVariable("recordCount", recordList.size);
       - **Number of Columns:** ```1```
    2. Add a **Display Text** field to the Header configured with the following:
       - **Label:** ```Database Return:```
-      - **Text to Display:** ```Found ${recordCount} records with the Last Name of "${lu_lastname}".```
+      - **Text to Display:** ```Found ${recordCount} records with the Last Name of "${lookup_lastname}".```
    3. Add a **Dynamic Table** under the Header.
    4. Configure the General tab of the dynamic table with the follow:
       - **Label:** ```CUSTOMERS```
