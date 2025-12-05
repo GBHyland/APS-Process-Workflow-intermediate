@@ -10,7 +10,60 @@
 | A Know-Your-Customer check to determine if the customer is Out-of-State in order to route documents accordingly. |
 
 
-### Configure Your APS Environment. 
+-----------
+
+## Configure the ACS Anvironment.
+Before creation of the Process, a folder and Content Model (Aspects) structure needs to be created to support Alfresco Actions the process will leverage. The next few labs will focus on creating the folders and Aspects.
+
+### ACS Lab: Create Insurance Content Model
+[FACILITATOR ONLY LAB]
+In this lab, the instructor will create the Data Model that all user Aspects will be added to. Facilitator should demo this step.
+1. Access the **Admin Tools**.  
+2. Select **Model Manager**.  
+3. Select the **Create Model** button to open the Content Model wizard. Configure with the following info:
+   - **Namespace:** ```Insurance```
+   - **Prefix:** ```ins```
+   - **Name:** ```Insurance```
+4. This lab is complete.
+
+
+### ACS Lab: Add Aspects
+In this lab, each user will create their own Aspect using the Data Model created in the previous lab.
+1. Access the **Admin Tools**.  
+2. Select **Model Manager**. 
+3. Select the **Insurance** Data Model. 
+4. Select the **Create Aspect** button. 
+5. Name the Aspect: ```claim[user#]```. _Example if you are user 10: claim10_
+6. Press the **Create** button.
+**NOTE:** At the time of this guide, you are not automatically navigated to the Aspect page. If this occurrs, refresh the page and select the Aspect you created.
+7. On the Aspect page, Select **Create Property**. 
+**NOTE:** In the property wizard you only need to provide a **Name**. You'll input the name, then press the **Create and Start Another** button at the bottom of the wizard. Repeat this process and add the following properties:
+| Property |
+| --- |
+| FirstName |
+| LastName |
+| StreetAddress |
+| City |
+| State |
+| ZipCode |
+| Email |
+| Phone |
+| PolicyNumber |
+8. This lab is complete.
+
+
+### ACS Lab: Create Folder Structure
+[FACILITATOR ONLY LAB]
+1. Create a site titled: ```9 Second Insurance```.
+2. Make the site **Public**.
+3. Access the DocumentLibrary.
+4. Create a Folder titled: ```Customer Policies```. Navigate into that folder. 
+5. In the _Customer Policies_ folder, create **TWO** new folders, titled: ```Ohio Based Customers``` and ```Non-Ohio Based Customers```.  
+6. This lab is complete.
+
+-----------
+
+## Configure Your APS Environment. 
 [FACITLITATOR ONLY STEPS]
 **Scenario:** Before you can begin the labs here you must configure a few elements within your APS environment in order for the functionality to work. These configuration steps must be performed by a user with **administration** privledges. _Configure the following:_
 1. **The Share Connector:** _Allows APS to connect and communicate with your ACS environment._
@@ -468,10 +521,7 @@ For classes, please regard the instructor for a brief presentation on Data Sourc
 5.	Select the Name attribute and give it the following name: ```KYC Delegate```
 6.	Select the Class attribute and paste in the following text: ```com.activiti.extension.bean.KYCJavaDelegate```
 7.  Add an **End Event** to the _KYC Delegate_ service task.
-8.	Save and close the editor. 
-9.	Navigate to the Process Application and publish your App so you may test the new additions.
-10.	You may now test your process in the Digital Workspace. 
-    -	*Note: To ensure the KYC Java Delegate task is working you can view the saved document and check the “out of state” box to ensure the true or false variable is being set by the Delegate.
+8.	Save your process. 
 
 
 |  **Next Steps: Generating a Document** |
@@ -511,7 +561,27 @@ For classes, please regard the instructor for a brief presentation on Data Sourc
     - Variable Drop-down: ```stateVerify```
     - Operator: ```equal```
     - Value: ```false```
-10.	Save your process.
+10. Select the _Save to OH_ Publish to Alfresco task and give it the following configuration:
+   - **Alfresco Destination** 
+     - **Account:** ```Alfresco-1```
+     - **Destination:** ```9 Second Insurance > DocumentLibrary > Customer Policies > Ohio Based Policies```
+     - **Publish As:** _Process Initiator_
+   - **Alfresco Content**
+     - **Drop-Down:** _Publish content uploaded in field_
+     - **Value Type:** _Variable_
+     - **Variable:** _custDoc_
+   - Save the Config.
+11. Select the _Save to Non-OH_ Publish to Alfresco task and give it the following configuration:
+   - **Alfresco Destination** 
+     - **Account:** ```Alfresco-1```
+     - **Destination:** ```9 Second Insurance > DocumentLibrary > Customer Policies > Non-Ohio Based Policies```
+     - **Publish As:** _Process Initiator_
+   - **Alfresco Content**
+     - **Drop-Down:** _Publish content uploaded in field_
+     - **Value Type:** _Variable_
+     - **Variable:** _custDoc_
+   - Save the Config.
+12.	Save your process.
 
 ---
 
