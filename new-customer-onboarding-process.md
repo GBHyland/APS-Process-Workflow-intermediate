@@ -368,7 +368,6 @@ For classes, please regard the instructor for a brief presentation on Data Sourc
             
             out.println('Query Customer: '+execution.getVariable("customerId"));
             
-            //sql.eachRow("SELECT ID,FIRSTNAME,LASTNAME,STREETADDRESS,CITY,STATE,ZIPCODE,EMAIL,PHONE,POLICY FROM NINESI WHERE ID = ${customerId}") { row ->
             sql.eachRow("SELECT * FROM NINESI WHERE ID = ${customerId}") { row ->
                 
                 def r = new Record( recId:row.id, firstname:row.firstname, lastname:row.lastname, address:row.streetaddress, city:row.city, state:row.state, zip:row.zipcode, email:row.email, phone:row.phone, policy:row.policy)
