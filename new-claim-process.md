@@ -43,7 +43,7 @@
 3. This lab is complete.
 
 
-### Lab 1. Create an Configure a New Process.
+### Lab 1. Create & Configure a New Process.
 This lab will walk you through creating a new process and configuring the variables needed to perform actions to support future labs. 
 1.	From the Alfresco home page, launch the Activiti App (Process Services) by clicking on the Activiti App hyperlink. 
     - Sign in with your provided username and password. You will be directed to the Activiti App home page.
@@ -75,13 +75,13 @@ This lab will walk you through creating a new process and configuring the variab
 | incidentDate     | String            |
 | incidentType     | String            |
 | damageSeverity     | String            |
-| value     | String            |
+| value     | Integer            |
 | cStatus     | String            |
 | customerId     | String            |
 
 
 ### Lab 2. Create an Intake Form on the Start Event. 
-**Scenario:** In order to capture new customer data we need a data intake mechanism. In this lab you'll a Form attached to the Start Event of your process, allowing agents to quickly begin building a claim.
+**Scenario:** In order to capture new customer data we need a data intake mechanism. In this lab you'll create a Form attached to the Start Event of your process, allowing agents to quickly begin building a claim. We'll use a people-finder object to select a user that was added to the APS database in the Onboarding process. Since the ID's of the APS and relational database are synced, we'll be able to find our customer data from 9SI's customer database simply by selecting the user.  
 1. Select the **Start Event**.
 2. In the bottom configuration panel, select the **Referenced Form** attribute.
 3. In the Referenced Form popup window, select **New Form**.
@@ -301,7 +301,7 @@ Press Back if customer does not appear.
    - ```Minimal```  |   ```minimal```
    - ```Severe```   |   ```severe```
 35. Save and close the drop-down config window.
-36. Add an **Amount Object** to the _Claim Information_ Header and select the pencil icon to edit it.
+36. Add an **Number Object** to the _Claim Information_ Header and select the pencil icon to edit it.
 37. Label it: ```Claim Amount:```. 
 38. _Select the **Override ID** checkbox_
 39. Provide an **ID:** of: ```value```. 
@@ -332,12 +332,12 @@ execution.setVariable("deductible", 200);
 ```
 7. Add a **Decision Task** to your process and conect it from the _Set Deductible_ Script task. Name it: ```Configure Deductible```.
 8. From the bottom configuraiton panel, select the **Referenced Decision Table** to open the Decision Table Reference popup window.
-9. Select **New Decision Table**.
+9. Select **New Decision Table**. Name it: ```Configure Deductible```.
 10. In the Decision Table editor, select the **Blue Column Header** (Input Column). 
 11. Configure the Input Column Header with the following configuration:
    - **Column Label:** ```Equipment Value```
    - **Variable Type:** ```Form Field```
-   - **Form Field:** ```Claim Amount: value - amount```
+   - **Form Field:** ```Claim Amount: value - integer```
    - _Save the Input Column Configuration_
 12. Select the **Green Column Header** (Output Column). 
 13. Configure the Output Column Header with the following configuration:
