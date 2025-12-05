@@ -38,6 +38,7 @@ In this lab, each user will create their own Aspect using the Data Model created
 **NOTE:** At the time of this guide, you are not automatically navigated to the Aspect page. If this occurrs, refresh the page and select the Aspect you created.
 7. On the Aspect page, Select **Create Property**. 
 **NOTE:** In the property wizard you only need to provide a **Name**. You'll input the name, then press the **Create and Start Another** button at the bottom of the wizard. Repeat this process and add the following properties:  
+
 | **Property** |
 | ------------ |
 | FirstName |
