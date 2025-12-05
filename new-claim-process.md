@@ -184,7 +184,7 @@ execution.setVariable("recordCount", recordList.size);
 
 | **Property ID**       | **Property Name**     | **Property Type**     |
 | ---       | ---       | ---       |
-| redId     | ID        | String        |
+| recId     | ID        | String        |
 | firstname     | First Name        | String        |
 | lastname     | Last Name        | String        |
 | address     | Address        | String        |
