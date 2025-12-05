@@ -90,13 +90,13 @@ This lab will walk you through creating a new process and configuring the variab
    - **Label:** ```Enter the Customer's last name:```
    - **Number of Columns:** ```1```
    - _Save and close the Header_
-7. Add a **People** (not a Group of People) to the Header Object.
-8. Configure the **Poeple  Object** with the following:
+7. Add a **People** Object to the Header Object.
+8. Configure the **People  Object** with the following:
    - **Label:** ```Last Name:```
    - _Override the ID_
-   - **ID:** ```lookup_lastname```
+   - **ID:** ```pfValue```
    - _Check the Required checkbox_
-   - _Save and close the Poeple object_
+   - _Save and close the People object_
 9. Save and close the form.
 
 
@@ -133,12 +133,12 @@ def sql = Sql.newInstance(url, user, password, driver);
 rowNum = 0;
 def recordList = [];
 
-sql.eachRow("SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE FROM CUSTOMERS WHERE LASTNAME = ${ln}") { row ->
+sql.eachRow("SELECT * FROM NINESI WHERE LASTNAME = ${ln}") { row ->
    
-    def r = new Record( recId: row.id, firstname:row.firstname, lastname:row.lastname, address:row.addressLine1, city:row.city, state:row.state, zip:row.zipcode)
+    def r = new Record( recId:row.id, firstname:row.firstname, lastname:row.lastname, address:row.streetaddress, city:row.city, state:row.state, zip:row.zipcode)
     execution.setVariable("cFirstName", row.firstname);
     execution.setVariable("cLastName", row.lastname);
-    execution.setVariable("cAddress", row.addressLine1);
+    execution.setVariable("cAddress", row.streetaddress);
     execution.setVariable("cCity", row.city);
     execution.setVariable("cState", row.state);
     execution.setVariable("cZip", row.zipcode);
@@ -149,7 +149,6 @@ sql.eachRow("SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE 
 execution.setVariable("recordCount", recordList.size);
   println new JsonBuilder( recordList ).toPrettyString();
   execution.setVariable("recordList", new JsonBuilder( recordList ).toPrettyString());
-
 
 ```
 2. Add a **User Task** connected to the Script Task.
@@ -162,7 +161,7 @@ execution.setVariable("recordCount", recordList.size);
       - **Number of Columns:** ```1```
    2. Add a **Display Text** field to the Header configured with the following:
       - **Label:** ```Database Return:```
-      - **Text to Display:** ```Found ${recordCount} records with the Last Name of "${lookup_lastname}".```
+      - **Text to Display:** ```Found ${recordCount} records with the ID of "${customerId}".```
    3. Add a **Dynamic Table** under the Header.
    4. Configure the General tab of the dynamic table with the follow:
       - **Label:** ```CUSTOMERS```
