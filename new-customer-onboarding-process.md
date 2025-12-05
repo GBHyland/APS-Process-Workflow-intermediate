@@ -33,7 +33,7 @@ In this lab, each user will create their own Aspect using the Data Model created
 2. Select **Model Manager**. 
 3. Select the **Insurance** Data Model. 
 4. Select the **Create Aspect** button. 
-5. Name the Aspect: ```claim[user#]```. _Example if you are user 10: claim10_
+5. Name the Aspect: ```cus[user#]```. _Example if you are user 10: cus10_
 6. Press the **Create** button.
 **NOTE:** At the time of this guide, you are not automatically navigated to the Aspect page. If this occurrs, refresh the page and select the Aspect you created.
 7. On the Aspect page, Select **Create Property**. 
@@ -610,15 +610,15 @@ For classes, please regard the instructor for a brief presentation on Data Sourc
 
 | File Property | Property Type  | Variable |
 | ----------     | ---------    | -------------- |
-| claim[user#]:FirstName             | string           | firstName         |
-| claim[user#]:LastName      | string    | lastName         |
-| claim[user#]:StreetAddress       | string     | address         |
-| claim[user#]:City        | string | city         |
-| claim[user#]:State           | string	        | state         |
-| claim[user#]:ZipCode          | string        | zipCode         |
-| claim[user#]:Email        | string      | email         |
-| claim[user#]:Phone        | string      | phoneNumber         |
-| claim[user#]:PolicyNumber        | string      | policyNumber         |
+| cus[user#]:FirstName             | string           | firstName         |
+| cus[user#]:LastName      | string    | lastName         |
+| cus[user#]:StreetAddress       | string     | address         |
+| cus[user#]:City        | string | city         |
+| cus[user#]:State           | string	        | state         |
+| cus[user#]:ZipCode          | string        | zipCode         |
+| cus[user#]:Email        | string      | email         |
+| cus[user#]:Phone        | string      | phoneNumber         |
+| cus[user#]:PolicyNumber        | string      | policyNumber         |
 
 8.	Save and close the property mapping wizard.
 9. Add an end event to the process from the _Update Metadata_ task.
