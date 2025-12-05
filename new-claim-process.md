@@ -77,6 +77,7 @@ This lab will walk you through creating a new process and configuring the variab
 | damageSeverity     | String            |
 | value     | String            |
 | cStatus     | String            |
+| customerId     | String            |
 
 
 ### Lab 2. Create an Intake Form on the Start Event. 
@@ -107,6 +108,9 @@ This lab will walk you through creating a new process and configuring the variab
    - **Script Format:** ```groovy```
    - **Script:**
 ```
+import com.activiti.domain.idm.User;
+import com.activiti.security.SecurityUtils;
+import com.activiti.domain.idm.User;
 import groovy.sql.Sql;
 import groovy.json.*;
 import groovy.json.JsonBuilder;
@@ -122,8 +126,15 @@ class Record {
     String zip
 }
 
-def ln = execution.getVariable("lookup_lastname");
+// get the user ID from APS
+Long cId = execution.getVariable("pfValue");
+User customer = userService.getUser(cId);
+execution.setVariable("customerId", cId);
 
+out.println('|=============  Customer Details CID: '+cId);
+
+
+// SQL Follows
 def url = 'jdbc:oracle:thin:@//aps-custom-oracle-db.cp58lgpzkwpy.us-east-1.rds.amazonaws.com/ORCL';
 def user = 'admin';
 def password = 'apsadmin';
@@ -133,7 +144,7 @@ def sql = Sql.newInstance(url, user, password, driver);
 rowNum = 0;
 def recordList = [];
 
-sql.eachRow("SELECT * FROM NINESI WHERE LASTNAME = ${ln}") { row ->
+sql.eachRow("SELECT * FROM NINESI WHERE ID = ${customerId}") { row ->
    
     def r = new Record( recId:row.id, firstname:row.firstname, lastname:row.lastname, address:row.streetaddress, city:row.city, state:row.state, zip:row.zipcode)
     execution.setVariable("cFirstName", row.firstname);
@@ -149,6 +160,7 @@ sql.eachRow("SELECT * FROM NINESI WHERE LASTNAME = ${ln}") { row ->
 execution.setVariable("recordCount", recordList.size);
   println new JsonBuilder( recordList ).toPrettyString();
   execution.setVariable("recordList", new JsonBuilder( recordList ).toPrettyString());
+
 
 ```
 2. Add a **User Task** connected to the Script Task.
