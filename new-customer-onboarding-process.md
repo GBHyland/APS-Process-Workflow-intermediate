@@ -96,6 +96,9 @@ In this lab, the facilitator will create the folder structure necessary to store
      6. Save.
    - Your Data Source is configured for APS to connect to your external relational database. Great work!
 
+------------
+## Process Services Labs:   
+The remainder of the labs should be performed by the class attendees in the Activiti-App (APS).  
 
 ### Lab 1. Create and Configure a New Process.
 This lab will walk you through creating a new process and configuring the variables needed to perform actions to support future labs. 
