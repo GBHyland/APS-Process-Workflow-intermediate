@@ -16,7 +16,7 @@
 Before creation of the Process, a folder and Content Model (Aspects) structure needs to be created to support Alfresco Actions the process will leverage. The next few labs will focus on creating the folders and Aspects.
 
 ### ACS Lab: Create Insurance Content Model
-[FACILITATOR ONLY LAB]. 
+[FACILITATOR ONLY LAB]. <br>
 In this lab, the instructor will create the Data Model that all user Aspects will be added to. Facilitator should demo this step.
 1. Access the **Admin Tools**.  
 2. Select **Model Manager**.  
@@ -53,7 +53,7 @@ In this lab, each user will create their own Aspect using the Data Model created
 
 
 ### ACS Lab: Create Folder Structure
-[FACILITATOR ONLY LAB]. 
+[FACILITATOR ONLY LAB]. <br>
 In this lab, the facilitator will create the folder structure necessary to store files generated from the process. 
 1. Create a site titled: ```9 Second Insurance```.
 2. Make the site **Public**.
