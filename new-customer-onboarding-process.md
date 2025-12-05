@@ -43,7 +43,7 @@
    - Your Data Source is configured for APS to connect to your external relational database. Great work!
 
 
-### Lab 1. Create an Configure a New Process.
+### Lab 1. Create and Configure a New Process.
 This lab will walk you through creating a new process and configuring the variables needed to perform actions to support future labs. 
 1.	From the Alfresco home page, launch the Activiti App (Process Services) by clicking on the Activiti App hyperlink. 
     - Sign in with your provided username and password. You will be directed to the Activiti App home page.
@@ -74,23 +74,16 @@ This lab will walk you through creating a new process and configuring the variab
 
 ### Lab 2. Create an Intake Task. 
 **Scenario:** In order to capture new customer data we need a data intake mechanism. In this lab you'll create a process with a Human Task with a Form attached that will allow you to capture customer data.
-1. Create a new **script** task connected to the start event. In the bottom configuration panel, configure  the following attributes:
-    -	Name: ```Set Customer ID```
-    -	Script format: ```groovy```
-    -	Script: enter this code in the popup script window:
-```
-execution.setVariable('newCustomerId', execution.getProcessInstanceId());
-```
-2.	Create a new **User (Human)** Task connected to the script task. 
-3.	Give the user task a name by double-clicking on the task to open a text field Name this task: ```Gather Customer Data```.
-4.	With the user task selected, notice that the Referenced form value in the bottom configuration window is No reference selecte- To create an intake form for this task, click on the No reference selected value
-5.	In the Form reference popup window, select the New Form button.
-6.	In the Create a new form window, enter the following values:
+1.	Create a new **User (Human)** Task connected to the Start Event.
+2.	Give the user task a name by double-clicking on the task to open a text field Name this task: ```Gather Customer Data```.
+3.	With the user task selected, notice that the Referenced form value in the bottom configuration window is No reference selecte- To create an intake form for this task, click on the No reference selected value
+4.	In the Form reference popup window, select the New Form button.
+5.	In the Create a new form window, enter the following values:
     - Form name: ```Gather Customer Data```
     - Description: ```Gathers information about the new customer.```
     - Stencil: Default form
     - Select the Create form button. 
-7.	Follow these steps to create the form you’ll need to intake a new customer:
+6.	Follow these steps to create the form you’ll need to intake a new customer:
     1. Drag a Header onto the canvas. To edit, click on the pencil icon that appears when you hover your mouse over the header object. In the Label field, name it ```Customer Information:``` and click the Close button.
     2. Drag a Text object onto the canvas and drop it into the header object. Click the pencil to edit the text object and configure the following information: 
     3. Label: ```First Name: ```
@@ -147,9 +140,9 @@ execution.setVariable('newCustomerId', execution.getProcessInstanceId());
         - Select Close.
     14. Click on the save button in the top left of the page to save and close the form and return to your process model.
     15. On the Save form popup window, click the Save and close editor button to return to your process model.
-8.	Create a connected end event by selecting the Gather Customer Data user task and clicking on the end event icon in the small popup menu.   
-9.	Save the process model by clicking on the Save icon in the top left of the pag-   
-10.	In the Save model popup window, press the Save and close editor button.
+7.	Create a connected end event by selecting the Gather Customer Data user task and clicking on the end event icon in the small popup menu.   
+8.	Save the process model by clicking on the Save icon in the top left of the pag-   
+9.	In the Save model popup window, press the Save and close editor button.
 
 ---
 
@@ -344,38 +337,46 @@ For classes, please regard the instructor for a brief presentation on Data Sourc
    - **Script format:** ```groovy```
    - **Script:**
      ```
-        import groovy.sql.Sql;
-        import groovy.json.*
-        import groovy.json.JsonBuilder
-        
-        class Record {
-            String recId
-            String firstname
-            String lastname
-            String address
-            String city
-            String state
-            String zip
-        }
-        
-        def url = 'jdbc:oracle:thin:@//aps-custom-oracle-db.cp58lgpzkwpy.us-east-1.rds.amazonaws.com/ORCL'
-        def user = 'admin'
-        def password = 'administrator'
-        def driver = 'oracle.jdbc.driver.OracleDriver'
-        def sql = Sql.newInstance(url, user, password, driver)
-        
-        rowNum = 0;
-        def recordList = [];
-        
-        sql.eachRow("SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE FROM CUSTOMERS WHERE FIRSTNAME=${newCustomerFirstName} AND LASTNAME=${newCustomerLastName}") { row ->
-           
-          def r = new Record( recId: row.id, firstname:row.firstname, lastname:row.lastname, address:row.addressLine1, city:row.city, state:row.state, zip:row.zipcode)
-            recordList.add(r);
-          
-        }
-        
-          println new JsonBuilder( recordList ).toPrettyString()
-          execution.setVariable("recordList", new JsonBuilder( recordList ).toPrettyString())
+            import groovy.sql.Sql;
+            import groovy.json.*
+            import groovy.json.JsonBuilder
+            
+            class Record {
+                String recId
+                String firstname
+                String lastname
+                String address
+                String city
+                String state
+                String zip
+                String email
+                String phone
+                String policy
+            }
+            
+            def url = 'jdbc:oracle:thin:@//aps-custom-oracle-db.cp58lgpzkwpy.us-east-1.rds.amazonaws.com/ORCL'
+            def user = 'admin'
+            def password = 'apsadmin'
+            def driver = 'oracle.jdbc.driver.OracleDriver'
+            def sql = Sql.newInstance(url, user, password, driver)
+            
+            rowNum = 0;
+            def recordList = [];
+            
+            out.println('Query Customer: '+execution.getVariable("customerId"));
+            
+            //sql.eachRow("SELECT ID,FIRSTNAME,LASTNAME,STREETADDRESS,CITY,STATE,ZIPCODE,EMAIL,PHONE,POLICY FROM NINESI WHERE ID = ${customerId}") { row ->
+            sql.eachRow("SELECT * FROM NINESI WHERE ID = ${customerId}") { row ->
+                
+                def r = new Record( recId:row.id, firstname:row.firstname, lastname:row.lastname, address:row.streetaddress, city:row.city, state:row.state, zip:row.zipcode, email:row.email, phone:row.phone, policy:row.policy)
+                recordList.add(r);
+                
+            }
+            
+            println new JsonBuilder( recordList ).toPrettyString()
+            out.println('Customer Details: '+recordList);
+            execution.setVariable("recordList", new JsonBuilder( recordList ).toPrettyString())
+ 
      ```
 8. Create a new **User Task** connected to the _Get Database User_ script task.
    - Name the user task: ```Verify User Data```.
