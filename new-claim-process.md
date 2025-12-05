@@ -22,27 +22,25 @@
 
 | Name     |
 | ---               | 
-| firstname             | 
-| lastname      | 
-| address       | 
-| city        | 
-| state           | 
-| zip          | 
-| type        | 
-| severity        |     |
-| status        |
-| date        | 
+| Firstname             | 
+| Lastname      | 
+| Address       | 
+| City        | 
+| State           | 
+| Zip          | 
+| Type        | 
+| Severity        |     |
+| Status        |
+| Date        | 
+
+6. This lab is complete.
 
 
 **Create & configure the necessary Folder Structure**
+**FACILITATOR ONLY**. 
 1. In Share, navigate to the ```9 Second Insurance``` Site.
 2. In the DocumentLibrary, navigate to the _Customer Claims_ folder.
-3. Create a new folder titled: ```Claim [Your User Number]```.
-4. Add a folder rule to your folder with the following configuration:
-   - **Name:** ```Add claim aspect```
-   - **When:** _Items are created or enter this folder_
-   - **Criteria:** _All items_
-   - **Perform Actions:** _Add Aspect_, _claim[your-user-unumber]_
+3. This lab is complete.
 
 
 ### Lab 1. Create an Configure a New Process.
@@ -52,7 +50,7 @@ This lab will walk you through creating a new process and configuring the variab
 2.	Select the App Designer tile to navigate to the Business Process Models page
 3.	To create a new process, press the Create Process button in the top right of the page.
 4.	In the Create a new business process model popup, enter the following information:
-    -	Model name: ```[Your user #] New Claim``` (ex: U1 New Customer Onboarding)
+    -	Model name: ```U[Your user #] New Claim``` (ex: U1 New Claim)
     -	Description: ```Create a customer claim.```
     -	Editor Type: Leave as BPMN editor
     -	Stencil: Default BPMN
@@ -126,18 +124,17 @@ class Record {
 }
 
 def ln = execution.getVariable("lookup_lastname");
-execution.setVariable("lu_lastname", ln);
 
 def url = 'jdbc:oracle:thin:@//aps-custom-oracle-db.cp58lgpzkwpy.us-east-1.rds.amazonaws.com/ORCL';
 def user = 'admin';
-def password = 'administrator';
+def password = 'apsadmin';
 def driver = 'oracle.jdbc.driver.OracleDriver';
 def sql = Sql.newInstance(url, user, password, driver);
 
 rowNum = 0;
 def recordList = [];
 
-sql.eachRow("SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE FROM CUSTOMERS WHERE LASTNAME = ${lu_lastname}") { row ->
+sql.eachRow("SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE FROM CUSTOMERS WHERE LASTNAME = ${ln}") { row ->
    
     def r = new Record( recId: row.id, firstname:row.firstname, lastname:row.lastname, address:row.addressLine1, city:row.city, state:row.state, zip:row.zipcode)
     execution.setVariable("cFirstName", row.firstname);
@@ -146,12 +143,14 @@ sql.eachRow("SELECT ID, FIRSTNAME, LASTNAME, ADDRESSLINE1, CITY, STATE, ZIPCODE 
     execution.setVariable("cCity", row.city);
     execution.setVariable("cState", row.state);
     execution.setVariable("cZip", row.zipcode);
+    execution.setVariable("recordID", row.id);
     recordList.add(r);
   
 }
 execution.setVariable("recordCount", recordList.size);
   println new JsonBuilder( recordList ).toPrettyString();
   execution.setVariable("recordList", new JsonBuilder( recordList ).toPrettyString());
+
 
 ```
 2. Add a **User Task** connected to the Script Task.
