@@ -278,11 +278,13 @@ Press Back if customer does not appear.
 13. Add a **Date Object** to the _Claim Information_ Header and select the pencil icon to edit it.
 14. Label it: ```Incident Date:```.
 15. Select the **Required** check box.
+    - Override the ID and enter: ```incidentDate```.  
 16. Select the **Advanced** tab.
 17. In the **Date display format (D-M-YYYY)** field, add the following criteria: ```MM-DD-YYYY```. 
 18. Add a **Drop Down Object** to the _Claim Information_ Header and select the pencil icon to edit it.
 19. Label it: ```Incident Type:```.
 20. Select the **Required** check box.
+    - Override the ID and enter: ```incidentType```. 
 21. Select the **Options** tab.
 22. Ensure the blue **Manual** button is selected. 
 23. In the **+ Add a new option** field add: ```Damage```.
@@ -295,6 +297,7 @@ Press Back if customer does not appear.
 27. Add a **Drop Down Object** to the _Claim Information_ Header and select the pencil icon to edit it.
 28. Label it: ```Damage Severity:```.
 29. Select the **Required** check box.
+    - Override the ID and enter: ```damageSeverity```. 
 30. Select the **Options** tab.
 31. Ensure the blue **Manual** button is selected. 
 34. Add the following options:
@@ -491,8 +494,9 @@ In this lab, we'll perform two actions; generate a PDF document from a template 
 18. In the bottom configuration panel, select the **Alfresco Destination** attribute.
 19. In the _Alfresco Destination_ popup window, use the dropdown field to select the option ```Alfresco-1```. (Might be pre-selected)
 20. Next to **Destination**, use the **Select Folder** button to navigate to this path in the ACS repository: ```9 Second Insurance > documentLibrary > Customer Claims```. Select the **Select Folder** button to save this location.
-21. Save the configuration.
-22. Save the process.
+21. Select the **Set Status Hold** Script task and drag a **Sequence Flow Line** connecting to the _Create Claim Document_ Generate Document Task.
+22. Save the configuration.
+23. Save the process.
 
 
 
@@ -511,16 +515,16 @@ The process is now generating and saving a PDF document to the Content Repositor
 
 | File Property | Property Type  | Variable |
 | ----------     | ---------    | -------------- |
-| claim:firstname             | string           | cFirstName         |
-| claim:lastname      | string    | cLastName         |
-| claim:address       | string     | cAddress         |
-| claim:city        | string | cCity         |
-| claim:state           | string	        | cState         |
-| claim:zip          | string        | cZip         |
-| claim:type        | string      | incidentType         |
-| claim:severity        | string      | damageSeverity         |
-| claim:status        | string      | cStatus         |
-| claim:date        | string      | incidentDate         |
+| ins:Firstname             | string           | cFirstName         |
+| ins:LastName      | string    | cLastName         |
+| ins:Address       | string     | cAddress         |
+| ins:City        | string | cCity         |
+| ins:State           | string	        | cState         |
+| ins:Zip          | string        | cZip         |
+| ins:Type        | string      | incidentType         |
+| ins:Severity        | string      | damageSeverity         |
+| ins:Status        | string      | cStatus         |
+| ins:Date        | string      | incidentDate         |
 
 7. Save the configuration.
 8. Add an **End Event** to the process connected to the _Save Aspect Values_ Task.
