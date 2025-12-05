@@ -273,7 +273,10 @@ For classes, please regard the instructor for a brief presentation on Data Sourc
 | address        | ADDRESSLINE1 | String         |
 | city           | CITY	        | String         |
 | state          | STATE        | String         |
-| zipCode        | ZIPCODE      | String         |
+| zip        | ZIPCODE      | String         |
+| email        | EMAIL      | String         |
+| phone        | PHONE      | String         |
+| policynum        | POLICY      | String         |
 
 5. Save and Close the Model.
 
