@@ -181,7 +181,7 @@ This lab will walk you through creating a new process and configuring the variab
 1. Enter your New Customer Onboarding process in edit mode.
 2. Add a **Script Task** to your process (under Activities).
    - Name the task ```Add User to APS```.
-3. Connect this task in the workflow **AFTER** the _Save Cust data to DB_ task.
+3. Connect this task in the workflow **AFTER** the _Gather Customer Data_ user task.
 4. In the bottom configuration panel configure the following:
    - **Script format:** ```groovy```
    - **Script:**
@@ -261,7 +261,7 @@ For classes, please regard the instructor for a brief presentation on Data Sourc
     -    Click the Add Entity button. Enter the following information for the Entity:
             -	Entity Name: ```newCustomers```
             -	Entity Description: ```Details of all customers```
-            -	Table Name: ```CUSTOMERS```
+            -	Table Name: ```NINESI```
     -	**DO NOT Click the Import Attributes button.**
     -	Use the **Add Attribute** button to create new attributes. Use the chart below to add attributes and fill in the _attribute name_, _column name_, and select the correct _attribute type_. **Note:** The id variable should have the Primary key check box checked All others do not.
 
@@ -279,7 +279,7 @@ For classes, please regard the instructor for a brief presentation on Data Sourc
 
 
 ### Lab 6: Create a Store Entity Task (Save Values to Database)
-1. Enter your Customer Onboarding process in edit mode.    
+1. Enter your Customer Onboarding process in edit mode.  
 2. Delete the end event.
 3. Add a Store Entity Task to the process and connect it to the end of the process.
 4. Select the new Store Entity Task and set the following configuration in the bottom panel:
