@@ -486,12 +486,13 @@ In this lab, we'll perform two actions; generate a PDF document from a template 
 13. In the _Alfresco Content_ popup window, use the dropdown field to select the option **Publish content uploaded in field**.
 14. As the **Value Type** Select ```Variable```.
 15. In the **Variable** dropdown, select ```claimDoc```.
-16. Save the configuration.
-17. In the bottom configuration panel, select the **Alfresco Destination** attribute.
-18. In the _Alfresco Destination_ popup window, use the dropdown field to select the option ```Alfresco-1```. (Might be pre-selected)
-19. Next to **Destination**, use the **Select Folder** button to navigate to this path in the ACS repository: ```9 Second Insurance > documentLibrary > Customer Claims```. Select the **Select Folder** button to save this location.
-20. Save the configuration.
-21. Save the process.
+16. Select the plus sign below the Aspect to add an aspect. Enter: ```ins:claim[your-user-#]```. _(Example if you are user 3: ins:claim3)_
+17. Save the configuration.
+18. In the bottom configuration panel, select the **Alfresco Destination** attribute.
+19. In the _Alfresco Destination_ popup window, use the dropdown field to select the option ```Alfresco-1```. (Might be pre-selected)
+20. Next to **Destination**, use the **Select Folder** button to navigate to this path in the ACS repository: ```9 Second Insurance > documentLibrary > Customer Claims```. Select the **Select Folder** button to save this location.
+21. Save the configuration.
+22. Save the process.
 
 
 
