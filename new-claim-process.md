@@ -67,7 +67,6 @@ This lab will walk you through creating a new process and configuring the variab
 | cCity          | String            |
 | cState     | String            |
 | cZip     | String            |
-| lu_lastname     | String            |
 | recordCount     | Integer            |
 | recordList     | String            |
 | deductible     | Integer            |
@@ -164,25 +163,7 @@ execution.setVariable("recordCount", recordList.size);
    2. Add a **Display Text** field to the Header configured with the following:
       - **Label:** ```Database Return:```
       - **Text to Display:** ```Found ${recordCount} records with the Last Name of "${lu_lastname}".```
-   3. Add a **Dynamic Table** under the Header.
-   4. Configure the General tab of the dynamic table with the follow:
-      - **Label:** ```CUSTOMERS```
-      - _Override the ID_
-      - **ID:** ```recordList```
-   5. Select the **Table Columns** tab in the dynamic table editor.
-   6. Use the following chart to map the process variables to each Header of the dynamic table.  
-
-| **Property ID**       | **Property Name**     | **Property Type**     |
-| ---       | ---       | ---       |
-| redId     | ID        | String        |
-| firstname     | First Name        | String        |
-| lastname     | Last Name        | String        |
-| address     | Address        | String        |
-| city     | City        | String        |
-| state     | State        | String        |
-| zip     | Zip        | String        |
-
-   7. Add a **Display Text** field under the dynamic table configured with the following:
+   3. Add a **Display Text** field under the dynamic table configured with the following:
       - **Label:** ```Prompt:```
       - **Text to Display:** 
 ```
