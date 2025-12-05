@@ -542,7 +542,7 @@ For classes, please regard the instructor for a brief presentation on Data Sourc
 4. In the configuration panel, select the **Document Variable** attribute and enter: ```custDoc```.
 5. Select the **File Name** attribute and enter: ```customer-${lastName}-${policyNumber}```.
 6. Select the **Template** attribute to open the template popup window:
-   - Select the **Custom Template** tab and use the _Choose File_ button to navigate to the ```9si_onboarding.docx``` file provided to you.
+   - Select the **Custom Template** tab and use the _Choose File_ button to navigate to the ```9si_newCustomer.docx``` file provided to you.
 7. Ensure the **Output Format** attribute is set to ```PDF```.
 
 
