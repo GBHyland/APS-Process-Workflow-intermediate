@@ -335,7 +335,7 @@ For classes, please regard the instructor for a brief presentation on Data Sourc
 | zip        | ZIPCODE      | String         |
 | email        | EMAIL      | String         |
 | phone        | PHONE      | String         |
-| policynum        | POLICY      | String         |
+| policynum        | POLICY_NUMBER      | String         |
 
 5. Save and Close the Model.
 
