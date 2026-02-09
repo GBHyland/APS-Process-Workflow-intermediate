@@ -608,15 +608,15 @@ For classes, please regard the instructor for a brief presentation on Data Sourc
 
 | File Property | Property Type  | Variable |
 | ----------     | ---------    | -------------- |
-| cus[user#]:FirstName             | string           | firstName         |
-| cus[user#]:LastName      | string    | lastName         |
-| cus[user#]:StreetAddress       | string     | address         |
-| cus[user#]:City        | string | city         |
-| cus[user#]:State           | string	        | state         |
-| cus[user#]:ZipCode          | string        | zipCode         |
-| cus[user#]:Email        | string      | email         |
-| cus[user#]:Phone        | string      | phoneNumber         |
-| cus[user#]:PolicyNumber        | string      | policyNumber         |
+| ins[user#]:FirstName             | string           | firstName         |
+| ins[user#]:LastName      | string    | lastName         |
+| ins[user#]:StreetAddress       | string     | address         |
+| ins[user#]:City        | string | city         |
+| ins[user#]:State           | string	        | state         |
+| ins[user#]:ZipCode          | string        | zipCode         |
+| ins[user#]:Email        | string      | email         |
+| ins[user#]:Phone        | string      | phoneNumber         |
+| ins[user#]:PolicyNumber        | string      | policyNumber         |
 
 8.	Save and close the property mapping wizard.
 9. Add an end event to the process from the _Update Metadata_ task.
