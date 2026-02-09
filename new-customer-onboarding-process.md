@@ -399,46 +399,44 @@ For classes, please regard the instructor for a brief presentation on Data Sourc
    - **Script format:** ```groovy```
    - **Script:**
      ```
-            out.println('Query Customer: '+execution.getVariable("customerId"));
-       
-            import groovy.sql.Sql;
-            import groovy.json.*
-            import groovy.json.JsonBuilder
-
-            class Record {
-            String recId
-            String firstname
-            String lastname
-            String address
-            String city
-            String state
-            String zip
-            String email
-            String phone
-            String policy
-            }
-
-            def url = 'jdbc:oracle:thin:@//aps-custom-oracle-db.cp58lgpzkwpy.us-east-1.rds.amazonaws.com/ORCL'
-            def user = 'admin'
-            def password = 'apsadmin'
-            def driver = 'oracle.jdbc.driver.OracleDriver'
-            def sql = Sql.newInstance(url, user, password, driver)
-
-            rowNum = 0;
-            def recordList = [];
-
-
-
-            sql.eachRow("SELECT * FROM NINESI WHERE ID = ${customerId}") { row ->
-            
-            def r = new Record( recId:row.id, firstname:row.firstname, lastname:row.lastname, address:row.streetaddress, city:row.city, state:row.state, zip:row.zipcode, email:row.email, phone:row.phone, policy:row.policy)
-            recordList.add(r);
-            
-            }
-
-            println new JsonBuilder( recordList ).toPrettyString()
-            out.println('Customer Details: '+recordList);
-            execution.setVariable("recordList", new JsonBuilder( recordList ).toPrettyString())
+         import groovy.sql.Sql;
+         import groovy.json.*
+         import groovy.json.JsonBuilder
+         
+         class Record {
+             String recId
+             String firstname
+             String lastname
+             String address
+             String city
+             String state
+             String zip
+             String email
+             String phone
+             String policy
+         }
+         
+         def url = 'jdbc:oracle:thin:@//aps-custom-oracle-db.cp58lgpzkwpy.us-east-1.rds.amazonaws.com/ORCL'
+         def user = 'admin'
+         def password = 'apsadmin'
+         def driver = 'oracle.jdbc.driver.OracleDriver'
+         def sql = Sql.newInstance(url, user, password, driver)
+         
+         rowNum = 0;
+         def recordList = [];
+         
+         out.println('Query Customer: '+execution.getVariable("customerId"));
+         
+         sql.eachRow("SELECT * FROM NINESI WHERE ID = ${customerId}") { row ->
+             
+             def r = new Record( recId:row.id, firstname:row.firstname, lastname:row.lastname, address:row.streetaddress, city:row.city, state:row.state, zip:row.zipcode, email:row.email, phone:row.phone, policy:row.policy_number)
+             recordList.add(r);
+             
+         }
+         
+         println new JsonBuilder( recordList ).toPrettyString()
+         out.println('Customer Details: '+recordList);
+         execution.setVariable("recordList", new JsonBuilder( recordList ).toPrettyString())
  
      ```
 8. Create a new **User Task** connected to the _Get Database User_ script task.
