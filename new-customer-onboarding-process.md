@@ -489,11 +489,11 @@ For classes, please regard the instructor for a brief presentation on Data Sourc
             2.	Property Name: ```ID```
             3.	Property Type: ```string```
         - Column 2:
-            1.	Property ID: ```firstname```
+            1.	Property ID: ```firstName```
             2.	Property Name: ```First Name```
             3.	Property Type: ```string```
         - Column 3:
-            1.	Property ID: ```lastname```
+            1.	Property ID: ```lastName```
             2.	Property Name: ```Last Name```
             3.	Property Type: ```string```
         - Column 4:
