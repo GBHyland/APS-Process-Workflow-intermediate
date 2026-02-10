@@ -365,7 +365,7 @@ For classes, please regard the instructor for a brief presentation on Data Sourc
 | phone    | Variable  | phoneNumber    |
 | policynum    | Variable  | policyNumber    |
 
-        - Press Save on the mapping window.
+   - Press Save on the mapping window.
 5. Save the process (Do not save a close - without an end event you may get a validation error, save anyway).
 
 ---
