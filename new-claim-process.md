@@ -18,7 +18,7 @@
 2. Select the _Insurance_ model.
 3. Select the **Create Aspect** Button. Name the Aspect: ```claim[your-user-#]```.
 4. Select your Aspect to open the Aspect Properties page. Select the **Create Property** Button.
-5. Use the create property wizard to add the following properties (ensure to select **create and start another** after each property).
+5. Use the create property wizard to add the following properties (ensure to select **create and start another** after each property).  
 **NOTE:** If following the Onboarding Process, you may only need to add _Severity_ and _Status_ from below to your already existing **claim** Aspect.
 
 | Name     |
