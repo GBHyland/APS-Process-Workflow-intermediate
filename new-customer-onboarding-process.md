@@ -550,7 +550,7 @@ For classes, please regard the instructor for a brief presentation on Data Sourc
 | We'll add an exclusive gateway that will allow us to go down either path specified above. |
 | Our Out-of-State path will include a User Task assigned to our Team's manager. |
 
-### Lab 9: Add an Exclusive Gateway and Splitting Paths
+### Lab 10: Add an Exclusive Gateway and Splitting Paths
 1. Open your New Customer process in edit mode.
 2. Delete the end event.
 3. From the left panel, under Gateways, add an **Exclusive Gateway** to your process. Connect it from the _Generate Document_ task.
@@ -597,7 +597,7 @@ For classes, please regard the instructor for a brief presentation on Data Sourc
 | ----------- |
 | We have a content file for our customers saved to our repository, where an **Aspect** is applied to any documents saved within our Customer Policies folder. We want the customer data values saved to that aspect, so they can be viewed without having to open the document to find essential data about the customer. |
 
-### Lab 10: Update Metadata (Aspect) on a Saved Document
+### Lab 11: Update Metadata (Aspect) on a Saved Document
 1. Enter your New Customer Onboarding process in edit mode.
 2. From the left task menu under Activities, add an **Update Alfresco Properties** task to the process and attach a sequence flow line from **both** the _Save to OH_ and _Save to Non-OH_ tasks.
 3. Name this task: ```Update Metadata```.
