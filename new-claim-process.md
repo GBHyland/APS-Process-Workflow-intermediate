@@ -516,16 +516,16 @@ The process is now generating and saving a PDF document to the Content Repositor
 
 | File Property | Property Type  | Variable |
 | ----------     | ---------    | -------------- |
-| ins:Firstname             | string           | cFirstName         |
-| ins:LastName      | string    | cLastName         |
-| ins:Address       | string     | cAddress         |
-| ins:City        | string | cCity         |
-| ins:State           | string	        | cState         |
-| ins:Zip          | string        | cZip         |
-| ins:Type        | string      | incidentType         |
-| ins:Severity        | string      | damageSeverity         |
-| ins:Status        | string      | cStatus         |
-| ins:Date        | string      | incidentDate         |
+| cus:Firstname[user #]             | string           | cFirstName         |
+| cus:LastName[user #]      | string    | cLastName         |
+| cus:Address[user #]       | string     | cAddress         |
+| cus:City[user #]        | string | cCity         |
+| cus:State[user #]           | string	        | cState         |
+| cus:Zip[user #]          | string        | cZip         |
+| cus:Type[user #]        | string      | incidentType         |
+| cus:Severity[user #]        | string      | damageSeverity         |
+| cus:Status[user #]        | string      | cStatus         |
+| cus:Date[user #]        | string      | incidentDate         |
 
 7. Save the configuration.
 8. Add an **End Event** to the process connected to the _Save Aspect Values_ Task.
