@@ -19,7 +19,7 @@ h.  The results should populate automatically.
 
 ------------------------------------------------------------------------
 
-## 2. Configure a Task Overview Report
+## 3. Configure a Task Overview Report
 
 a.  In the Analytics App, select the **Configure** button.\
 b.  Select **Task Overview** from the list of configurable reports.\
