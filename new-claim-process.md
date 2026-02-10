@@ -483,7 +483,7 @@ In this lab, we'll perform two actions; generate a PDF document from a template 
 6. Select the **File Name** attribute and enter the following: ```claim-${cLastName}-${recordID}```.
 7. Select the **Template** attribute.
 8. In the Template popup window, select **Custom Template**.
-9. Use the **Choose File** button to navigate to and select the _docx_ file template titled: ```9si-claim-template.docx```.
+9. Use the **Choose File** button to navigate to and select the _docx_ file template titled: ```9si-claim-template.docx```, at: [9si-claim-template.docx](https://github.com/GBHyland/APS-Process-Workflow-intermediate/blob/main/Class%20Documents%20for%20Attendees/9si-claim-template.docx).
 10. Add a **Publish to Alfresco** Task to the process connected to the _Create Claim Document_ Generate Document Task.
 11. Name it: ```Save to Repo```.
 12. In the bottom configuration panel, select the **Alfresco Content** attribute.
