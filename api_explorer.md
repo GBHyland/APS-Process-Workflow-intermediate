@@ -4,8 +4,8 @@
 
 1.  Launch the API Explorer by clicking the **Process Services API
     Explorer** link from the Alfresco demo platform page.
-2.  Click the **Authorize** button and sign in with the credentials
-    provided. Close the popup window once authorized.
+2.  Click the **Authorize** button and sign in with credentials: ```demo / demo```.
+    Close the popup window once authorized.
 
 ------------------------------------------------------------------------
 
